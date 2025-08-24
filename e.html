@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventHub - Professional Event Management Platform</title>
+    <meta name="description" content="Professional event management platform for creating unforgettable experiences. Connect, organize, and celebrate with ease.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: ["class"],
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'heading': ['Playfair Display', 'serif'],
+                        'body': ['Merriweather', 'serif']
+                    },
+                    colors: {
+                        // Event Management System specific colors
+                        'charcoal': 'hsl(0, 0%, 20%)',           // Charcoal Black #333333
+                        'midnight': 'hsl(240, 29%, 14%)',        // Midnight Blue #1A1A2E
+                        'electric': 'hsl(195, 100%, 50%)',       // Electric Blue #00BFFF
+                        'lightgray': 'hsl(0, 0%, 83%)',          // Light Gray #D3D3D3
+                        'limegreen': 'hsl(120, 61%, 50%)',       // Lime Green #32CD32
+                        'darkslate': 'hsl(180, 25%, 25%)',       // Dark Slate Gray #2F4F4F
+                        
+                        // Base theme colors
+                        'background': 'hsl(0, 0%, 20%)',         // Charcoal Black
+                        'foreground': 'hsl(0, 0%, 83%)',         // Light Gray
+                        'card': 'hsl(240, 29%, 14%)',            // Midnight Blue
+                        'card-foreground': 'hsl(0, 0%, 83%)',    // Light Gray
+                        'popover': 'hsl(240, 29%, 14%)',         // Midnight Blue
+                        'popover-foreground': 'hsl(0, 0%, 83%)', // Light Gray
+                        'primary': 'hsl(195, 100%, 50%)',        // Electric Blue
+                        'primary-foreground': 'hsl(0, 0%, 20%)', // Charcoal Black
+                        'secondary': 'hsl(180, 25%, 25%)',       // Dark Slate Gray
+                        'secondary-foreground': 'hsl(0, 0%, 83%)', // Light Gray
+                        'muted': 'hsl(240, 29%, 18%)',           // Slightly lighter Midnight Blue
+                        'muted-foreground': 'hsl(0, 0%, 65%)',   // Muted Light Gray
+                        'accent': 'hsl(195, 100%, 50%)',         // Electric Blue
+                        'accent-foreground': 'hsl(0, 0%, 20%)',  // Charcoal Black
+                        'destructive': 'hsl(0, 84%, 60%)',       // Red for errors
+                        'destructive-foreground': 'hsl(0, 0%, 83%)', // Light Gray
+                        'border': 'hsl(240, 29%, 20%)',          // Border color
+                        'input': 'hsl(240, 29%, 18%)',           // Input background
+                        'ring': 'hsl(195, 100%, 50%)'            // Electric Blue focus ring
+                    },
+                    borderRadius: {
+                        lg: "0.5rem",
+                        md: "calc(0.5rem - 2px)",
+                        sm: "calc(0.5rem - 4px)"
+                    },
+                    keyframes: {
+                        "fade-up": {
+                            "0%": {
+                                opacity: "0",
+                                transform: "translateY(30px)"
+                            },
+                            "100%": {
+                                opacity: "1",
+                                transform: "translateY(0)"
+                            }
+                        }
+                    },
+                    animation: {
+                        "fade-up": "fade-up 0.5s ease-out"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS -->
+    <style>
+        /* Custom scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: hsl(0, 0%, 20%);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: hsl(180, 25%, 25%);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: hsl(195, 100%, 50%);
+        }
+        
+        /* Line clamp utilities */
+        .line-clamp-2 {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
+        
+        .line-clamp-3 {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+        }
+        
+        /* Custom button styles */
+        .btn-primary {
+            background-color: hsl(195, 100%, 50%);
+            color: hsl(0, 0%, 20%);
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary:hover {
+            background-color: hsl(195, 100%, 45%);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: hsl(195, 100%, 50%);
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            border: 1px solid hsl(195, 100%, 50%);
+            font-weight: 600;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: hsl(195, 100%, 50%);
+            color: hsl(0, 0%, 20%);
+        }
+        
+        /* Card styles */
+        .card {
+            background-color: hsl(240, 29%, 14%);
+            border: 1px solid hsl(240, 29%, 20%);
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+        
+        .card:hover {
+            border-color: hsl(195, 100%, 50%, 0.3);
+        }
+        
+        /* Badge styles */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            border-radius: 9999px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid transparent;
+        }
+        
+        .badge-primary {
+            background-color: hsl(195, 100%, 50%, 0.1);
+            color: hsl(195, 100%, 50%);
+            border-color: hsl(195, 100%, 50%, 0.2);
+        }
+        
+        .badge-secondary {
+            background-color: hsl(0, 0%, 83%, 0.1);
+            color: hsl(0, 0%, 83%);
+            border-color: hsl(0, 0%, 83%, 0.2);
+        }
+        
+        .badge-success {
+            background-color: hsl(120, 61%, 50%, 0.1);
+            color: hsl(120, 61%, 50%);
+            border-color: hsl(120, 61%, 50%, 0.2);
+        }
+        
+        /* Hidden/Show utilities */
+        .hidden { display: none !important; }
+        .block { display: block !important; }
+        
+        /* Mobile menu animation */
+        .mobile-menu {
+            transition: all 0.3s ease-in-out;
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        
+        .mobile-menu.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground font-body min-h-screen">
+    <!-- Header -->
+    <header class="bg-darkslate border-b border-border sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-electric rounded-lg flex items-center justify-center">
+                        <i data-lucide="calendar" class="w-5 h-5 text-charcoal"></i>
+                    </div>
+                    <span class="text-xl font-heading font-bold text-lightgray">EventHub</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-1">
+                    <a href="index.html" class="nav-link active px-4 py-2 text-sm font-medium rounded-md transition-colors hover:bg-secondary hover:text-electric focus:bg-secondary focus:text-electric focus:outline-none text-electric bg-secondary">Home</a>
+                    <a href="events.html" class="nav-link px-4 py-2 text-sm font-medium rounded-md transition-colors hover:bg-secondary hover:text-electric focus:bg-secondary focus:text-electric focus:outline-none text-lightgray">Events</a>
+                    <a href="calendar.html" class="nav-link px-4 py-2 text-sm font-medium rounded-md transition-colors hover:bg-secondary hover:text-electric focus:bg-secondary focus:text-electric focus:outline-none text-lightgray">Calendar</a>
+                    <a href="speakers.html" class="nav-link px-4 py-2 text-sm font-medium rounded-md transition-colors hover:bg-secondary hover:text-electric focus:bg-secondary focus:text-electric focus:outline-none text-lightgray">Speakers</a>
+                    <a href="gallery.html" class="nav-link px-4 py-2 text-sm font-medium rounded-md transition-colors hover:bg-secondary hover:text-electric focus:bg-secondary focus:text-electric focus:outline-none text-lightgray">Gallery</a>
+                    <a href="blog.html" class="nav-link px-4 py-2 text-sm font-medium rounded-md transition-colors hover:bg-secondary hover:text-electric focus:bg-secondary focus:text-electric focus:outline-none text-lightgray">Blog</a>
+                    <a href="support.html" class="nav-link px-4 py-2 text-sm font-medium rounded-md transition-colors hover:bg-secondary hover:text-electric focus:bg-secondary focus:text-electric focus:outline-none text-lightgray">Support</a>
+                </nav>
+
+                <!-- CTA Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <button class="btn-outline">Log In</button>
+                    <button class="btn-primary">Create Event</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-lightgray p-2">
+                    <i data-lucide="menu" class="h-6 w-6" id="menu-icon"></i>
+                    <i data-lucide="x" class="h-6 w-6 hidden" id="close-icon"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="md:hidden border-t border-border bg-darkslate mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="index.html" class="mobile-nav-link active block px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-secondary hover:text-electric text-electric bg-secondary">Home</a>
+                    <a href="events.html" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-secondary hover:text-electric text-lightgray">Events</a>
+                    <a href="calendar.html" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-secondary hover:text-electric text-lightgray">Calendar</a>
+                    <a href="speakers.html" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-secondary hover:text-electric text-lightgray">Speakers</a>
+                    <a href="gallery.html" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-secondary hover:text-electric text-lightgray">Gallery</a>
+                    <a href="blog.html" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-secondary hover:text-electric text-lightgray">Blog</a>
+                    <a href="support.html" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium transition-colors hover:bg-secondary hover:text-electric text-lightgray">Support</a>
+                    <div class="pt-4 space-y-2">
+                        <button class="w-full btn-outline">Log In</button>
+                        <button class="w-full btn-primary">Create Event</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+        <!-- Hero Section -->
+        <section class="relative py-20 lg:py-32 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-midnight via-charcoal to-darkslate opacity-80"></div>
+            <div class="absolute inset-0 opacity-30" style="background-image: url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%2300BFFF%22 fill-opacity=%220.05%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+            
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="max-w-4xl mx-auto text-center space-y-8">
+                    <div class="space-y-4" data-aos="fade-up">
+                        <div class="badge badge-primary inline-flex px-4 py-2 text-sm font-medium">
+                            Professional Event Management Platform
+                        </div>
+                        <h1 class="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-lightgray leading-tight">
+                            Create Unforgettable 
+                            <span class="text-electric">Events</span> 
+                            That Connect
+                        </h1>
+                        <p class="text-xl md:text-2xl text-lightgray/80 leading-relaxed max-w-3xl mx-auto">
+                            From intimate gatherings to large-scale conferences, our platform empowers you to 
+                            plan, manage, and execute exceptional events with ease and professionalism.
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center" data-aos="fade-up" data-aos-delay="200">
+                        <button class="btn-primary text-lg px-8 py-4">
+                            Start Creating Events
+                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </button>
+                        <button class="btn-outline text-lg px-8 py-4">
+                            <i data-lucide="play" class="w-5 h-5"></i>
+                            Watch Demo
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16" data-aos="fade-up" data-aos-delay="400">
+                        <div class="text-center space-y-2">
+                            <div class="text-3xl font-heading font-bold text-electric">50K+</div>
+                            <div class="text-lightgray/70">Events Created</div>
+                        </div>
+                        <div class="text-center space-y-2">
+                            <div class="text-3xl font-heading font-bold text-electric">2M+</div>
+                            <div class="text-lightgray/70">Happy Attendees</div>
+                        </div>
+                        <div class="text-center space-y-2">
+                            <div class="text-3xl font-heading font-bold text-electric">99.9%</div>
+                            <div class="text-lightgray/70">Uptime Guarantee</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Events -->
+        <section class="py-20 bg-midnight/50">
+            <div class="container mx-auto px-4">
+                <div class="text-center space-y-4 mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold text-lightgray">
+                        Featured Events
+                    </h2>
+                    <p class="text-xl text-lightgray/80 max-w-2xl mx-auto">
+                        Discover and join exceptional events happening around the world
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Event Card 1 -->
+                    <div class="card transition-all duration-300 group cursor-pointer" data-aos="fade-up" data-aos-delay="0">
+                        <div class="h-48 rounded-t-lg bg-gradient-to-br from-electric/20 to-limegreen/20 flex items-center justify-center relative">
+                            <div class="badge badge-success absolute top-3 left-3">Featured</div>
+                            <div class="badge badge-primary absolute top-3 right-3">Technology</div>
+                            <i data-lucide="play" class="w-16 h-16 text-electric opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center justify-between">
+                                <div class="text-sm text-lightgray/70">by TechEvents Inc.</div>
+                                <span class="text-limegreen font-bold text-lg">$299</span>
+                            </div>
+                            <h3 class="text-xl font-heading text-lightgray group-hover:text-electric transition-colors line-clamp-2">
+                                Tech Innovation Summit 2024
+                            </h3>
+                            <p class="text-lightgray/70 line-clamp-3">
+                                Join industry leaders for cutting-edge technology discussions, networking, and innovation showcases.
+                            </p>
+                            <div class="space-y-2 text-sm text-lightgray/70">
+                                <div class="flex items-center">
+                                    <i data-lucide="calendar" class="w-4 h-4 mr-2 text-electric"></i>
+                                    March 15, 2024
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="clock" class="w-4 h-4 mr-2 text-electric"></i>
+                                    9:00 AM - 6:00 PM
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="map-pin" class="w-4 h-4 mr-2 text-electric"></i>
+                                    San Francisco, CA
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="users" class="w-4 h-4 mr-2 text-electric"></i>
+                                    2,500+ attending
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <div class="badge badge-secondary text-xs">AI</div>
+                                <div class="badge badge-secondary text-xs">Machine Learning</div>
+                                <div class="badge badge-secondary text-xs">Startups</div>
+                            </div>
+                            <button class="w-full btn-primary font-medium">Register Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Event Card 2 -->
+                    <div class="card transition-all duration-300 group cursor-pointer" data-aos="fade-up" data-aos-delay="100">
+                        <div class="h-48 rounded-t-lg bg-gradient-to-br from-limegreen/20 to-electric/20 flex items-center justify-center relative">
+                            <div class="badge badge-primary absolute top-3 right-3">Marketing</div>
+                            <i data-lucide="play" class="w-16 h-16 text-electric opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center justify-between">
+                                <div class="text-sm text-lightgray/70">by Marketing Pro Academy</div>
+                                <span class="text-limegreen font-bold text-lg">Free</span>
+                            </div>
+                            <h3 class="text-xl font-heading text-lightgray group-hover:text-electric transition-colors line-clamp-2">
+                                Digital Marketing Masterclass
+                            </h3>
+                            <p class="text-lightgray/70 line-clamp-3">
+                                Learn advanced digital marketing strategies from experts. Includes hands-on workshops and certification.
+                            </p>
+                            <div class="space-y-2 text-sm text-lightgray/70">
+                                <div class="flex items-center">
+                                    <i data-lucide="calendar" class="w-4 h-4 mr-2 text-electric"></i>
+                                    March 22, 2024
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="clock" class="w-4 h-4 mr-2 text-electric"></i>
+                                    2:00 PM - 5:00 PM
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="map-pin" class="w-4 h-4 mr-2 text-electric"></i>
+                                    Online Event
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="users" class="w-4 h-4 mr-2 text-electric"></i>
+                                    1,200+ attending
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <div class="badge badge-secondary text-xs">SEO</div>
+                                <div class="badge badge-secondary text-xs">Social Media</div>
+                                <div class="badge badge-secondary text-xs">Content Marketing</div>
+                            </div>
+                            <button class="w-full btn-primary font-medium">Register Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Event Card 3 -->
+                    <div class="card transition-all duration-300 group cursor-pointer" data-aos="fade-up" data-aos-delay="200">
+                        <div class="h-48 rounded-t-lg bg-gradient-to-br from-electric/30 to-midnight/30 flex items-center justify-center relative">
+                            <div class="badge badge-success absolute top-3 left-3">Featured</div>
+                            <div class="badge badge-primary absolute top-3 right-3">Business</div>
+                            <i data-lucide="play" class="w-16 h-16 text-electric opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center justify-between">
+                                <div class="text-sm text-lightgray/70">by Startup Nation</div>
+                                <span class="text-limegreen font-bold text-lg">$150</span>
+                            </div>
+                            <h3 class="text-xl font-heading text-lightgray group-hover:text-electric transition-colors line-clamp-2">
+                                Startup Pitch Competition
+                            </h3>
+                            <p class="text-lightgray/70 line-clamp-3">
+                                Watch innovative startups pitch to top investors. Network with entrepreneurs and industry professionals.
+                            </p>
+                            <div class="space-y-2 text-sm text-lightgray/70">
+                                <div class="flex items-center">
+                                    <i data-lucide="calendar" class="w-4 h-4 mr-2 text-electric"></i>
+                                    April 5, 2024
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="clock" class="w-4 h-4 mr-2 text-electric"></i>
+                                    10:00 AM - 8:00 PM
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="map-pin" class="w-4 h-4 mr-2 text-electric"></i>
+                                    New York, NY
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-lucide="users" class="w-4 h-4 mr-2 text-electric"></i>
+                                    800+ attending
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-1">
+                                <div class="badge badge-secondary text-xs">Entrepreneurship</div>
+                                <div class="badge badge-secondary text-xs">Investment</div>
+                                <div class="badge badge-secondary text-xs">Networking</div>
+                            </div>
+                            <button class="w-full btn-primary font-medium">Register Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <a href="events.html" class="btn-outline text-lg px-8 py-4">
+                        View All Events
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Features -->
+        <section class="py-20">
+            <div class="container mx-auto px-4">
+                <div class="text-center space-y-4 mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold text-lightgray">
+                        Everything You Need for Perfect Events
+                    </h2>
+                    <p class="text-xl text-lightgray/80 max-w-2xl mx-auto">
+                        Comprehensive tools and features designed for professional event management
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="card transition-all duration-300 group" data-aos="fade-up" data-aos-delay="0">
+                        <div class="p-6 text-center space-y-4">
+                            <div class="mx-auto w-16 h-16 bg-electric/10 rounded-xl flex items-center justify-center group-hover:bg-electric/20 transition-colors">
+                                <i data-lucide="calendar" class="w-8 h-8 text-electric"></i>
+                            </div>
+                            <h3 class="text-xl font-heading text-lightgray">Smart Event Planning</h3>
+                            <p class="text-lightgray/70 leading-relaxed">
+                                Intuitive tools for scheduling, venue management, and timeline coordination
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="card transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                        <div class="p-6 text-center space-y-4">
+                            <div class="mx-auto w-16 h-16 bg-electric/10 rounded-xl flex items-center justify-center group-hover:bg-electric/20 transition-colors">
+                                <i data-lucide="users" class="w-8 h-8 text-electric"></i>
+                            </div>
+                            <h3 class="text-xl font-heading text-lightgray">Attendee Management</h3>
+                            <p class="text-lightgray/70 leading-relaxed">
+                                Seamless registration, ticketing, and attendee communication systems
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="card transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
+                        <div class="p-6 text-center space-y-4">
+                            <div class="mx-auto w-16 h-16 bg-electric/10 rounded-xl flex items-center justify-center group-hover:bg-electric/20 transition-colors">
+                                <i data-lucide="zap" class="w-8 h-8 text-electric"></i>
+                            </div>
+                            <h3 class="text-xl font-heading text-lightgray">Real-time Analytics</h3>
+                            <p class="text-lightgray/70 leading-relaxed">
+                                Live insights into registrations, engagement, and event performance
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="card transition-all duration-300 group" data-aos="fade-up" data-aos-delay="0">
+                        <div class="p-6 text-center space-y-4">
+                            <div class="mx-auto w-16 h-16 bg-electric/10 rounded-xl flex items-center justify-center group-hover:bg-electric/20 transition-colors">
+                                <i data-lucide="shield" class="w-8 h-8 text-electric"></i>
+                            </div>
+                            <h3 class="text-xl font-heading text-lightgray">Secure Payments</h3>
+                            <p class="text-lightgray/70 leading-relaxed">
+                                Enterprise-grade payment processing with multiple gateway options
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 5 -->
+                    <div class="card transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                        <div class="p-6 text-center space-y-4">
+                            <div class="mx-auto w-16 h-16 bg-electric/10 rounded-xl flex items-center justify-center group-hover:bg-electric/20 transition-colors">
+                                <i data-lucide="play" class="w-8 h-8 text-electric"></i>
+                            </div>
+                            <h3 class="text-xl font-heading text-lightgray">Live Streaming</h3>
+                            <p class="text-lightgray/70 leading-relaxed">
+                                HD video streaming for hybrid and virtual events with interactive features
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 6 -->
+                    <div class="card transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
+                        <div class="p-6 text-center space-y-4">
+                            <div class="mx-auto w-16 h-16 bg-electric/10 rounded-xl flex items-center justify-center group-hover:bg-electric/20 transition-colors">
+                                <i data-lucide="headphones" class="w-8 h-8 text-electric"></i>
+                            </div>
+                            <h3 class="text-xl font-heading text-lightgray">24/7 Support</h3>
+                            <p class="text-lightgray/70 leading-relaxed">
+                                Dedicated support team available around the clock for your events
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="py-20 bg-midnight/50">
+            <div class="container mx-auto px-4">
+                <div class="text-center space-y-4 mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold text-lightgray">
+                        Trusted by Event Professionals
+                    </h2>
+                    <p class="text-xl text-lightgray/80 max-w-2xl mx-auto">
+                        See what our customers say about their event management experience
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="p-6">
+                            <div class="flex mb-4">
+                                <i data-lucide="star" class="w-4 h-4 text-limegreen fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-limegreen fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-limegreen fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-limegreen fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-limegreen fill-current"></i>
+                            </div>
+                            <p class="text-lightgray/80 mb-6 leading-relaxed">
+                                "EventHub transformed how we manage our conferences. The platform is intuitive, powerful, and the support team is exceptional."
+                            </p>
+                            <div>
+                                <div class="font-semibold text-lightgray">Sarah Johnson</div>
+                                <div class="text-sm text-lightgray/60">Event Director, TechCorp</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="p-6">
+                            <div class="flex mb-4">
+                                <i data-lucide="star" class="w-4 h-4 text-limegreen fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-limegreen fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-limegreen fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-limegreen fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-limegreen fill-current"></i>
+                            </div>
+                            <p class="text-lightgray/80 mb-6 leading-relaxed">
+                                "We've hosted over 50 events using this platform. The analytics and attendee management features are game-changers."
+                            </p>
+                            <div>
+                                <div class="font-semibold text-lightgray">Michael Chen</div>
+                                <div class="text-sm text-lightgray/60">Marketing Manager, StartupX</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="p-6">
+                            <div class="flex mb-4">
+                                <i data-lucide="star" class="w-4 h-4 text-limegreen fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-limegreen fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-limegreen fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-limegreen fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-limegreen fill-current"></i>
+                            </div>
+                            <p class="text-lightgray/80 mb-6 leading-relaxed">
+                                "The customization options and payment integration made our events seamless. Our clients love the professional experience."
+                            </p>
+                            <div>
+                                <div class="font-semibold text-lightgray">Emily Rodriguez</div>
+                                <div class="text-sm text-lightgray/60">Wedding Planner, Elegant Events</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20">
+            <div class="container mx-auto px-4">
+                <div class="card bg-gradient-to-r from-midnight to-darkslate border-electric/20" data-aos="fade-up">
+                    <div class="p-12 text-center space-y-8">
+                        <div class="space-y-4">
+                            <h2 class="text-3xl md:text-4xl font-heading font-bold text-lightgray">
+                                Ready to Create Your Next Event?
+                            </h2>
+                            <p class="text-xl text-lightgray/80 max-w-2xl mx-auto">
+                                Join thousands of event professionals who trust EventHub for their most important events.
+                                Get started today with our free trial.
+                            </p>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <button class="btn-primary text-lg px-8 py-4">
+                                Start Free Trial
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </button>
+                            <button class="btn-outline text-lg px-8 py-4">
+                                Schedule Demo
+                            </button>
+                        </div>
+
+                        <p class="text-sm text-lightgray/60">
+                            No credit card required • 14-day free trial • Cancel anytime
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-darkslate border-t border-border mt-auto">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-electric rounded-lg flex items-center justify-center">
+                            <i data-lucide="calendar" class="w-5 h-5 text-charcoal"></i>
+                        </div>
+                        <span class="text-xl font-heading font-bold text-lightgray">EventHub</span>
+                    </div>
+                    <p class="text-lightgray/80 text-sm">
+                        Professional event management platform for creating unforgettable experiences. 
+                        Connect, organize, and celebrate with ease.
+                    </p>
+                    <div class="flex space-x-4">
+                        <button class="p-2 text-lightgray hover:text-electric transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </button>
+                        <button class="p-2 text-lightgray hover:text-electric transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </button>
+                        <button class="p-2 text-lightgray hover:text-electric transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-heading font-semibold text-lightgray">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="events.html" class="text-lightgray/80 hover:text-electric transition-colors">Browse Events</a></li>
+                        <li><a href="calendar.html" class="text-lightgray/80 hover:text-electric transition-colors">Event Calendar</a></li>
+                        <li><a href="speakers.html" class="text-lightgray/80 hover:text-electric transition-colors">Featured Speakers</a></li>
+                        <li><a href="gallery.html" class="text-lightgray/80 hover:text-electric transition-colors">Photo Gallery</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-heading font-semibold text-lightgray">Support</h3>
+                    <ul class="space-y-2">
+                        <li><a href="support.html" class="text-lightgray/80 hover:text-electric transition-colors">Help Center</a></li>
+                        <li><a href="faq.html" class="text-lightgray/80 hover:text-electric transition-colors">FAQ</a></li>
+                        <li><a href="contact.html" class="text-lightgray/80 hover:text-electric transition-colors">Contact Us</a></li>
+                        <li><a href="privacy.html" class="text-lightgray/80 hover:text-electric transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-heading font-semibold text-lightgray">Stay Updated</h3>
+                    <p class="text-lightgray/80 text-sm">Get the latest event updates and announcements.</p>
+                    <div class="space-y-2">
+                        <input
+                            type="email"
+                            placeholder="Enter your email"
+                            class="w-full px-3 py-2 bg-background border border-border rounded-md text-sm text-lightgray placeholder-lightgray/60 focus:outline-none focus:ring-2 focus:ring-electric"
+                        />
+                        <button class="w-full btn-primary text-sm">
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-border mt-8 pt-8 text-center">
+                <p class="text-lightgray/60 text-sm">
+                    © 2024 EventHub. All rights reserved. Built with passion for connecting people through events.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100,
+        });
+
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        mobileMenuButton.addEventListener('click', function() {
+            const isOpen = mobileMenu.classList.contains('show');
+            
+            if (isOpen) {
+                mobileMenu.classList.remove('show');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            } else {
+                mobileMenu.classList.add('show');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.classList.remove('show');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        });
+
+        // Set active navigation link
+        function setActiveNavLink() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+            
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+                    link.classList.add('active');
+                    if (link.classList.contains('nav-link')) {
+                        link.classList.add('text-electric', 'bg-secondary');
+                        link.classList.remove('text-lightgray');
+                    } else {
+                        link.classList.add('text-electric', 'bg-secondary');
+                        link.classList.remove('text-lightgray');
+                    }
+                } else {
+                    link.classList.remove('active');
+                    if (link.classList.contains('nav-link')) {
+                        link.classList.remove('text-electric', 'bg-secondary');
+                        link.classList.add('text-lightgray');
+                    } else {
+                        link.classList.remove('text-electric', 'bg-secondary');
+                        link.classList.add('text-lightgray');
+                    }
+                }
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setActiveNavLink();
+        });
+    </script>
+</body>
+</html>

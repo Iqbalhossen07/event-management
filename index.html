@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventFlow - Experience Extraordinary Events</title>
+    <meta name="description" content="The world's leading event management platform. Discover, attend, and create unforgettable experiences.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'heading': ['Playfair Display', 'serif'],
+                        'body': ['Merriweather', 'serif'],
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'event-primary': 'hsl(220, 70%, 20%)',
+                        'event-secondary': 'hsl(340, 85%, 55%)',
+                        'event-accent': 'hsl(190, 85%, 50%)',
+                        'event-gold': 'hsl(45, 100%, 65%)',
+                        'event-dark': 'hsl(215, 25%, 15%)',
+                    },
+                    animation: {
+                        'fade-in': 'fade-in 0.6s ease-out',
+                        'slide-up': 'slide-up 0.6s ease-out',
+                    },
+                    keyframes: {
+                        'fade-in': {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        'slide-up': {
+                            '0%': { transform: 'translateY(100%)' },
+                            '100%': { transform: 'translateY(0)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Merriweather', serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .aos-init {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .aos-animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .hero-bg {
+            background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&auto=format&fit=crop&q=60');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: hsl(220, 70%, 20%);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: hsl(220, 70%, 25%);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 font-body">
+
+    <!-- Announcement Banner -->
+    <div class="bg-gradient-to-r from-event-primary to-event-secondary text-white py-3 px-4 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-white/10 animate-pulse"></div>
+        <div class="relative z-10">
+            <p class="text-sm font-medium">
+                🎉 <strong>Limited Time:</strong> Get 50% off Professional plans for new users! 
+                <button class="ml-2 underline hover:no-underline font-semibold">
+                    Claim Offer →
+                </button>
+            </p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-br from-event-primary to-event-secondary rounded-lg flex items-center justify-center">
+                        <i data-lucide="calendar" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <span class="text-2xl font-heading font-bold text-event-dark" id="logo-text">EventFlow</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <button onclick="scrollToSection('events')" class="text-gray-700 hover:text-event-primary transition-colors font-medium nav-link">
+                        Events
+                    </button>
+                    <button onclick="scrollToSection('features')" class="text-gray-700 hover:text-event-primary transition-colors font-medium nav-link">
+                        Features
+                    </button>
+                    <a href="#speakers" class="text-gray-700 hover:text-event-primary transition-colors font-medium nav-link">
+                        Speakers
+                    </a>
+                    <a href="#calendar" class="text-gray-700 hover:text-event-primary transition-colors font-medium nav-link">
+                        Calendar
+                    </a>
+                    <a href="#about" class="text-gray-700 hover:text-event-primary transition-colors font-medium nav-link">
+                        About
+                    </a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <div class="hidden md:flex items-center space-x-4">
+                        <button class="text-gray-700 hover:text-event-primary transition-colors nav-link">
+                            Sign In
+                        </button>
+                        <button class="bg-event-primary hover:bg-event-primary/90 text-white px-6 py-2 rounded-lg font-medium transition-colors">
+                            Get Started
+                        </button>
+                    </div>
+                    
+                    <!-- Mobile Menu Toggle -->
+                    <button id="mobile-menu-toggle" class="md:hidden p-2">
+                        <i data-lucide="menu" class="w-6 h-6" id="menu-icon"></i>
+                        <i data-lucide="x" class="w-6 h-6 hidden" id="close-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Progress Bar -->
+        <div class="absolute bottom-0 left-0 w-full h-1 bg-gray-200">
+            <div id="scroll-progress" class="h-full bg-gradient-to-r from-event-primary to-event-secondary transition-all duration-300 ease-out" style="width: 0%"></div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-white border-b shadow-lg hidden">
+            <div class="container mx-auto px-4 py-4 space-y-4">
+                <button onclick="scrollToSection('events'); closeMobileMenu()" class="block w-full text-left text-gray-700 hover:text-event-primary transition-colors font-medium py-2">
+                    Events
+                </button>
+                <button onclick="scrollToSection('features'); closeMobileMenu()" class="block w-full text-left text-gray-700 hover:text-event-primary transition-colors font-medium py-2">
+                    Features
+                </button>
+                <a href="#speakers" class="block text-gray-700 hover:text-event-primary transition-colors font-medium py-2">
+                    Speakers
+                </a>
+                <a href="#calendar" class="block text-gray-700 hover:text-event-primary transition-colors font-medium py-2">
+                    Calendar
+                </a>
+                <div class="border-t pt-4 space-y-2">
+                    <button class="w-full text-left text-gray-700 hover:text-event-primary py-2">
+                        Sign In
+                    </button>
+                    <button class="w-full bg-event-primary hover:bg-event-primary/90 text-white py-2 rounded-lg font-medium">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden hero-bg">
+        <div class="absolute inset-0 bg-gradient-to-r from-event-primary/90 to-event-secondary/80 z-10"></div>
+        
+        <div class="relative z-20 text-center text-white px-4 animate-fade-in">
+            <h1 class="text-6xl md:text-7xl font-heading font-bold mb-6 leading-tight">
+                Experience
+                <span class="block text-event-gold">Extraordinary Events</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto font-light leading-relaxed">
+                Discover, attend, and create unforgettable experiences with the world's leading event management platform
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button onclick="scrollToSection('events')" class="bg-event-gold hover:bg-event-gold/90 text-event-dark font-semibold px-8 py-4 text-lg rounded-lg transition-colors flex items-center">
+                    Explore Events
+                    <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                </button>
+                <button class="border-2 border-white text-white hover:bg-white hover:text-event-primary px-8 py-4 text-lg rounded-lg transition-colors flex items-center backdrop-blur-sm">
+                    <i data-lucide="play" class="mr-2 w-5 h-5"></i>
+                    Watch Demo
+                </button>
+            </div>
+            
+            <!-- Quick Stats in Hero -->
+            <div class="mt-12 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-white mb-1">2.8M+</div>
+                    <div class="text-white/80 text-sm">Attendees</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-white mb-1">12.5K+</div>
+                    <div class="text-white/80 text-sm">Events</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-white mb-1">4.9★</div>
+                    <div class="text-white/80 text-sm">Rating</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+            <i data-lucide="chevron-right" class="w-6 h-6 text-white rotate-90"></i>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-event-dark mb-4">
+                    Trusted by Millions Worldwide
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Join the global community that's revolutionizing event experiences
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+                <div class="text-center group hover:scale-105 transition-transform duration-300">
+                    <div class="w-20 h-20 bg-gradient-to-br from-event-primary/10 to-event-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow">
+                        <i data-lucide="calendar" class="w-10 h-10 text-event-primary group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div class="text-3xl font-heading font-bold text-event-dark mb-2 group-hover:text-event-primary transition-colors">12,500+</div>
+                    <div class="text-gray-900 font-semibold mb-1">Events Hosted</div>
+                    <div class="text-sm text-gray-600">Successful events worldwide</div>
+                </div>
+
+                <div class="text-center group hover:scale-105 transition-transform duration-300">
+                    <div class="w-20 h-20 bg-gradient-to-br from-event-primary/10 to-event-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow">
+                        <i data-lucide="users" class="w-10 h-10 text-event-primary group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div class="text-3xl font-heading font-bold text-event-dark mb-2 group-hover:text-event-primary transition-colors">2.8M+</div>
+                    <div class="text-gray-900 font-semibold mb-1">Happy Attendees</div>
+                    <div class="text-sm text-gray-600">Satisfied participants</div>
+                </div>
+
+                <div class="text-center group hover:scale-105 transition-transform duration-300">
+                    <div class="w-20 h-20 bg-gradient-to-br from-event-primary/10 to-event-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow">
+                        <i data-lucide="map-pin" class="w-10 h-10 text-event-primary group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div class="text-3xl font-heading font-bold text-event-dark mb-2 group-hover:text-event-primary transition-colors">150+</div>
+                    <div class="text-gray-900 font-semibold mb-1">Global Locations</div>
+                    <div class="text-sm text-gray-600">Countries & cities</div>
+                </div>
+
+                <div class="text-center group hover:scale-105 transition-transform duration-300">
+                    <div class="w-20 h-20 bg-gradient-to-br from-event-primary/10 to-event-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow">
+                        <i data-lucide="star" class="w-10 h-10 text-event-primary group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div class="text-3xl font-heading font-bold text-event-dark mb-2 group-hover:text-event-primary transition-colors">8,200+</div>
+                    <div class="text-gray-900 font-semibold mb-1">Expert Speakers</div>
+                    <div class="text-sm text-gray-600">Industry professionals</div>
+                </div>
+
+                <div class="text-center group hover:scale-105 transition-transform duration-300">
+                    <div class="w-20 h-20 bg-gradient-to-br from-event-primary/10 to-event-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow">
+                        <i data-lucide="video" class="w-10 h-10 text-event-primary group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div class="text-3xl font-heading font-bold text-event-dark mb-2 group-hover:text-event-primary transition-colors">45K+</div>
+                    <div class="text-gray-900 font-semibold mb-1">Live Streams</div>
+                    <div class="text-sm text-gray-600">Hours of content</div>
+                </div>
+
+                <div class="text-center group hover:scale-105 transition-transform duration-300">
+                    <div class="w-20 h-20 bg-gradient-to-br from-event-primary/10 to-event-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow">
+                        <i data-lucide="heart" class="w-10 h-10 text-event-primary group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div class="text-3xl font-heading font-bold text-event-dark mb-2 group-hover:text-event-primary transition-colors">4.9/5</div>
+                    <div class="text-gray-900 font-semibold mb-1">Customer Rating</div>
+                    <div class="text-sm text-gray-600">Average satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Events -->
+    <section id="events" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-event-dark mb-6">
+                    Featured Events
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Join thousands of professionals at our curated selection of premium events
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Event 1 -->
+                <div class="bg-white rounded-xl shadow-sm border overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-500 group cursor-pointer">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop&q=60" alt="Tech Innovation Summit 2024" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-4 left-4 bg-event-gold text-event-dark font-semibold px-3 py-1 rounded-full text-sm">
+                            Featured
+                        </div>
+                        <div class="absolute top-4 right-4 bg-event-primary text-white px-3 py-1 rounded-full text-sm">
+                            Technology
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-heading font-semibold text-event-dark line-clamp-2 mb-3">
+                            Tech Innovation Summit 2024
+                        </h3>
+                        <div class="flex items-center gap-4 text-sm text-gray-600 mb-4">
+                            <div class="flex items-center gap-1">
+                                <i data-lucide="calendar" class="w-4 h-4"></i>
+                                March 15, 2024
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <i data-lucide="clock" class="w-4 h-4"></i>
+                                9:00 AM - 6:00 PM
+                            </div>
+                        </div>
+
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center gap-2 text-gray-600">
+                                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                <span class="text-sm">San Francisco Convention Center</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="users" class="w-4 h-4 text-gray-500"></i>
+                                    <span class="text-sm text-gray-600">1200 attending</span>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
+                                    <span class="text-sm font-medium">4.9</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-4">
+                            <div class="text-2xl font-heading font-bold text-event-primary">
+                                $299
+                            </div>
+                            <button class="bg-event-primary hover:bg-event-primary/90 text-white px-6 py-2 rounded-lg font-medium transition-colors flex items-center">
+                                Register Now
+                                <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="bg-white rounded-xl shadow-sm border overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-500 group cursor-pointer">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&auto=format&fit=crop&q=60" alt="Digital Marketing Mastery" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-4 right-4 bg-event-primary text-white px-3 py-1 rounded-full text-sm">
+                            Marketing
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-heading font-semibold text-event-dark line-clamp-2 mb-3">
+                            Digital Marketing Mastery
+                        </h3>
+                        <div class="flex items-center gap-4 text-sm text-gray-600 mb-4">
+                            <div class="flex items-center gap-1">
+                                <i data-lucide="calendar" class="w-4 h-4"></i>
+                                March 22, 2024
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <i data-lucide="clock" class="w-4 h-4"></i>
+                                10:00 AM - 4:00 PM
+                            </div>
+                        </div>
+
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center gap-2 text-gray-600">
+                                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                <span class="text-sm">New York Business Center</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="users" class="w-4 h-4 text-gray-500"></i>
+                                    <span class="text-sm text-gray-600">800 attending</span>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
+                                    <span class="text-sm font-medium">4.8</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-4">
+                            <div class="text-2xl font-heading font-bold text-event-primary">
+                                $199
+                            </div>
+                            <button class="bg-event-primary hover:bg-event-primary/90 text-white px-6 py-2 rounded-lg font-medium transition-colors flex items-center">
+                                Register Now
+                                <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="bg-white rounded-xl shadow-sm border overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-500 group cursor-pointer">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&auto=format&fit=crop&q=60" alt="Sustainable Future Conference" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-4 right-4 bg-event-primary text-white px-3 py-1 rounded-full text-sm">
+                            Environment
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-heading font-semibold text-event-dark line-clamp-2 mb-3">
+                            Sustainable Future Conference
+                        </h3>
+                        <div class="flex items-center gap-4 text-sm text-gray-600 mb-4">
+                            <div class="flex items-center gap-1">
+                                <i data-lucide="calendar" class="w-4 h-4"></i>
+                                April 5, 2024
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <i data-lucide="clock" class="w-4 h-4"></i>
+                                9:30 AM - 5:30 PM
+                            </div>
+                        </div>
+
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center gap-2 text-gray-600">
+                                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                <span class="text-sm">Los Angeles Green Center</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="users" class="w-4 h-4 text-gray-500"></i>
+                                    <span class="text-sm text-gray-600">600 attending</span>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
+                                    <span class="text-sm font-medium">4.7</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-4">
+                            <div class="text-2xl font-heading font-bold text-event-primary">
+                                $149
+                            </div>
+                            <button class="bg-event-primary hover:bg-event-primary/90 text-white px-6 py-2 rounded-lg font-medium transition-colors flex items-center">
+                                Register Now
+                                <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="border-2 border-event-primary text-event-primary hover:bg-event-primary hover:text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center mx-auto">
+                    View All Events
+                    <i data-lucide="chevron-right" class="ml-2 w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Preview -->
+    <section id="features" class="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-event-dark mb-6">
+                    Everything You Need
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Comprehensive event management tools designed for modern experiences
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-2 transition-all duration-300">
+                    <div class="w-12 h-12 bg-event-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i data-lucide="calendar" class="w-6 h-6 text-event-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold mb-4 text-event-dark">
+                        Smart Calendar
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Intelligent scheduling with automated conflict detection and seamless calendar integration.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-2 transition-all duration-300">
+                    <div class="w-12 h-12 bg-event-secondary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i data-lucide="users" class="w-6 h-6 text-event-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold mb-4 text-event-dark">
+                        Attendee Management
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Complete attendee lifecycle management from registration to post-event engagement.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-2 transition-all duration-300">
+                    <div class="w-12 h-12 bg-event-accent/10 rounded-lg flex items-center justify-center mb-6">
+                        <i data-lucide="star" class="w-6 h-6 text-event-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold mb-4 text-event-dark">
+                        Premium Support
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        24/7 dedicated support team to ensure your events run flawlessly from start to finish.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Events & Streaming -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-event-dark mb-6">
+                    Live Events & Streaming
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Join live events and virtual experiences from anywhere in the world
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="relative rounded-xl overflow-hidden shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&auto=format&fit=crop&q=60" alt="Live streaming event" class="w-full h-80 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-center justify-center">
+                            <button class="bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 px-8 py-4 rounded-lg font-medium transition-colors flex items-center">
+                                <i data-lucide="play" class="mr-2 w-6 h-6"></i>
+                                Watch Live
+                            </button>
+                        </div>
+                        <div class="absolute top-4 left-4">
+                            <div class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-2">
+                                <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                                LIVE
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center">
+                            <i data-lucide="video" class="w-6 h-6 text-red-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-heading font-semibold mb-2 text-event-dark">
+                                HD Live Streaming
+                            </h3>
+                            <p class="text-gray-600">
+                                Experience events in crystal-clear HD quality with interactive chat and Q&A features.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-event-primary/10 rounded-lg flex items-center justify-center">
+                            <i data-lucide="globe" class="w-6 h-6 text-event-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-heading font-semibold mb-2 text-event-dark">
+                                Global Access
+                            </h3>
+                            <p class="text-gray-600">
+                                Attend events from anywhere in the world. No travel required, full experience delivered.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-event-secondary/10 rounded-lg flex items-center justify-center">
+                            <i data-lucide="message-circle" class="w-6 h-6 text-event-secondary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-heading font-semibold mb-2 text-event-dark">
+                                Interactive Experience
+                            </h3>
+                            <p class="text-gray-600">
+                                Real-time chat, polls, Q&A sessions, and networking opportunities with other attendees.
+                            </p>
+                        </div>
+                    </div>
+
+                    <button class="bg-event-primary hover:bg-event-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center">
+                        Browse Live Events
+                        <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials & Reviews -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-event-dark mb-6">
+                    What Our Community Says
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Join thousands of satisfied event organizers and attendees who trust EventFlow
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white hover:shadow-lg transition-shadow rounded-xl overflow-hidden">
+                    <div class="p-8">
+                        <div class="flex items-center gap-1 mb-4">
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                        </div>
+                        <i data-lucide="quote" class="w-8 h-8 text-event-primary/20 mb-4"></i>
+                        <p class="text-gray-700 leading-relaxed mb-6 italic">
+                            "EventFlow transformed how we manage our corporate events. The platform is intuitive, powerful, and our attendee satisfaction has increased by 40%."
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&auto=format&fit=crop&q=60" alt="Sarah Johnson" class="w-12 h-12 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-semibold text-event-dark">Sarah Johnson</h4>
+                                <p class="text-sm text-gray-600">Event Director, TechCorp</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white hover:shadow-lg transition-shadow rounded-xl overflow-hidden">
+                    <div class="p-8">
+                        <div class="flex items-center gap-1 mb-4">
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                        </div>
+                        <i data-lucide="quote" class="w-8 h-8 text-event-primary/20 mb-4"></i>
+                        <p class="text-gray-700 leading-relaxed mb-6 italic">
+                            "The live streaming capabilities are exceptional. We reached 10x more attendees virtually, opening up incredible new revenue streams."
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=60" alt="Michael Chen" class="w-12 h-12 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-semibold text-event-dark">Michael Chen</h4>
+                                <p class="text-sm text-gray-600">Conference Organizer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white hover:shadow-lg transition-shadow rounded-xl overflow-hidden">
+                    <div class="p-8">
+                        <div class="flex items-center gap-1 mb-4">
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                        </div>
+                        <i data-lucide="quote" class="w-8 h-8 text-event-primary/20 mb-4"></i>
+                        <p class="text-gray-700 leading-relaxed mb-6 italic">
+                            "Customer support is outstanding. They helped us customize the platform perfectly for our unique needs. Highly recommended!"
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&auto=format&fit=crop&q=60" alt="Emily Rodriguez" class="w-12 h-12 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-semibold text-event-dark">Emily Rodriguez</h4>
+                                <p class="text-sm text-gray-600">Marketing Manager</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Plans -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-event-dark mb-6">
+                    Choose Your Perfect Plan
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    From small gatherings to large-scale conferences, we have a plan that fits your needs
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Starter Plan -->
+                <div class="bg-white rounded-xl border shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300 overflow-hidden">
+                    <div class="text-center p-8 pb-8">
+                        <h3 class="text-2xl font-heading font-bold text-event-dark">
+                            Starter
+                        </h3>
+                        <div class="mt-4">
+                            <span class="text-4xl font-bold text-event-primary">$29</span>
+                            <span class="text-gray-600">/month</span>
+                        </div>
+                        <p class="mt-4 text-gray-600">
+                            Perfect for small events and meetups
+                        </p>
+                    </div>
+
+                    <div class="px-8 pb-8">
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Up to 100 attendees</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Basic event management</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Email support</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Standard registration</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Basic analytics</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Mobile app access</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="p-8 pt-8">
+                        <button class="w-full py-6 text-lg font-semibold bg-gray-100 hover:bg-gray-200 text-event-dark rounded-lg transition-colors">
+                            Start Free Trial
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Professional Plan -->
+                <div class="relative bg-white rounded-xl border-2 border-event-primary shadow-lg scale-105 overflow-hidden">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <div class="bg-event-primary text-white px-6 py-2 text-sm font-semibold rounded-full">
+                            Most Popular
+                        </div>
+                    </div>
+                    
+                    <div class="text-center p-8 pb-8">
+                        <h3 class="text-2xl font-heading font-bold text-event-dark">
+                            Professional
+                        </h3>
+                        <div class="mt-4">
+                            <span class="text-4xl font-bold text-event-primary">$99</span>
+                            <span class="text-gray-600">/month</span>
+                        </div>
+                        <p class="mt-4 text-gray-600">
+                            Ideal for growing businesses and organizations
+                        </p>
+                    </div>
+
+                    <div class="px-8 pb-8">
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Up to 1,000 attendees</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Advanced event tools</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Priority support</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Custom branding</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Live streaming</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Advanced analytics</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Payment processing</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Marketing tools</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="p-8 pt-8">
+                        <button class="w-full py-6 text-lg font-semibold bg-event-primary hover:bg-event-primary/90 text-white rounded-lg transition-colors">
+                            Start Professional
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="bg-white rounded-xl border shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300 overflow-hidden">
+                    <div class="text-center p-8 pb-8">
+                        <h3 class="text-2xl font-heading font-bold text-event-dark">
+                            Enterprise
+                        </h3>
+                        <div class="mt-4">
+                            <span class="text-4xl font-bold text-event-primary">Custom</span>
+                        </div>
+                        <p class="mt-4 text-gray-600">
+                            For large-scale events and organizations
+                        </p>
+                    </div>
+
+                    <div class="px-8 pb-8">
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Unlimited attendees</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">White-label solution</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Dedicated support</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Custom integrations</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Multi-event management</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">API access</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Advanced security</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Training & onboarding</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="p-8 pt-8">
+                        <button class="w-full py-6 text-lg font-semibold bg-gray-100 hover:bg-gray-200 text-event-dark rounded-lg transition-colors">
+                            Contact Sales
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <p class="text-gray-600 mb-4">
+                    All plans include a 14-day free trial. No credit card required.
+                </p>
+                <button class="text-event-primary hover:text-event-primary/80 flex items-center mx-auto">
+                    Compare All Features
+                    <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners & Sponsors -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-event-dark mb-6">
+                    Trusted by Industry Leaders
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Partnering with the world's most innovative companies and organizations
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
+                <div class="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors cursor-pointer group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-event-primary to-event-secondary rounded-lg flex items-center justify-center mx-auto">
+                        <span class="text-white font-bold text-lg">TC</span>
+                    </div>
+                    <p class="text-center text-gray-600 mt-3 text-sm font-medium group-hover:text-event-primary transition-colors">
+                        TechCorp
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors cursor-pointer group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-event-primary to-event-secondary rounded-lg flex items-center justify-center mx-auto">
+                        <span class="text-white font-bold text-lg">IL</span>
+                    </div>
+                    <p class="text-center text-gray-600 mt-3 text-sm font-medium group-hover:text-event-primary transition-colors">
+                        InnovateLab
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors cursor-pointer group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-event-primary to-event-secondary rounded-lg flex items-center justify-center mx-auto">
+                        <span class="text-white font-bold text-lg">FW</span>
+                    </div>
+                    <p class="text-center text-gray-600 mt-3 text-sm font-medium group-hover:text-event-primary transition-colors">
+                        FutureWorks
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors cursor-pointer group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-event-primary to-event-secondary rounded-lg flex items-center justify-center mx-auto">
+                        <span class="text-white font-bold text-lg">GT</span>
+                    </div>
+                    <p class="text-center text-gray-600 mt-3 text-sm font-medium group-hover:text-event-primary transition-colors">
+                        GlobalTech
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors cursor-pointer group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-event-primary to-event-secondary rounded-lg flex items-center justify-center mx-auto">
+                        <span class="text-white font-bold text-lg">NG</span>
+                    </div>
+                    <p class="text-center text-gray-600 mt-3 text-sm font-medium group-hover:text-event-primary transition-colors">
+                        NextGen
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors cursor-pointer group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-event-primary to-event-secondary rounded-lg flex items-center justify-center mx-auto">
+                        <span class="text-white font-bold text-lg">IN</span>
+                    </div>
+                    <p class="text-center text-gray-600 mt-3 text-sm font-medium group-hover:text-event-primary transition-colors">
+                        Innovate
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-gradient-to-r from-event-primary/5 to-event-secondary/5 rounded-2xl p-8">
+                <div class="text-center">
+                    <i data-lucide="award" class="w-12 h-12 text-event-gold mx-auto mb-4"></i>
+                    <h3 class="text-2xl font-heading font-bold text-event-dark mb-4">
+                        Become a Partner
+                    </h3>
+                    <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+                        Join our partner network and help shape the future of event experiences. 
+                        We offer comprehensive partnership programs for sponsors, venues, and technology providers.
+                    </p>
+                    <button class="bg-event-primary hover:bg-event-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center mx-auto">
+                        Partnership Opportunities
+                        <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog & News -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-event-dark mb-6">
+                    Latest News & Insights
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Stay updated with the latest trends, tips, and stories from the event industry
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <div class="bg-white hover:shadow-lg transition-all duration-300 group cursor-pointer rounded-xl overflow-hidden">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&auto=format&fit=crop&q=60" alt="The Future of Hybrid Events" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-4 left-4 bg-event-primary text-white px-3 py-1 rounded-full text-sm">
+                            Trends
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                            <span>March 10, 2024</span>
+                            <span>•</span>
+                            <span>5 min read</span>
+                        </div>
+                        <h3 class="text-xl font-heading font-semibold text-event-dark mb-3 group-hover:text-event-primary transition-colors">
+                            The Future of Hybrid Events: Trends for 2024
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Discover how hybrid events are revolutionizing the industry and what organizers need to know for success.
+                        </p>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <button class="text-event-primary hover:text-event-primary/80 p-0 flex items-center">
+                            Read More
+                            <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="bg-white hover:shadow-lg transition-all duration-300 group cursor-pointer rounded-xl overflow-hidden">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&auto=format&fit=crop&q=60" alt="10 Tips for Engaging Virtual Attendees" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-4 left-4 bg-event-primary text-white px-3 py-1 rounded-full text-sm">
+                            Tips
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                            <span>March 8, 2024</span>
+                            <span>•</span>
+                            <span>7 min read</span>
+                        </div>
+                        <h3 class="text-xl font-heading font-semibold text-event-dark mb-3 group-hover:text-event-primary transition-colors">
+                            10 Tips for Engaging Virtual Attendees
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Learn proven strategies to keep your virtual audience engaged throughout your entire event experience.
+                        </p>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <button class="text-event-primary hover:text-event-primary/80 p-0 flex items-center">
+                            Read More
+                            <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="bg-white hover:shadow-lg transition-all duration-300 group cursor-pointer rounded-xl overflow-hidden">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=400&auto=format&fit=crop&q=60" alt="Sustainability in Event Planning" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-4 left-4 bg-event-primary text-white px-3 py-1 rounded-full text-sm">
+                            Sustainability
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                            <span>March 5, 2024</span>
+                            <span>•</span>
+                            <span>6 min read</span>
+                        </div>
+                        <h3 class="text-xl font-heading font-semibold text-event-dark mb-3 group-hover:text-event-primary transition-colors">
+                            Sustainability in Event Planning
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            How to create eco-friendly events that reduce environmental impact while maximizing attendee satisfaction.
+                        </p>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <button class="text-event-primary hover:text-event-primary/80 p-0 flex items-center">
+                            Read More
+                            <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="border-2 border-event-primary text-event-primary hover:bg-event-primary hover:text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center mx-auto">
+                    <i data-lucide="newspaper" class="mr-2 w-5 h-5"></i>
+                    Visit Our Blog
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-event-dark mb-6">
+                    Frequently Asked Questions
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Get answers to common questions about EventFlow and event management
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white border rounded-xl p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-heading font-semibold text-event-dark mb-3">
+                            How do I create my first event?
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Creating an event is simple! Sign up, click 'Create Event', fill in your event details, customize your registration page, and publish. Our step-by-step wizard guides you through the entire process.
+                        </p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-heading font-semibold text-event-dark mb-3">
+                            Can I sell tickets through EventFlow?
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Yes! EventFlow includes a complete ticketing system with secure payment processing, multiple payment methods, discount codes, and real-time sales tracking.
+                        </p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-heading font-semibold text-event-dark mb-3">
+                            Is live streaming included in all plans?
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Live streaming is available on our Professional and Enterprise plans. It includes HD streaming, interactive chat, Q&A sessions, and recording capabilities.
+                        </p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-heading font-semibold text-event-dark mb-3">
+                            How does the mobile app work?
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Our mobile app allows attendees to view schedules, network with other participants, receive real-time updates, access event materials, and provide feedback seamlessly.
+                        </p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-heading font-semibold text-event-dark mb-3">
+                            What kind of support do you provide?
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            We offer 24/7 customer support via chat, email, and phone. Enterprise customers also get dedicated account managers and technical support.
+                        </p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-heading font-semibold text-event-dark mb-3">
+                            Can I customize the event branding?
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Absolutely! You can fully customize colors, logos, fonts, and layouts to match your brand. White-label options are available for Enterprise plans.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <p class="text-gray-600 mb-6">
+                        Still have questions? Our support team is here to help!
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button class="bg-event-primary hover:bg-event-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center justify-center">
+                            <i data-lucide="message-circle" class="mr-2 w-5 h-5"></i>
+                            Live Chat Support
+                        </button>
+                        <button class="border-2 border-event-primary text-event-primary hover:bg-event-primary hover:text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center justify-center">
+                            <i data-lucide="phone" class="mr-2 w-5 h-5"></i>
+                            Schedule a Call
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter & Social Media -->
+    <section class="py-20 bg-gradient-to-r from-event-primary to-event-secondary">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center text-white">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold mb-6">
+                    Stay Connected
+                </h2>
+                <p class="text-xl text-white/90 mb-8">
+                    Get the latest updates, exclusive offers, and event industry insights delivered to your inbox
+                </p>
+
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 mb-12">
+                    <div class="flex flex-col md:flex-row gap-4 items-center justify-center max-w-2xl mx-auto">
+                        <div class="flex-1 w-full">
+                            <input type="email" placeholder="Enter your email address" class="w-full px-6 py-4 rounded-lg bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-event-gold">
+                        </div>
+                        <button class="bg-event-gold hover:bg-event-gold/90 text-event-dark font-semibold px-8 py-4 whitespace-nowrap rounded-lg transition-colors flex items-center">
+                            <i data-lucide="mail" class="mr-2 w-5 h-5"></i>
+                            Subscribe Now
+                        </button>
+                    </div>
+                    <p class="text-white/70 text-sm mt-4">
+                        Join 50,000+ event professionals. Unsubscribe anytime.
+                    </p>
+                </div>
+
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-heading font-semibold">Follow Us</h3>
+                    <div class="flex justify-center gap-6">
+                        <div class="bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300 rounded-lg p-4 cursor-pointer group">
+                            <i data-lucide="facebook" class="w-8 h-8 mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
+                            <p class="text-sm font-medium">Facebook</p>
+                            <p class="text-xs text-white/70">25K</p>
+                        </div>
+
+                        <div class="bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300 rounded-lg p-4 cursor-pointer group">
+                            <i data-lucide="twitter" class="w-8 h-8 mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
+                            <p class="text-sm font-medium">Twitter</p>
+                            <p class="text-xs text-white/70">18K</p>
+                        </div>
+
+                        <div class="bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300 rounded-lg p-4 cursor-pointer group">
+                            <i data-lucide="instagram" class="w-8 h-8 mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
+                            <p class="text-sm font-medium">Instagram</p>
+                            <p class="text-xs text-white/70">32K</p>
+                        </div>
+
+                        <div class="bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300 rounded-lg p-4 cursor-pointer group">
+                            <i data-lucide="linkedin" class="w-8 h-8 mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
+                            <p class="text-sm font-medium">LinkedIn</p>
+                            <p class="text-xs text-white/70">15K</p>
+                        </div>
+
+                        <div class="bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300 rounded-lg p-4 cursor-pointer group">
+                            <i data-lucide="youtube" class="w-8 h-8 mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
+                            <p class="text-sm font-medium">YouTube</p>
+                            <p class="text-xs text-white/70">8K</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-event-primary to-event-secondary">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-heading font-bold text-white mb-6">
+                Ready to Create Amazing Events?
+            </h2>
+            <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+                Join thousands of event organizers who trust EventFlow for their most important moments
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-white text-event-primary hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-lg transition-colors flex items-center justify-center">
+                    Start Free Trial
+                    <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                </button>
+                <button class="border-2 border-white text-white hover:bg-white/10 px-8 py-4 text-lg rounded-lg transition-colors flex items-center justify-center">
+                    Schedule Demo
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-event-dark text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="w-8 h-8 bg-gradient-to-br from-event-primary to-event-secondary rounded-lg flex items-center justify-center">
+                            <i data-lucide="calendar" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-xl font-heading font-bold">EventFlow</span>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed">
+                        Creating extraordinary event experiences through innovative technology and exceptional service.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-semibold mb-6">Platform</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#events" class="hover:text-white transition-colors">Browse Events</a></li>
+                        <li><a href="#calendar" class="hover:text-white transition-colors">Event Calendar</a></li>
+                        <li><a href="#speakers" class="hover:text-white transition-colors">Featured Speakers</a></li>
+                        <li><a href="#gallery" class="hover:text-white transition-colors">Photo Gallery</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-semibold mb-6">Support</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#help" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="#blog" class="hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-heading font-semibold mb-6">Legal</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#privacy" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#terms" class="hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#cookies" class="hover:text-white transition-colors">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 EventFlow. All rights reserved. Built with passion for extraordinary events.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        }
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        const logoText = document.getElementById('logo-text');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function updateNavbar() {
+            const scrolled = window.scrollY > 50;
+            
+            if (scrolled) {
+                navbar.classList.remove('bg-transparent');
+                navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-lg');
+                logoText.classList.remove('text-white');
+                logoText.classList.add('text-event-dark');
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white');
+                    link.classList.add('text-gray-700');
+                });
+            } else {
+                navbar.classList.add('bg-transparent');
+                navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-lg');
+                logoText.classList.add('text-white');
+                logoText.classList.remove('text-event-dark');
+                navLinks.forEach(link => {
+                    link.classList.add('text-white');
+                    link.classList.remove('text-gray-700');
+                });
+            }
+        }
+
+        // Scroll progress bar
+        const scrollProgress = document.getElementById('scroll-progress');
+
+        function updateScrollProgress() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = Math.min(scrollPercent, 100) + '%';
+        }
+
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Event listeners
+        window.addEventListener('scroll', function() {
+            updateNavbar();
+            updateScrollProgress();
+        });
+
+        // Initialize
+        updateNavbar();
+        updateScrollProgress();
+
+        // Initialize icons again after DOM changes
+        setTimeout(() => {
+            lucide.createIcons();
+        }, 100);
+    </script>
+</body>
+</html>
