@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details - Tech Innovation Summit 2025</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { 'playfair': ['Playfair Display', 'serif'], 'merriweather': ['Merriweather', 'serif'], 'sans': ['Inter', 'sans-serif'] },
+                    colors: {
+                        border: 'hsl(262 20% 88%)', input: 'hsl(262 20% 88%)', ring: 'hsl(262 83% 58%)', background: 'hsl(0 0% 100%)', foreground: 'hsl(222.2 84% 4.9%)',
+                        primary: { DEFAULT: 'hsl(262 83% 58%)', foreground: 'hsl(210 40% 98%)' },
+                        secondary: { DEFAULT: 'hsl(262 30% 96%)', foreground: 'hsl(262 83% 18%)' },
+                        destructive: { DEFAULT: 'hsl(0 84.2% 60.2%)', foreground: 'hsl(210 40% 98%)' },
+                        muted: { DEFAULT: 'hsl(262 30% 96%)', foreground: 'hsl(215.4 16.3% 46.9%)' },
+                        accent: { DEFAULT: 'hsl(45 93% 47%)', foreground: 'hsl(0 0% 100%)' },
+                        popover: { DEFAULT: 'hsl(0 0% 100%)', foreground: 'hsl(222.2 84% 4.9%)' },
+                        card: { DEFAULT: 'hsl(0 0% 100%)', foreground: 'hsl(222.2 84% 4.9%)' },
+                        dark: { border: 'hsl(217 33% 27%)', input: 'hsl(217 33% 27%)', ring: 'hsl(262 83% 58%)', background: 'hsl(222 47% 11%)', foreground: 'hsl(210 40% 98%)', primary: { DEFAULT: 'hsl(262 83% 58%)', foreground: 'hsl(210 40% 98%)' }, secondary: { DEFAULT: 'hsl(217 33% 17%)', foreground: 'hsl(210 40% 98%)' }, muted: { DEFAULT: 'hsl(217 33% 17%)', foreground: 'hsl(217 19% 60%)' }, popover: { DEFAULT: 'hsl(222 47% 11%)', foreground: 'hsl(210 40% 98%)' }, card: { DEFAULT: 'hsl(222 47% 14%)', foreground: 'hsl(210 40% 98%)' } }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="min-h-screen bg-background dark:bg-dark-background text-foreground dark:text-dark-foreground transition-colors duration-300">
+
+    <nav class="bg-white/80 dark:bg-dark-background/80 backdrop-blur-md border-b border-border dark:border-dark-border sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center space-x-2 group">
+                    <div class="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg group-hover:shadow-xl"><i data-lucide="calendar" class="w-5 h-5 text-white group-hover:rotate-12 transition-transform duration-300"></i></div>
+                    <span class="text-xl font-playfair font-bold text-foreground dark:text-dark-foreground group-hover:text-primary transition-colors duration-300">EventSphere</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="font-merriweather text-sm font-medium text-muted-foreground dark:text-dark-muted-foreground hover:text-foreground dark:hover:text-dark-foreground transition-colors duration-200">Home</a>
+                    <a href="#" class="font-merriweather text-sm font-medium text-primary border-b-2 border-primary pb-1">Events</a>
+                    <a href="index.html#event-calendar" class="font-merriweather text-sm font-medium text-muted-foreground dark:text-dark-muted-foreground hover:text-foreground dark:hover:text-dark-foreground transition-colors duration-200">Calendar</a>
+                    <a href="#" class="font-merriweather text-sm font-medium text-muted-foreground dark:text-dark-muted-foreground hover:text-foreground dark:hover:text-dark-foreground transition-colors duration-200">Speakers</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-md text-muted-foreground dark:text-dark-muted-foreground hover:text-foreground dark:hover:text-dark-foreground"><i data-lucide="moon" id="theme-toggle-dark-icon" class="w-5 h-5 hidden"></i><i data-lucide="sun" id="theme-toggle-light-icon" class="w-5 h-5 hidden"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="relative h-[60vh] bg-black" data-aos="fade-in">
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Tech Summit" class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 flex items-center justify-center text-center text-white">
+                <div class="max-w-4xl px-4">
+                    <span class="bg-primary/80 text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">Technology Conference</span>
+                    <h1 class="text-4xl md:text-6xl font-playfair font-bold my-4 leading-tight">Tech Innovation Summit 2025</h1>
+                    <p class="text-lg md:text-xl font-merriweather max-w-2xl mx-auto mb-8">Shaping the future of technology, one innovation at a time.</p>
+                    <button class="px-8 py-4 bg-primary text-primary-foreground rounded-md font-medium text-lg group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                        Register Now <i data-lucide="arrow-right" class="ml-2 w-5 h-5 inline group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-card dark:bg-dark-card shadow-md -mt-16 relative z-10 max-w-6xl mx-auto rounded-lg" data-aos="fade-up">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center p-6">
+                <div class="p-4">
+                    <i data-lucide="calendar-days" class="w-10 h-10 mx-auto text-primary mb-2"></i>
+                    <h3 class="font-playfair font-bold text-lg">Date</h3>
+                    <p class="font-merriweather text-muted-foreground dark:text-dark-muted-foreground">August 15, 2025</p>
+                </div>
+                <div class="p-4">
+                    <i data-lucide="clock" class="w-10 h-10 mx-auto text-primary mb-2"></i>
+                    <h3 class="font-playfair font-bold text-lg">Time</h3>
+                    <p class="font-merriweather text-muted-foreground dark:text-dark-muted-foreground">9:00 AM - 6:00 PM</p>
+                </div>
+                <div class="p-4">
+                    <i data-lucide="map-pin" class="w-10 h-10 mx-auto text-primary mb-2"></i>
+                    <h3 class="font-playfair font-bold text-lg">Venue</h3>
+                    <p class="font-merriweather text-muted-foreground dark:text-dark-muted-foreground">San Francisco Convention Center</p>
+                </div>
+                <div class="p-4">
+                    <i data-lucide="ticket" class="w-10 h-10 mx-auto text-primary mb-2"></i>
+                    <h3 class="font-playfair font-bold text-lg">Price</h3>
+                    <p class="font-merriweather text-muted-foreground dark:text-dark-muted-foreground">Starting from $299</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div class="lg:col-span-2">
+                    <div data-aos="fade-right">
+                        <h2 class="text-3xl font-playfair font-bold mb-4">About The Event</h2>
+                        <p class="font-merriweather text-muted-foreground dark:text-dark-muted-foreground leading-relaxed mb-4">
+                            The Tech Innovation Summit 2025 is a premier gathering of the brightest minds in technology. This year's summit focuses on the convergence of Artificial Intelligence, Blockchain, and Quantum Computing. We aim to foster collaboration, inspire new ideas, and showcase groundbreaking technologies that are set to redefine our world.
+                        </p>
+                        <p class="font-merriweather text-muted-foreground dark:text-dark-muted-foreground leading-relaxed">
+                            Join us for a full day of insightful keynotes, interactive workshops, and unparalleled networking opportunities. Whether you are a startup founder, an investor, a developer, or a tech enthusiast, this summit will provide you with the knowledge and connections to stay ahead in the fast-paced world of technology.
+                        </p>
+                    </div>
+
+                    <div class="mt-12" data-aos="fade-up">
+                        <h2 class="text-3xl font-playfair font-bold mb-8">Event Agenda</h2>
+                        <div class="relative border-l-2 border-primary/20 ml-4">
+                            <div class="mb-8 pl-8 relative">
+                                <div class="absolute -left-4 top-1 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground">
+                                    <i data-lucide="clock-9" class="w-5 h-5"></i>
+                                </div>
+                                <p class="font-bold font-merriweather text-primary">09:00 AM - 10:00 AM</p>
+                                <h3 class="font-playfair font-semibold text-xl mt-1">Registration & Welcome Coffee</h3>
+                                <p class="font-merriweather text-muted-foreground dark:text-dark-muted-foreground mt-2">Collect your badges and network with fellow attendees over coffee and pastries.</p>
+                            </div>
+                            <div class="mb-8 pl-8 relative">
+                                <div class="absolute -left-4 top-1 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground">
+                                    <i data-lucide="mic" class="w-5 h-5"></i>
+                                </div>
+                                <p class="font-bold font-merriweather text-primary">10:00 AM - 11:30 AM</p>
+                                <h3 class="font-playfair font-semibold text-xl mt-1">Keynote: The Future of AI</h3>
+                                <p class="font-merriweather text-muted-foreground dark:text-dark-muted-foreground mt-2">By Sarah Johnson, CEO of TechCorp. An inspiring look into the next decade of artificial intelligence.</p>
+                            </div>
+                            <div class="mb-8 pl-8 relative">
+                                <div class="absolute -left-4 top-1 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground">
+                                    <i data-lucide="coffee" class="w-5 h-5"></i>
+                                </div>
+                                <p class="font-bold font-merriweather text-primary">11:30 AM - 12:00 PM</p>
+                                <h3 class="font-playfair font-semibold text-xl mt-1">Networking Break</h3>
+                                <p class="font-merriweather text-muted-foreground dark:text-dark-muted-foreground mt-2">Connect with speakers and attendees.</p>
+                            </div>
+                             <div class="pl-8 relative">
+                                <div class="absolute -left-4 top-1 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground">
+                                    <i data-lucide="users" class="w-5 h-5"></i>
+                                </div>
+                                <p class="font-bold font-merriweather text-primary">12:00 PM - 01:30 PM</p>
+                                <h3 class="font-playfair font-semibold text-xl mt-1">Panel: Blockchain Beyond Cryptocurrency</h3>
+                                <p class="font-merriweather text-muted-foreground dark:text-dark-muted-foreground mt-2">With Michael Chen and other industry leaders.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-8" data-aos="fade-left">
+                    <div class="bg-card dark:bg-dark-card p-6 rounded-lg border border-border dark:border-dark-border">
+                        <h3 class="text-2xl font-playfair font-bold mb-4">Featured Speakers</h3>
+                        <div class="space-y-4">
+                            <a href="#" class="flex items-center gap-4 group">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Sarah Johnson" class="w-16 h-16 rounded-full object-cover">
+                                <div>
+                                    <h4 class="font-playfair font-semibold group-hover:text-primary transition-colors">Sarah Johnson</h4>
+                                    <p class="text-sm text-muted-foreground dark:text-dark-muted-foreground">CEO, TechCorp</p>
+                                </div>
+                            </a>
+                            <a href="#" class="flex items-center gap-4 group">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Michael Chen" class="w-16 h-16 rounded-full object-cover">
+                                <div>
+                                    <h4 class="font-playfair font-semibold group-hover:text-primary transition-colors">Michael Chen</h4>
+                                    <p class="text-sm text-muted-foreground dark:text-dark-muted-foreground">Founder, StartupX</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-card dark:bg-dark-card p-6 rounded-lg border border-border dark:border-dark-border">
+                        <h3 class="text-2xl font-playfair font-bold mb-4">Share This Event</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="p-3 bg-muted dark:bg-dark-muted rounded-full hover:bg-primary hover:text-white transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                            <a href="#" class="p-3 bg-muted dark:bg-dark-muted rounded-full hover:bg-primary hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                            <a href="#" class="p-3 bg-muted dark:bg-dark-muted rounded-full hover:bg-primary hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                            <a href="#" class="p-3 bg-muted dark:bg-dark-muted rounded-full hover:bg-primary hover:text-white transition-colors"><i data-lucide="mail" class="w-5 h-5"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-muted/30 dark:bg-dark-background/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+                 <h2 class="text-3xl font-playfair font-bold mb-4">Venue & Location</h2>
+                 <p class="font-merriweather text-muted-foreground dark:text-dark-muted-foreground max-w-2xl mx-auto mb-8">
+                     The event will be held at the prestigious San Francisco Convention Center, located in the heart of the city.
+                 </p>
+                 <div class="rounded-lg overflow-hidden border border-border dark:border-dark-border shadow-lg">
+                      <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.257424688975!2d-122.4042336846816!3d37.78443597975764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808580852c0f7b9b%3A0x4cb118a7a2817e85!2sMoscone%20Center!5e0!3m2!1sen!2sbd!4v1661262114777!5m2!1sen!2sbd" 
+                        width="100%" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                      </iframe>
+                 </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-foreground text-white py-16">
+        </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Theme Toggle (Copied from index.html)
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function() {
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') { document.documentElement.classList.add('dark'); localStorage.setItem('color-theme', 'dark'); }
+                else { document.documentElement.classList.remove('dark'); localStorage.setItem('color-theme', 'light'); }
+            } else {
+                if (document.documentElement.classList.contains('dark')) { document.documentElement.classList.remove('dark'); localStorage.setItem('color-theme', 'light'); }
+                else { document.documentElement.classList.add('dark'); localStorage.setItem('color-theme', 'dark'); }
+            }
+        });
+    </script>
+</body>
+</html>
