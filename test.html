@@ -1,831 +1,718 @@
 <!DOCTYPE html>
-<html lang="en" class="light"> <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EventSphere - Extraordinary Events, Unforgettable Experiences</title>
+    <title>EventFlow - Experience Extraordinary Events</title>
+    <meta name="description" content="The world's leading event management platform. Discover, attend, and create unforgettable experiences.">
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Custom Tailwind Configuration -->
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
-                        'playfair': ['Playfair Display', 'serif'],
-                        'merriweather': ['Merriweather', 'serif'],
+                        'heading': ['Playfair Display', 'serif'],
+                        'body': ['Merriweather', 'serif'],
                         'sans': ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        border: 'hsl(262 20% 88%)',
-                        input: 'hsl(262 20% 88%)',
-                        ring: 'hsl(262 83% 58%)',
-                        background: 'hsl(0 0% 100%)',
-                        foreground: 'hsl(222.2 84% 4.9%)',
-                        primary: {
-                            DEFAULT: 'hsl(262 83% 58%)',
-                            foreground: 'hsl(210 40% 98%)',
-                        },
-                        secondary: {
-                            DEFAULT: 'hsl(262 30% 96%)',
-                            foreground: 'hsl(262 83% 18%)',
-                        },
-                        destructive: {
-                            DEFAULT: 'hsl(0 84.2% 60.2%)',
-                            foreground: 'hsl(210 40% 98%)',
-                        },
-                        muted: {
-                            DEFAULT: 'hsl(262 30% 96%)',
-                            foreground: 'hsl(215.4 16.3% 46.9%)',
-                        },
-                        accent: {
-                            DEFAULT: 'hsl(45 93% 47%)',
-                            foreground: 'hsl(0 0% 100%)',
-                        },
-                        popover: {
-                            DEFAULT: 'hsl(0 0% 100%)',
-                            foreground: 'hsl(222.2 84% 4.9%)',
-                        },
-                        card: {
-                            DEFAULT: 'hsl(0 0% 100%)',
-                            foreground: 'hsl(222.2 84% 4.9%)',
-                        },
-                        // Dark Theme Colors
-                        dark: {
-                            border: 'hsl(217 33% 27%)',
-                            input: 'hsl(217 33% 27%)',
-                            ring: 'hsl(262 83% 58%)',
-                            background: 'hsl(222 47% 11%)',
-                            foreground: 'hsl(210 40% 98%)',
-                            primary: {
-                                DEFAULT: 'hsl(262 83% 58%)',
-                                foreground: 'hsl(210 40% 98%)',
-                            },
-                            secondary: {
-                                DEFAULT: 'hsl(217 33% 17%)',
-                                foreground: 'hsl(210 40% 98%)',
-                            },
-                            muted: {
-                                DEFAULT: 'hsl(217 33% 17%)',
-                                foreground: 'hsl(217 19% 60%)',
-                            },
-                            popover: {
-                                DEFAULT: 'hsl(222 47% 11%)',
-                                foreground: 'hsl(210 40% 98%)',
-                            },
-                            card: {
-                                DEFAULT: 'hsl(222 47% 14%)',
-                                foreground: 'hsl(210 40% 98%)',
-                            },
-                        }
+                        'event-primary': 'hsl(220, 70%, 20%)',
+                        'event-secondary': 'hsl(340, 85%, 55%)',
+                        'event-accent': 'hsl(190, 85%, 50%)',
+                        'event-gold': 'hsl(45, 100%, 65%)',
+                        'event-dark': 'hsl(215, 25%, 15%)',
                     },
                     animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'slide-up': 'slideUp 0.6s ease-out forwards',
-                        'fade-in': 'fadeIn 0.8s ease-out forwards',
-                        'gradient-shift': 'gradient-shift 4s ease infinite',
+                        'fade-in': 'fade-in 0.6s ease-out',
+                        'slide-up': 'slide-up 0.6s ease-out',
                     },
                     keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-10px)' },
+                        'fade-in': {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
                         },
-                        slideUp: {
-                            from: { opacity: '0', transform: 'translateY(30px)' },
-                            to: { opacity: '1', transform: 'translateY(0)' },
+                        'slide-up': {
+                            '0%': { transform: 'translateY(100%)' },
+                            '100%': { transform: 'translateY(0)' },
                         },
-                        fadeIn: {
-                            from: { opacity: '0' },
-                            to: { opacity: '1' },
-                        },
-                        'gradient-shift': {
-                            '0%, 100%': { 'background-position': '0% 50%' },
-                            '50%': { 'background-position': '100% 50%' },
-                        },
-                    },
-                },
-            },
+                    }
+                }
+            }
         }
     </script>
     
     <style>
-        .text-gradient {
-            background: linear-gradient(135deg, hsl(262 83% 58%), hsl(45 93% 47%));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        body {
+            font-family: 'Merriweather', serif;
         }
-        .gradient-animated {
-            background-size: 200% 200%;
-            animation: gradient-shift 4s ease infinite;
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
         }
-        .hover-glow:hover {
-            box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+        
+        .aos-init {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        
+        .aos-animate {
+            opacity: 1;
+            transform: translateY(0);
         }
-
-   .event-gallery-swiper {
-    /* This prevents the 3D effect from being cut off */
-    padding-top: 50px;
-    padding-bottom: 50px;
-    overflow: hidden; /* পরিবর্তিত লাইন */
-}
-    .swiper-slide {
-        background-position: center;
-        background-size: cover;
-        width: 300px;
-        height: 400px;
-        border-radius: 0.75rem;
-        overflow: hidden;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
-    .swiper-pagination-bullet-active {
-        background-color: hsl(262 83% 58%) !important;
-    }
-    .swiper-pagination {
-        position: static; /* Position it normally below the slider */
-        margin-top: 2rem;
-    }
-</style>
+        
+        .hero-bg {
+            background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&auto=format&fit=crop&q=60');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: hsl(220, 70%, 20%);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: hsl(220, 70%, 25%);
+        }
+    </style>
 </head>
+<body class="bg-white text-gray-900 font-body">
 
-<body class="min-h-screen bg-background dark:bg-dark-background text-foreground dark:text-dark-foreground transition-colors duration-300">
-    <nav class="bg-white/80 dark:bg-dark-background/80 backdrop-blur-md border-b border-border dark:border-dark-border sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <a href="#" class="flex items-center space-x-2 group">
-                    <div class="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg group-hover:shadow-xl">
-                        <i data-lucide="calendar" class="w-5 h-5 text-white group-hover:rotate-12 transition-transform duration-300"></i>
+    <!-- Announcement Banner -->
+    <div class="bg-gradient-to-r from-event-primary to-event-secondary text-white py-3 px-4 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-white/10 animate-pulse"></div>
+        <div class="relative z-10">
+            <p class="text-sm font-medium">
+                🎉 <strong>Limited Time:</strong> Get 50% off Professional plans for new users! 
+                <button class="ml-2 underline hover:no-underline font-semibold">
+                    Claim Offer →
+                </button>
+            </p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-br from-event-primary to-event-secondary rounded-lg flex items-center justify-center">
+                        <i data-lucide="calendar" class="w-6 h-6 text-white"></i>
                     </div>
-                    <span class="text-xl font-playfair font-bold text-foreground dark:text-dark-foreground group-hover:text-primary transition-colors duration-300">
-                        EventSphere
-                    </span>
-                </a>
-
+                    <span class="text-2xl font-heading font-bold text-event-dark" id="logo-text">EventFlow</span>
+                </div>
+                
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#" class="font-merriweather text-sm font-medium text-primary border-b-2 border-primary pb-1">Home</a>
-                    <a href="#" class="font-merriweather text-sm font-medium text-muted-foreground dark:text-dark-muted-foreground hover:text-foreground dark:hover:text-dark-foreground transition-colors duration-200">Events</a>
-                    <a href="#" class="font-merriweather text-sm font-medium text-muted-foreground dark:text-dark-muted-foreground hover:text-foreground dark:hover:text-dark-foreground transition-colors duration-200">Calendar</a>
-                    <a href="#" class="font-merriweather text-sm font-medium text-muted-foreground dark:text-dark-muted-foreground hover:text-foreground dark:hover:text-dark-foreground transition-colors duration-200">Speakers</a>
-                    <a href="#" class="font-merriweather text-sm font-medium text-muted-foreground dark:text-dark-muted-foreground hover:text-foreground dark:hover:text-dark-foreground transition-colors duration-200">Gallery</a>
-                    <a href="#" class="font-merriweather text-sm font-medium text-muted-foreground dark:text-dark-muted-foreground hover:text-foreground dark:hover:text-dark-foreground transition-colors duration-200">Blog</a>
+                    <button onclick="scrollToSection('events')" class="text-gray-700 hover:text-event-primary transition-colors font-medium nav-link">
+                        Events
+                    </button>
+                    <button onclick="scrollToSection('features')" class="text-gray-700 hover:text-event-primary transition-colors font-medium nav-link">
+                        Features
+                    </button>
+                    <a href="#speakers" class="text-gray-700 hover:text-event-primary transition-colors font-medium nav-link">
+                        Speakers
+                    </a>
+                    <a href="#calendar" class="text-gray-700 hover:text-event-primary transition-colors font-medium nav-link">
+                        Calendar
+                    </a>
+                    <a href="#about" class="text-gray-700 hover:text-event-primary transition-colors font-medium nav-link">
+                        About
+                    </a>
                 </div>
 
                 <div class="flex items-center space-x-4">
-                    <button class="hidden md:inline-flex bg-primary text-primary-foreground px-6 py-2 rounded-md font-medium group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-                        Book Event
-                        <span class="ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">✨</span>
-                    </button>
+                    <div class="hidden md:flex items-center space-x-4">
+                        <button class="text-gray-700 hover:text-event-primary transition-colors nav-link">
+                            Sign In
+                        </button>
+                        <button class="bg-event-primary hover:bg-event-primary/90 text-white px-6 py-2 rounded-lg font-medium transition-colors">
+                            Get Started
+                        </button>
+                    </div>
                     
-                    <button id="theme-toggle" class="p-2 rounded-md text-muted-foreground dark:text-dark-muted-foreground hover:text-foreground dark:hover:text-dark-foreground">
-                        <i data-lucide="moon" id="theme-toggle-dark-icon" class="w-5 h-5 hidden"></i>
-                        <i data-lucide="sun" id="theme-toggle-light-icon" class="w-5 h-5 hidden"></i>
-                    </button>
-
-                    <button id="mobile-menu-toggle" class="md:hidden p-2 rounded-md text-muted-foreground hover:text-foreground">
+                    <!-- Mobile Menu Toggle -->
+                    <button id="mobile-menu-toggle" class="md:hidden p-2">
                         <i data-lucide="menu" class="w-6 h-6" id="menu-icon"></i>
                         <i data-lucide="x" class="w-6 h-6 hidden" id="close-icon"></i>
                     </button>
                 </div>
             </div>
-
-            <div id="mobile-menu" class="hidden md:hidden py-4 border-t border-border dark:border-dark-border">
-                <div class="flex flex-col space-y-3">
-                    <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium bg-primary/10 text-primary">
-                        <span>Home</span>
-                    </a>
-                    <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium text-muted-foreground dark:text-dark-muted-foreground hover:text-foreground hover:bg-muted dark:hover:bg-dark-muted transition-colors duration-200">
-                        <i data-lucide="calendar" class="w-4 h-4"></i>
-                        <span>Events</span>
-                    </a>
-                    <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium text-muted-foreground dark:text-dark-muted-foreground hover:text-foreground hover:bg-muted dark:hover:bg-dark-muted transition-colors duration-200">
-                        <i data-lucide="calendar" class="w-4 h-4"></i>
-                        <span>Calendar</span>
-                    </a>
-                    <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium text-muted-foreground dark:text-dark-muted-foreground hover:text-foreground hover:bg-muted dark:hover:bg-dark-muted transition-colors duration-200">
-                        <i data-lucide="users" class="w-4 h-4"></i>
-                        <span>Speakers</span>
-                    </a>
-                    <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium text-muted-foreground dark:text-dark-muted-foreground hover:text-foreground hover:bg-muted dark:hover:bg-dark-muted transition-colors duration-200">
-                        <i data-lucide="camera" class="w-4 h-4"></i>
-                        <span>Gallery</span>
-                    </a>
-                    <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium text-muted-foreground dark:text-dark-muted-foreground hover:text-foreground hover:bg-muted dark:hover:bg-dark-muted transition-colors duration-200">
-                        <i data-lucide="message-square" class="w-4 h-4"></i>
-                        <span>Blog</span>
-                    </a>
-                    <div class="pt-2">
-                        <button class="w-full bg-primary text-primary-foreground px-6 py-2 rounded-md font-medium">
-                            Book Event
-                        </button>
-                    </div>
+        </div>
+        
+        <!-- Scroll Progress Bar -->
+        <div class="absolute bottom-0 left-0 w-full h-1 bg-gray-200">
+            <div id="scroll-progress" class="h-full bg-gradient-to-r from-event-primary to-event-secondary transition-all duration-300 ease-out" style="width: 0%"></div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-white border-b shadow-lg hidden">
+            <div class="container mx-auto px-4 py-4 space-y-4">
+                <button onclick="scrollToSection('events'); closeMobileMenu()" class="block w-full text-left text-gray-700 hover:text-event-primary transition-colors font-medium py-2">
+                    Events
+                </button>
+                <button onclick="scrollToSection('features'); closeMobileMenu()" class="block w-full text-left text-gray-700 hover:text-event-primary transition-colors font-medium py-2">
+                    Features
+                </button>
+                <a href="#speakers" class="block text-gray-700 hover:text-event-primary transition-colors font-medium py-2">
+                    Speakers
+                </a>
+                <a href="#calendar" class="block text-gray-700 hover:text-event-primary transition-colors font-medium py-2">
+                    Calendar
+                </a>
+                <div class="border-t pt-4 space-y-2">
+                    <button class="w-full text-left text-gray-700 hover:text-event-primary py-2">
+                        Sign In
+                    </button>
+                    <button class="w-full bg-event-primary hover:bg-event-primary/90 text-white py-2 rounded-lg font-medium">
+                        Get Started
+                    </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <section class="relative h-[90vh] overflow-hidden">
-        <div class="absolute inset-0" id="hero-carousel">
-            <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-100">
-                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Hero 1" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/40"></div>
-            </div>
-            <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
-                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Hero 2" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/40"></div>
-            </div>
-            <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
-                <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Hero 3" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/40"></div>
-            </div>
-        </div>
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden hero-bg">
+        <div class="absolute inset-0 bg-gradient-to-r from-event-primary/90 to-event-secondary/80 z-10"></div>
         
-        <div class="relative z-10 flex items-center justify-center h-full">
-            <div class="text-center text-white max-w-4xl mx-auto px-4">
-                <h1 class="text-5xl md:text-7xl font-playfair font-bold mb-6 leading-tight animate-slide-up">
-                    Extraordinary Events,
-                    <br>
-                    <span class="text-gradient bg-gradient-to-r from-accent via-yellow-400 to-accent gradient-animated">
-                        Unforgettable Experiences
-                    </span>
-                </h1>
-                <p class="text-xl md:text-2xl font-merriweather mb-8 max-w-2xl mx-auto leading-relaxed animate-fade-in" style="animation-delay: 0.3s;">
-                    Join thousands of professionals, innovators, and thought leaders at the world's most inspiring events.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button class="text-lg px-8 py-4 bg-primary text-primary-foreground rounded-md font-medium group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-                        Explore Events
-                        <i data-lucide="arrow-right" class="ml-2 w-5 h-5 inline group-hover:translate-x-1 transition-transform duration-300"></i>
-                    </button>
-                    <button class="text-lg px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/30 text-white hover:bg-white hover:text-foreground rounded-md font-medium group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-                        <i data-lucide="play" class="mr-2 w-5 h-5 inline group-hover:scale-110 transition-transform duration-300"></i>
-                        Watch Demo
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
-            <button class="hero-indicator w-3 h-3 rounded-full transition-all duration-300 bg-white" data-slide="0"></button>
-            <button class="hero-indicator w-3 h-3 rounded-full transition-all duration-300 bg-white/50" data-slide="1"></button>
-            <button class="hero-indicator w-3 h-3 rounded-full transition-all duration-300 bg-white/50" data-slide="2"></button>
-        </div>
-    </section>
-
-    <!-- event calendar start -->
-
-    <section id="event-calendar" class="py-20 bg-muted/30 dark:bg-dark-background">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-4xl md:text-5xl font-playfair font-bold text-foreground dark:text-dark-foreground mb-4">
-                Event Calendar
-            </h2>
-            <p class="text-xl font-merriweather text-muted-foreground dark:text-dark-muted-foreground max-w-2xl mx-auto">
-                Explore our upcoming events. Find what interests you and never miss an opportunity to connect.
+        <div class="relative z-20 text-center text-white px-4 animate-fade-in">
+            <h1 class="text-6xl md:text-7xl font-heading font-bold mb-6 leading-tight">
+                Experience
+                <span class="block text-event-gold">Extraordinary Events</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto font-light leading-relaxed">
+                Discover, attend, and create unforgettable experiences with the world's leading event management platform
             </p>
-        </div>
-
-        <div class="bg-card dark:bg-dark-card p-6 rounded-lg border border-border dark:border-dark-border mb-8" data-aos="fade-up" data-aos-delay="100">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 items-center">
-                <div class="lg:col-span-2">
-                    <label for="event-search" class="block text-sm font-medium text-muted-foreground dark:text-dark-muted-foreground mb-1">Search Event</label>
-                    <div class="relative">
-                        <input type="text" id="event-search" placeholder="Search by name, speaker..." class="w-full pl-10 pr-4 py-2 rounded-md bg-background dark:bg-dark-background border border-border dark:border-dark-border focus:ring-primary focus:border-primary">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <i data-lucide="search" class="w-5 h-5 text-muted-foreground dark:text-dark-muted-foreground"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <label for="event-date-picker" class="block text-sm font-medium text-muted-foreground dark:text-dark-muted-foreground mb-1">Date</label>
-                    <input type="date" id="event-date-picker" class="w-full p-2 rounded-md bg-background dark:bg-dark-background border border-border dark:border-dark-border focus:ring-primary focus:border-primary">
-                </div>
-
-                <div>
-                    <label for="event-location" class="block text-sm font-medium text-muted-foreground dark:text-dark-muted-foreground mb-1">Location</label>
-                    <select id="event-location" class="w-full p-2 rounded-md bg-background dark:bg-dark-background border border-border dark:border-dark-border focus:ring-primary focus:border-primary">
-                        <option>All Locations</option>
-                        <option>San Francisco</option>
-                        <option>Online Event</option>
-                        <option>Innovation Hub NYC</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label for="event-type" class="block text-sm font-medium text-muted-foreground dark:text-dark-muted-foreground mb-1">Type</label>
-                    <select id="event-type" class="w-full p-2 rounded-md bg-background dark:bg-dark-background border border-border dark:border-dark-border focus:ring-primary focus:border-primary">
-                        <option>All Types</option>
-                        <option>Technology</option>
-                        <option>Marketing</option>
-                        <option>Business</option>
-                    </select>
-                </div>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button onclick="scrollToSection('events')" class="bg-event-gold hover:bg-event-gold/90 text-event-dark font-semibold px-8 py-4 text-lg rounded-lg transition-colors flex items-center">
+                    Explore Events
+                    <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                </button>
+                <button class="border-2 border-white text-white hover:bg-white hover:text-event-primary px-8 py-4 text-lg rounded-lg transition-colors flex items-center backdrop-blur-sm">
+                    <i data-lucide="play" class="mr-2 w-5 h-5"></i>
+                    Watch Demo
+                </button>
             </div>
-        </div>
-
-        <div id="calendar-view-container" class="bg-card dark:bg-dark-card p-4 sm:p-6 rounded-lg border border-border dark:border-dark-border hidden" data-aos="fade-up" data-aos-delay="200">
-            <div class="flex items-center justify-between mb-6">
-                <div class="flex items-center gap-4">
-                    <button class="p-2 rounded-md hover:bg-muted dark:hover:bg-dark-muted transition-colors">
-                        <i data-lucide="chevron-left" class="w-5 h-5"></i>
-                    </button>
-                    <h3 class="text-xl md:text-2xl font-playfair font-bold text-foreground dark:text-dark-foreground">
-                        August 2025
-                    </h3>
-                    <button class="p-2 rounded-md hover:bg-muted dark:hover:bg-dark-muted transition-colors">
-                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
-                    </button>
-                </div>
-                <div class="hidden sm:flex items-center border border-border dark:border-dark-border rounded-md">
-                    <button class="px-3 py-1 text-sm font-medium hover:bg-muted dark:hover:bg-dark-muted transition-colors rounded-l-md">Daily</button>
-                    <button class="px-3 py-1 text-sm font-medium hover:bg-muted dark:hover:bg-dark-muted transition-colors border-l border-r dark:border-dark-border">Weekly</button>
-                    <button class="px-3 py-1 text-sm font-medium bg-primary text-primary-foreground transition-colors rounded-r-md">Monthly</button>
-                </div>
-            </div>
-
-         
-        </div>
-
-        <div class="mt-12" data-aos="fade-up" data-aos-delay="300">
-            <h3 class="text-2xl font-playfair font-bold text-foreground dark:text-dark-foreground mb-6">Upcoming Events</h3>
-            <div class="space-y-4">
-                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 bg-card dark:bg-dark-card rounded-lg border border-border dark:border-dark-border hover:shadow-lg transition-shadow">
-                    <div class="flex items-center gap-4">
-                        <div class="text-center bg-muted dark:bg-dark-muted rounded-lg p-2 w-16"><p class="text-2xl font-bold text-primary">15</p><p class="text-xs font-medium text-muted-foreground dark:text-dark-muted-foreground">AUG</p></div>
-                        <div>
-                            <h4 class="font-playfair font-semibold text-lg text-foreground dark:text-dark-foreground">Tech Innovation Summit 2025</h4>
-                            <p class="text-sm text-muted-foreground dark:text-dark-muted-foreground font-merriweather"><i data-lucide="clock-3" class="w-3 h-3 inline-block -mt-1"></i> 9:00 AM - 6:00 PM | <i data-lucide="map-pin" class="w-3 h-3 inline-block -mt-1"></i> San Francisco</p>
-                        </div>
-                    </div>
-                    <div class="sm:ml-auto flex items-center gap-2">
-                        <button class="px-4 py-2 text-sm bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90">Details</button>
-                        <button class="p-2 rounded-md hover:bg-muted dark:hover:bg-dark-muted" aria-label="Share Event"><i data-lucide="share-2" class="w-5 h-5"></i></button>
-                    </div>
-                </div>
-                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 bg-card dark:bg-dark-card rounded-lg border border-border dark:border-dark-border hover:shadow-lg transition-shadow">
-                     <div class="flex items-center gap-4">
-                        <div class="text-center bg-muted dark:bg-dark-muted rounded-lg p-2 w-16"><p class="text-2xl font-bold text-primary">22</p><p class="text-xs font-medium text-muted-foreground dark:text-dark-muted-foreground">AUG</p></div>
-                        <div>
-                            <h4 class="font-playfair font-semibold text-lg text-foreground dark:text-dark-foreground">Growth Marketing Conference</h4>
-                            <p class="text-sm text-muted-foreground dark:text-dark-muted-foreground font-merriweather"><i data-lucide="clock-3" class="w-3 h-3 inline-block -mt-1"></i> 10:00 AM - 4:00 PM | <i data-lucide="map-pin" class="w-3 h-3 inline-block -mt-1"></i> Online Event</p>
-                        </div>
-                    </div>
-                    <div class="sm:ml-auto flex items-center gap-2">
-                        <button class="px-4 py-2 text-sm bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90">Details</button>
-                        <button class="p-2 rounded-md hover:bg-muted dark:hover:bg-dark-muted" aria-label="Share Event"><i data-lucide="share-2" class="w-5 h-5"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </section>
-
-
-    <!-- event calendar end -->
-
- <!-- team section start  -->
-
- <section id="speakers-preview" class="py-20 bg-gradient-to-b from-white via-purple-50 to-white dark:from-dark-background dark:via-purple-900/10 dark:to-dark-background">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-4xl md:text-5xl font-playfair font-bold text-foreground dark:text-dark-foreground mb-4">
-                Meet Our World-Class Speakers
-            </h2>
-            <p class="text-xl font-merriweather text-muted-foreground dark:text-dark-muted-foreground max-w-2xl mx-auto">
-                Learn from the industry leaders and innovators who will be sharing their insights at our events.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <div data-aos="fade-up" data-aos-delay="100">
-                <a href="speakers.html" class="block bg-card dark:bg-dark-card rounded-xl overflow-hidden 
-                                           shadow-lg shadow-primary/10 dark:shadow-lg dark:shadow-indigo-950/20
-                                           border border-transparent hover:border-primary/30 
-                                           hover:shadow-xl hover:shadow-primary/20 dark:hover:shadow-2xl dark:hover:shadow-indigo-950/30
-                                           transition-all duration-300 group transform hover:-translate-y-2">
-                    <div class="relative p-6 bg-secondary/30 dark:bg-dark-secondary/30">
-                        <div class="absolute -top-8 -right-8 w-32 h-32 bg-primary/10 dark:bg-primary/20 rounded-full transition-transform duration-500 group-hover:scale-125 group-hover:rotate-12"></div>
-                        <img class="relative w-full h-64 object-cover rounded-lg shadow-md" src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sarah Johnson">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-playfair font-bold text-foreground dark:text-dark-foreground">Sarah Johnson</h3>
-                        <p class="font-medium text-primary mt-1">CEO, TechCorp</p>
-                        <p class="font-merriweather italic text-sm text-muted-foreground dark:text-dark-muted-foreground mt-3 border-l-2 border-primary/20 pl-3">
-                            "Pioneering the future of ethical Artificial Intelligence."
-                        </p>
-                        <div class="mt-4 flex items-center space-x-4">
-                            <i data-lucide="twitter" class="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors"></i>
-                            <i data-lucide="linkedin" class="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors"></i>
-                        </div>
-                    </div>
-                </a>
+            <!-- Quick Stats in Hero -->
+            <div class="mt-12 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-white mb-1">2.8M+</div>
+                    <div class="text-white/80 text-sm">Attendees</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-white mb-1">12.5K+</div>
+                    <div class="text-white/80 text-sm">Events</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl font-bold text-white mb-1">4.9★</div>
+                    <div class="text-white/80 text-sm">Rating</div>
+                </div>
             </div>
-
-            <div data-aos="fade-up" data-aos-delay="200">
-                <a href="speakers.html" class="block bg-card dark:bg-dark-card rounded-xl overflow-hidden 
-                                           shadow-lg shadow-primary/10 dark:shadow-lg dark:shadow-indigo-950/20
-                                           border border-transparent hover:border-primary/30 
-                                           hover:shadow-xl hover:shadow-primary/20 dark:hover:shadow-2xl dark:hover:shadow-indigo-950/30
-                                           transition-all duration-300 group transform hover:-translate-y-2">
-                    <div class="relative p-6 bg-secondary/30 dark:bg-dark-secondary/30">
-                         <div class="absolute -top-8 -right-8 w-32 h-32 bg-accent/10 dark:bg-accent/20 rounded-full transition-transform duration-500 group-hover:scale-125 group-hover:rotate-12"></div>
-                        <img class="relative w-full h-64 object-cover rounded-lg shadow-md" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Michael Chen">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-playfair font-bold text-foreground dark:text-dark-foreground">Michael Chen</h3>
-                        <p class="font-medium text-primary mt-1">Founder, StartupX</p>
-                        <p class="font-merriweather italic text-sm text-muted-foreground dark:text-dark-muted-foreground mt-3 border-l-2 border-primary/20 pl-3">
-                            "Turning disruptive ideas into market-leading companies."
-                        </p>
-                        <div class="mt-4 flex items-center space-x-4">
-                            <i data-lucide="twitter" class="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors"></i>
-                            <i data-lucide="linkedin" class="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="300">
-                <a href="speakers.html" class="block bg-card dark:bg-dark-card rounded-xl overflow-hidden 
-                                           shadow-lg shadow-primary/10 dark:shadow-lg dark:shadow-indigo-950/20
-                                           border border-transparent hover:border-primary/30 
-                                           hover:shadow-xl hover:shadow-primary/20 dark:hover:shadow-2xl dark:hover:shadow-indigo-950/30
-                                           transition-all duration-300 group transform hover:-translate-y-2">
-                    <div class="relative p-6 bg-secondary/30 dark:bg-dark-secondary/30">
-                        <div class="absolute -top-8 -right-8 w-32 h-32 bg-purple-500/10 dark:bg-purple-500/20 rounded-full transition-transform duration-500 group-hover:scale-125 group-hover:rotate-12"></div>
-                        <img class="relative w-full h-64 object-cover rounded-lg shadow-md" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Emma Rodriguez">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-playfair font-bold text-foreground dark:text-dark-foreground">Emma Rodriguez</h3>
-                        <p class="font-medium text-primary mt-1">CMO, Digital Plus</p>
-                        <p class="font-merriweather italic text-sm text-muted-foreground dark:text-dark-muted-foreground mt-3 border-l-2 border-primary/20 pl-3">
-                            "Mastering the art of digital transformation and growth."
-                        </p>
-                        <div class="mt-4 flex items-center space-x-4">
-                           <i data-lucide="twitter" class="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors"></i>
-                            <i data-lucide="linkedin" class="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
         </div>
 
-        <div class="text-center mt-16" data-aos="fade-up">
-            <a href="speakers.html" class="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-md font-medium group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-                Meet All Speakers
-                <i data-lucide="arrow-right" class="ml-2 w-5 h-5 inline group-hover:translate-x-1 transition-transform"></i>
-            </a>
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+            <i data-lucide="chevron-right" class="w-6 h-6 text-white rotate-90"></i>
         </div>
-    </div>
-</section>
- <!-- team section end  -->
+    </section>
 
-    <section class="py-16 bg-primary text-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-accent/20"></div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center group" data-aos="fade-up">
-                    <div class="relative">
-                        <i data-lucide="calendar" class="w-8 h-8 mx-auto mb-4 text-accent animate-float group-hover:scale-110 transition-transform duration-300"></i>
-                        <div class="absolute inset-0 w-8 h-8 mx-auto bg-accent/20 rounded-full blur-xl animate-pulse-slow"></div>
+    <!-- Stats Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-event-dark mb-4">
+                    Trusted by Millions Worldwide
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Join the global community that's revolutionizing event experiences
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+                <div class="text-center group hover:scale-105 transition-transform duration-300">
+                    <div class="w-20 h-20 bg-gradient-to-br from-event-primary/10 to-event-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow">
+                        <i data-lucide="calendar" class="w-10 h-10 text-event-primary group-hover:scale-110 transition-transform"></i>
                     </div>
-                    <div class="text-3xl font-playfair font-bold mb-2 group-hover:scale-105 transition-transform duration-300">500+</div>
-                    <div class="text-sm font-merriweather opacity-90 group-hover:opacity-100 transition-opacity">Events Hosted</div>
+                    <div class="text-3xl font-heading font-bold text-event-dark mb-2 group-hover:text-event-primary transition-colors">12,500+</div>
+                    <div class="text-gray-900 font-semibold mb-1">Events Hosted</div>
+                    <div class="text-sm text-gray-600">Successful events worldwide</div>
                 </div>
-                <div class="text-center group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative">
-                        <i data-lucide="users" class="w-8 h-8 mx-auto mb-4 text-accent animate-float group-hover:scale-110 transition-transform duration-300" style="animation-delay: 0.5s;"></i>
-                        <div class="absolute inset-0 w-8 h-8 mx-auto bg-accent/20 rounded-full blur-xl animate-pulse-slow" style="animation-delay: 0.5s;"></div>
+
+                <div class="text-center group hover:scale-105 transition-transform duration-300">
+                    <div class="w-20 h-20 bg-gradient-to-br from-event-primary/10 to-event-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow">
+                        <i data-lucide="users" class="w-10 h-10 text-event-primary group-hover:scale-110 transition-transform"></i>
                     </div>
-                    <div class="text-3xl font-playfair font-bold mb-2 group-hover:scale-105 transition-transform duration-300">50K+</div>
-                    <div class="text-sm font-merriweather opacity-90 group-hover:opacity-100 transition-opacity">Happy Attendees</div>
+                    <div class="text-3xl font-heading font-bold text-event-dark mb-2 group-hover:text-event-primary transition-colors">2.8M+</div>
+                    <div class="text-gray-900 font-semibold mb-1">Happy Attendees</div>
+                    <div class="text-sm text-gray-600">Satisfied participants</div>
                 </div>
-                <div class="text-center group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative">
-                        <i data-lucide="mic" class="w-8 h-8 mx-auto mb-4 text-accent animate-float group-hover:scale-110 transition-transform duration-300" style="animation-delay: 1s;"></i>
-                        <div class="absolute inset-0 w-8 h-8 mx-auto bg-accent/20 rounded-full blur-xl animate-pulse-slow" style="animation-delay: 1s;"></div>
+
+                <div class="text-center group hover:scale-105 transition-transform duration-300">
+                    <div class="w-20 h-20 bg-gradient-to-br from-event-primary/10 to-event-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow">
+                        <i data-lucide="map-pin" class="w-10 h-10 text-event-primary group-hover:scale-110 transition-transform"></i>
                     </div>
-                    <div class="text-3xl font-playfair font-bold mb-2 group-hover:scale-105 transition-transform duration-300">200+</div>
-                    <div class="text-sm font-merriweather opacity-90 group-hover:opacity-100 transition-opacity">Expert Speakers</div>
+                    <div class="text-3xl font-heading font-bold text-event-dark mb-2 group-hover:text-event-primary transition-colors">150+</div>
+                    <div class="text-gray-900 font-semibold mb-1">Global Locations</div>
+                    <div class="text-sm text-gray-600">Countries & cities</div>
                 </div>
-                <div class="text-center group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="relative">
-                        <i data-lucide="award" class="w-8 h-8 mx-auto mb-4 text-accent animate-float group-hover:scale-110 transition-transform duration-300" style="animation-delay: 1.5s;"></i>
-                        <div class="absolute inset-0 w-8 h-8 mx-auto bg-accent/20 rounded-full blur-xl animate-pulse-slow" style="animation-delay: 1.5s;"></div>
+
+                <div class="text-center group hover:scale-105 transition-transform duration-300">
+                    <div class="w-20 h-20 bg-gradient-to-br from-event-primary/10 to-event-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow">
+                        <i data-lucide="star" class="w-10 h-10 text-event-primary group-hover:scale-110 transition-transform"></i>
                     </div>
-                    <div class="text-3xl font-playfair font-bold mb-2 group-hover:scale-105 transition-transform duration-300">98%</div>
-                    <div class="text-sm font-merriweather opacity-90 group-hover:opacity-100 transition-opacity">Success Rate</div>
+                    <div class="text-3xl font-heading font-bold text-event-dark mb-2 group-hover:text-event-primary transition-colors">8,200+</div>
+                    <div class="text-gray-900 font-semibold mb-1">Expert Speakers</div>
+                    <div class="text-sm text-gray-600">Industry professionals</div>
+                </div>
+
+                <div class="text-center group hover:scale-105 transition-transform duration-300">
+                    <div class="w-20 h-20 bg-gradient-to-br from-event-primary/10 to-event-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow">
+                        <i data-lucide="video" class="w-10 h-10 text-event-primary group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div class="text-3xl font-heading font-bold text-event-dark mb-2 group-hover:text-event-primary transition-colors">45K+</div>
+                    <div class="text-gray-900 font-semibold mb-1">Live Streams</div>
+                    <div class="text-sm text-gray-600">Hours of content</div>
+                </div>
+
+                <div class="text-center group hover:scale-105 transition-transform duration-300">
+                    <div class="w-20 h-20 bg-gradient-to-br from-event-primary/10 to-event-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg transition-shadow">
+                        <i data-lucide="heart" class="w-10 h-10 text-event-primary group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div class="text-3xl font-heading font-bold text-event-dark mb-2 group-hover:text-event-primary transition-colors">4.9/5</div>
+                    <div class="text-gray-900 font-semibold mb-1">Customer Rating</div>
+                    <div class="text-sm text-gray-600">Average satisfaction</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-muted/30 dark:bg-dark-background">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-playfair font-bold text-foreground dark:text-dark-foreground mb-4">
+    <!-- Featured Events -->
+    <section id="events" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-event-dark mb-6">
                     Featured Events
                 </h2>
-                <p class="text-xl font-merriweather text-muted-foreground dark:text-dark-muted-foreground max-w-2xl mx-auto">
-                    Discover our handpicked selection of the most exciting and impactful events happening this season.
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Join thousands of professionals at our curated selection of premium events
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-card dark:bg-dark-card rounded-lg border border-border dark:border-dark-border overflow-hidden group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Event 1 -->
+                <div class="bg-white rounded-xl shadow-sm border overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-500 group cursor-pointer">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tech Innovation Summit 2024" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-                        <span class="absolute top-4 left-4 bg-accent text-accent-foreground px-2 py-1 rounded text-xs font-medium">Featured</span>
-                        <span class="absolute top-4 right-4 bg-secondary dark:bg-dark-secondary text-secondary-foreground dark:text-dark-foreground px-2 py-1 rounded text-xs font-medium">Technology</span>
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop&q=60" alt="Tech Innovation Summit 2024" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-4 left-4 bg-event-gold text-event-dark font-semibold px-3 py-1 rounded-full text-sm">
+                            Featured
+                        </div>
+                        <div class="absolute top-4 right-4 bg-event-primary text-white px-3 py-1 rounded-full text-sm">
+                            Technology
+                        </div>
                     </div>
+                    
                     <div class="p-6">
-                        <h3 class="font-playfair text-xl font-bold mb-2 group-hover:text-primary transition-colors dark:text-dark-foreground">
+                        <h3 class="text-xl font-heading font-semibold text-event-dark line-clamp-2 mb-3">
                             Tech Innovation Summit 2024
                         </h3>
-                        <div class="space-y-2 mb-4 text-sm text-muted-foreground dark:text-dark-muted-foreground font-merriweather">
-                            <div class="flex items-center gap-2">
+                        <div class="flex items-center gap-4 text-sm text-gray-600 mb-4">
+                            <div class="flex items-center gap-1">
                                 <i data-lucide="calendar" class="w-4 h-4"></i>
-                                <span>March 15, 2024</span>
+                                March 15, 2024
                             </div>
-                            <div class="flex items-center gap-2">
+                            <div class="flex items-center gap-1">
                                 <i data-lucide="clock" class="w-4 h-4"></i>
-                                <span>9:00 AM - 6:00 PM</span>
+                                9:00 AM - 6:00 PM
                             </div>
-                            <div class="flex items-center gap-2">
+                        </div>
+
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center gap-2 text-gray-600">
                                 <i data-lucide="map-pin" class="w-4 h-4"></i>
-                                <span>San Francisco Convention Center</span>
+                                <span class="text-sm">San Francisco Convention Center</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="users" class="w-4 h-4 text-gray-500"></i>
+                                    <span class="text-sm text-gray-600">1200 attending</span>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
+                                    <span class="text-sm font-medium">4.9</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex items-center gap-2 text-sm text-muted-foreground dark:text-dark-muted-foreground">
-                                <i data-lucide="users" class="w-4 h-4"></i>
-                                <span>2500 attendees</span>
+
+                        <div class="flex items-center justify-between pt-4">
+                            <div class="text-2xl font-heading font-bold text-event-primary">
+                                $299
                             </div>
-                            <div class="text-2xl font-playfair font-bold text-primary">$299</div>
+                            <button class="bg-event-primary hover:bg-event-primary/90 text-white px-6 py-2 rounded-lg font-medium transition-colors flex items-center">
+                                Register Now
+                                <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                            </button>
                         </div>
-                        <button class="w-full bg-primary text-primary-foreground px-6 py-2 rounded-md font-medium group hover:bg-primary/90 transition-colors">
-                            Register Now
-                            <i data-lucide="arrow-right" class="ml-2 w-4 h-4 inline group-hover:translate-x-1 transition-transform"></i>
-                        </button>
                     </div>
                 </div>
 
-                <div class="bg-card dark:bg-dark-card rounded-lg border border-border dark:border-dark-border overflow-hidden group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+                <!-- Event 2 -->
+                <div class="bg-white rounded-xl shadow-sm border overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-500 group cursor-pointer">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Digital Marketing Masterclass" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-                        <span class="absolute top-4 right-4 bg-secondary dark:bg-dark-secondary text-secondary-foreground dark:text-dark-foreground px-2 py-1 rounded text-xs font-medium">Marketing</span>
+                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&auto=format&fit=crop&q=60" alt="Digital Marketing Mastery" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-4 right-4 bg-event-primary text-white px-3 py-1 rounded-full text-sm">
+                            Marketing
+                        </div>
                     </div>
+                    
                     <div class="p-6">
-                        <h3 class="font-playfair text-xl font-bold mb-2 group-hover:text-primary transition-colors dark:text-dark-foreground">
-                            Digital Marketing Masterclass
+                        <h3 class="text-xl font-heading font-semibold text-event-dark line-clamp-2 mb-3">
+                            Digital Marketing Mastery
                         </h3>
-                        <div class="space-y-2 mb-4 text-sm text-muted-foreground dark:text-dark-muted-foreground font-merriweather">
-                            <div class="flex items-center gap-2">
+                        <div class="flex items-center gap-4 text-sm text-gray-600 mb-4">
+                            <div class="flex items-center gap-1">
                                 <i data-lucide="calendar" class="w-4 h-4"></i>
-                                <span>March 22, 2024</span>
+                                March 22, 2024
                             </div>
-                            <div class="flex items-center gap-2">
+                            <div class="flex items-center gap-1">
                                 <i data-lucide="clock" class="w-4 h-4"></i>
-                                <span>2:00 PM - 5:00 PM</span>
+                                10:00 AM - 4:00 PM
                             </div>
-                            <div class="flex items-center gap-2">
+                        </div>
+
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center gap-2 text-gray-600">
                                 <i data-lucide="map-pin" class="w-4 h-4"></i>
-                                <span>Online Event</span>
+                                <span class="text-sm">New York Business Center</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="users" class="w-4 h-4 text-gray-500"></i>
+                                    <span class="text-sm text-gray-600">800 attending</span>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
+                                    <span class="text-sm font-medium">4.8</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex items-center gap-2 text-sm text-muted-foreground dark:text-dark-muted-foreground">
-                                <i data-lucide="users" class="w-4 h-4"></i>
-                                <span>1000 attendees</span>
+
+                        <div class="flex items-center justify-between pt-4">
+                            <div class="text-2xl font-heading font-bold text-event-primary">
+                                $199
                             </div>
-                            <div class="text-2xl font-playfair font-bold text-primary">$149</div>
+                            <button class="bg-event-primary hover:bg-event-primary/90 text-white px-6 py-2 rounded-lg font-medium transition-colors flex items-center">
+                                Register Now
+                                <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                            </button>
                         </div>
-                        <button class="w-full bg-primary text-primary-foreground px-6 py-2 rounded-md font-medium group hover:bg-primary/90 transition-colors">
-                            Register Now
-                            <i data-lucide="arrow-right" class="ml-2 w-4 h-4 inline group-hover:translate-x-1 transition-transform"></i>
-                        </button>
                     </div>
                 </div>
 
-                <div class="bg-card dark:bg-dark-card rounded-lg border border-border dark:border-dark-border overflow-hidden group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="300">
+                <!-- Event 3 -->
+                <div class="bg-white rounded-xl shadow-sm border overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-500 group cursor-pointer">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Startup Pitch Competition" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-                        <span class="absolute top-4 right-4 bg-secondary dark:bg-dark-secondary text-secondary-foreground dark:text-dark-foreground px-2 py-1 rounded text-xs font-medium">Business</span>
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&auto=format&fit=crop&q=60" alt="Sustainable Future Conference" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-4 right-4 bg-event-primary text-white px-3 py-1 rounded-full text-sm">
+                            Environment
+                        </div>
                     </div>
+                    
                     <div class="p-6">
-                        <h3 class="font-playfair text-xl font-bold mb-2 group-hover:text-primary transition-colors dark:text-dark-foreground">
-                            Startup Pitch Competition
+                        <h3 class="text-xl font-heading font-semibold text-event-dark line-clamp-2 mb-3">
+                            Sustainable Future Conference
                         </h3>
-                        <div class="space-y-2 mb-4 text-sm text-muted-foreground dark:text-dark-muted-foreground font-merriweather">
-                            <div class="flex items-center gap-2">
+                        <div class="flex items-center gap-4 text-sm text-gray-600 mb-4">
+                            <div class="flex items-center gap-1">
                                 <i data-lucide="calendar" class="w-4 h-4"></i>
-                                <span>April 5, 2024</span>
+                                April 5, 2024
                             </div>
-                            <div class="flex items-center gap-2">
+                            <div class="flex items-center gap-1">
                                 <i data-lucide="clock" class="w-4 h-4"></i>
-                                <span>10:00 AM - 8:00 PM</span>
+                                9:30 AM - 5:30 PM
                             </div>
-                            <div class="flex items-center gap-2">
+                        </div>
+
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center gap-2 text-gray-600">
                                 <i data-lucide="map-pin" class="w-4 h-4"></i>
-                                <span>Innovation Hub NYC</span>
+                                <span class="text-sm">Los Angeles Green Center</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="users" class="w-4 h-4 text-gray-500"></i>
+                                    <span class="text-sm text-gray-600">600 attending</span>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
+                                    <span class="text-sm font-medium">4.7</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex items-center gap-2 text-sm text-muted-foreground dark:text-dark-muted-foreground">
-                                <i data-lucide="users" class="w-4 h-4"></i>
-                                <span>800 attendees</span>
+
+                        <div class="flex items-center justify-between pt-4">
+                            <div class="text-2xl font-heading font-bold text-event-primary">
+                                $149
                             </div>
-                            <div class="text-2xl font-playfair font-bold text-primary">Free</div>
+                            <button class="bg-event-primary hover:bg-event-primary/90 text-white px-6 py-2 rounded-lg font-medium transition-colors flex items-center">
+                                Register Now
+                                <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                            </button>
                         </div>
-                        <button class="w-full bg-primary text-primary-foreground px-6 py-2 rounded-md font-medium group hover:bg-primary/90 transition-colors">
-                            Register Now
-                            <i data-lucide="arrow-right" class="ml-2 w-4 h-4 inline group-hover:translate-x-1 transition-transform"></i>
-                        </button>
                     </div>
                 </div>
             </div>
 
-            <div class="text-center mt-12" data-aos="fade-up">
-                <button class="border border-border dark:border-dark-border bg-background dark:bg-dark-card text-foreground dark:text-dark-foreground px-8 py-3 rounded-md font-medium hover:bg-muted dark:hover:bg-dark-muted transition-colors">
+            <div class="text-center mt-12">
+                <button class="border-2 border-event-primary text-event-primary hover:bg-event-primary hover:text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center mx-auto">
                     View All Events
-                    <i data-lucide="arrow-right" class="ml-2 w-5 h-5 inline"></i>
+                    <i data-lucide="chevron-right" class="ml-2 w-5 h-5"></i>
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- gallery section start -->
-
-<section id="gallery" class="py-20 bg-background dark:bg-dark-background">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-4xl md:text-5xl font-playfair font-bold text-foreground dark:text-dark-foreground mb-4">
-                Unforgettable Moments
-            </h2>
-            <p class="text-xl font-merriweather text-muted-foreground dark:text-dark-muted-foreground max-w-2xl mx-auto">
-                A glimpse into the vibrant and inspiring experiences from our past events.
-            </p>
-        </div>
-
-        <div class="relative rounded-xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-            <div class="swiper event-gallery-swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide group">
-                        <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover" />
-                        <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <div class="text-white">
-                                <h3 class="font-playfair font-bold text-xl">Networking Gala</h3>
-                                <p class="text-sm font-merriweather opacity-80"><i data-lucide="map-pin" class="inline w-4 h-4 -mt-1"></i> New York</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide group">
-                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover" />
-                        <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <div class="text-white">
-                                <h3 class="font-playfair font-bold text-xl">Tech Conference</h3>
-                                <p class="text-sm font-merriweather opacity-80"><i data-lucide="map-pin" class="inline w-4 h-4 -mt-1"></i> San Francisco</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide group">
-                        <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover" />
-                        <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <div class="text-white">
-                                <h3 class="font-playfair font-bold text-xl">Product Launch</h3>
-                                <p class="text-sm font-merriweather opacity-80"><i data-lucide="map-pin" class="inline w-4 h-4 -mt-1"></i> Online</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide group">
-                        <img src="https://images.unsplash.com/photo-1519167758481-83f550bb4e3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover" />
-                        <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <div class="text-white">
-                                <h3 class="font-playfair font-bold text-xl">Creative Workshop</h3>
-                                <p class="text-sm font-merriweather opacity-80"><i data-lucide="map-pin" class="inline w-4 h-4 -mt-1"></i> London</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide group">
-                        <img src="https://images.unsplash.com/photo-1495754142023-b632127203fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover" />
-                        <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <div class="text-white">
-                                <h3 class="font-playfair font-bold text-xl">Music Festival</h3>
-                                <p class="text-sm font-merriweather opacity-80"><i data-lucide="map-pin" class="inline w-4 h-4 -mt-1"></i> Austin</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="swiper-button-next text-primary drop-shadow-lg hidden md:flex"></div>
-            <div class="swiper-button-prev text-primary drop-shadow-lg hidden md:flex"></div>
-        </div>
-        
-        <div class="swiper-pagination mt-8 relative"></div>
-    </div>
-</section>
-
-
-
-
-
-
-
-
-    <!-- gallery section end -->
-
- 
-
-    <section class="py-20 bg-muted/30 dark:bg-dark-background relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"></div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-playfair font-bold text-foreground dark:text-dark-foreground mb-4">
-                    What Our Attendees Say
+    <!-- Features Preview -->
+    <section id="features" class="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-event-dark mb-6">
+                    Everything You Need
                 </h2>
-                <p class="text-xl font-merriweather text-muted-foreground dark:text-dark-muted-foreground max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-                    Join thousands of satisfied professionals who have transformed their careers through our events.
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Comprehensive event management tools designed for modern experiences
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-card dark:bg-dark-card rounded-lg border border-border dark:border-dark-border p-8 relative overflow-hidden group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-right">
-                    <i data-lucide="quote" class="w-8 h-8 text-primary/20 mb-4"></i>
-                    <div class="flex mb-4">
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-2 transition-all duration-300">
+                    <div class="w-12 h-12 bg-event-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i data-lucide="calendar" class="w-6 h-6 text-event-primary"></i>
                     </div>
-                    <p class="font-merriweather text-muted-foreground dark:text-dark-muted-foreground mb-6 leading-relaxed italic">
-                        "EventSphere transformed our annual conference. The organization was flawless, and the networking opportunities were incredible. Our attendees are already asking about next year!"
+                    <h3 class="text-xl font-heading font-semibold mb-4 text-event-dark">
+                        Smart Calendar
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Intelligent scheduling with automated conflict detection and seamless calendar integration.
                     </p>
-                    <div class="flex items-center">
-                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Jennifer Smith" class="w-12 h-12 rounded-full object-cover mr-4">
-                        <div>
-                            <div class="font-playfair font-semibold dark:text-dark-foreground">Jennifer Smith</div>
-                            <div class="text-sm text-muted-foreground dark:text-dark-muted-foreground">Marketing Director, TechCorp</div>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-2 transition-all duration-300">
+                    <div class="w-12 h-12 bg-event-secondary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i data-lucide="users" class="w-6 h-6 text-event-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold mb-4 text-event-dark">
+                        Attendee Management
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Complete attendee lifecycle management from registration to post-event engagement.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-2 transition-all duration-300">
+                    <div class="w-12 h-12 bg-event-accent/10 rounded-lg flex items-center justify-center mb-6">
+                        <i data-lucide="star" class="w-6 h-6 text-event-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold mb-4 text-event-dark">
+                        Premium Support
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        24/7 dedicated support team to ensure your events run flawlessly from start to finish.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Events & Streaming -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-event-dark mb-6">
+                    Live Events & Streaming
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Join live events and virtual experiences from anywhere in the world
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="relative rounded-xl overflow-hidden shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&auto=format&fit=crop&q=60" alt="Live streaming event" class="w-full h-80 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-center justify-center">
+                            <button class="bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 px-8 py-4 rounded-lg font-medium transition-colors flex items-center">
+                                <i data-lucide="play" class="mr-2 w-6 h-6"></i>
+                                Watch Live
+                            </button>
+                        </div>
+                        <div class="absolute top-4 left-4">
+                            <div class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-2">
+                                <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                                LIVE
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-card dark:bg-dark-card rounded-lg border border-border dark:border-dark-border p-8 relative overflow-hidden group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
-                    <i data-lucide="quote" class="w-8 h-8 text-primary/20 mb-4"></i>
-                    <div class="flex mb-4">
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-                    </div>
-                    <p class="font-merriweather text-muted-foreground dark:text-dark-muted-foreground mb-6 leading-relaxed italic">
-                        "The pitch competition was a game-changer for our startup. The quality of speakers and the professional setup exceeded all expectations. Highly recommend EventSphere!"
-                    </p>
-                    <div class="flex items-center">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="David Rodriguez" class="w-12 h-12 rounded-full object-cover mr-4">
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center">
+                            <i data-lucide="video" class="w-6 h-6 text-red-500"></i>
+                        </div>
                         <div>
-                            <div class="font-playfair font-semibold dark:text-dark-foreground">David Rodriguez</div>
-                            <div class="text-sm text-muted-foreground dark:text-dark-muted-foreground">Startup Founder</div>
+                            <h3 class="text-xl font-heading font-semibold mb-2 text-event-dark">
+                                HD Live Streaming
+                            </h3>
+                            <p class="text-gray-600">
+                                Experience events in crystal-clear HD quality with interactive chat and Q&A features.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-event-primary/10 rounded-lg flex items-center justify-center">
+                            <i data-lucide="globe" class="w-6 h-6 text-event-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-heading font-semibold mb-2 text-event-dark">
+                                Global Access
+                            </h3>
+                            <p class="text-gray-600">
+                                Attend events from anywhere in the world. No travel required, full experience delivered.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-event-secondary/10 rounded-lg flex items-center justify-center">
+                            <i data-lucide="message-circle" class="w-6 h-6 text-event-secondary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-heading font-semibold mb-2 text-event-dark">
+                                Interactive Experience
+                            </h3>
+                            <p class="text-gray-600">
+                                Real-time chat, polls, Q&A sessions, and networking opportunities with other attendees.
+                            </p>
+                        </div>
+                    </div>
+
+                    <button class="bg-event-primary hover:bg-event-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center">
+                        Browse Live Events
+                        <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials & Reviews -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-event-dark mb-6">
+                    What Our Community Says
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Join thousands of satisfied event organizers and attendees who trust EventFlow
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white hover:shadow-lg transition-shadow rounded-xl overflow-hidden">
+                    <div class="p-8">
+                        <div class="flex items-center gap-1 mb-4">
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                        </div>
+                        <i data-lucide="quote" class="w-8 h-8 text-event-primary/20 mb-4"></i>
+                        <p class="text-gray-700 leading-relaxed mb-6 italic">
+                            "EventFlow transformed how we manage our corporate events. The platform is intuitive, powerful, and our attendee satisfaction has increased by 40%."
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&auto=format&fit=crop&q=60" alt="Sarah Johnson" class="w-12 h-12 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-semibold text-event-dark">Sarah Johnson</h4>
+                                <p class="text-sm text-gray-600">Event Director, TechCorp</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-card dark:bg-dark-card rounded-lg border border-border dark:border-dark-border p-8 relative overflow-hidden group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-left" data-aos-delay="200">
-                    <i data-lucide="quote" class="w-8 h-8 text-primary/20 mb-4"></i>
-                    <div class="flex mb-4">
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
-                        <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
+                <!-- Testimonial 2 -->
+                <div class="bg-white hover:shadow-lg transition-shadow rounded-xl overflow-hidden">
+                    <div class="p-8">
+                        <div class="flex items-center gap-1 mb-4">
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                        </div>
+                        <i data-lucide="quote" class="w-8 h-8 text-event-primary/20 mb-4"></i>
+                        <p class="text-gray-700 leading-relaxed mb-6 italic">
+                            "The live streaming capabilities are exceptional. We reached 10x more attendees virtually, opening up incredible new revenue streams."
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&auto=format&fit=crop&q=60" alt="Michael Chen" class="w-12 h-12 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-semibold text-event-dark">Michael Chen</h4>
+                                <p class="text-sm text-gray-600">Conference Organizer</p>
+                            </div>
+                        </div>
                     </div>
-                    <p class="font-merriweather text-muted-foreground dark:text-dark-muted-foreground mb-6 leading-relaxed italic">
-                        "Outstanding event experience! The live streaming feature allowed our remote team to participate seamlessly. The platform is intuitive and the support team is amazing."
-                    </p>
-                    <div class="flex items-center">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Lisa Chen" class="w-12 h-12 rounded-full object-cover mr-4">
-                        <div>
-                            <div class="font-playfair font-semibold dark:text-dark-foreground">Lisa Chen</div>
-                            <div class="text-sm text-muted-foreground dark:text-dark-muted-foreground">Product Manager, InnovateTech</div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white hover:shadow-lg transition-shadow rounded-xl overflow-hidden">
+                    <div class="p-8">
+                        <div class="flex items-center gap-1 mb-4">
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                        </div>
+                        <i data-lucide="quote" class="w-8 h-8 text-event-primary/20 mb-4"></i>
+                        <p class="text-gray-700 leading-relaxed mb-6 italic">
+                            "Customer support is outstanding. They helped us customize the platform perfectly for our unique needs. Highly recommended!"
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&auto=format&fit=crop&q=60" alt="Emily Rodriguez" class="w-12 h-12 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-semibold text-event-dark">Emily Rodriguez</h4>
+                                <p class="text-sm text-gray-600">Marketing Manager</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -833,323 +720,632 @@
         </div>
     </section>
 
-    <section class="py-20 dark:bg-dark-background">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-playfair font-bold text-foreground dark:text-dark-foreground mb-4">
-                    Event Categories
+    <!-- Pricing Plans -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-event-dark mb-6">
+                    Choose Your Perfect Plan
                 </h2>
-                <p class="text-xl font-merriweather text-muted-foreground dark:text-dark-muted-foreground max-w-2xl mx-auto">
-                    Discover events across diverse industries and interests, tailored for every professional journey.
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    From small gatherings to large-scale conferences, we have a plan that fits your needs
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-card dark:bg-dark-card rounded-lg border border-border dark:border-dark-border overflow-hidden group cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover-glow" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="h-2 bg-gradient-to-r from-blue-500 to-cyan-500 gradient-animated"></div>
-                    <div class="p-6 text-center">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all duration-300 group-hover:animate-pulse">
-                            <i data-lucide="code" class="w-8 h-8 text-white group-hover:rotate-12 transition-transform duration-300"></i>
-                        </div>
-                        <h3 class="font-playfair text-lg font-semibold mb-2 group-hover:text-primary transition-colors dark:text-dark-foreground">
-                            Technology & Innovation
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Starter Plan -->
+                <div class="bg-white rounded-xl border shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300 overflow-hidden">
+                    <div class="text-center p-8 pb-8">
+                        <h3 class="text-2xl font-heading font-bold text-event-dark">
+                            Starter
                         </h3>
-                        <p class="text-muted-foreground dark:text-dark-muted-foreground font-merriweather text-sm mb-3 leading-relaxed">
-                            Cutting-edge tech conferences, product launches, and innovation summits
+                        <div class="mt-4">
+                            <span class="text-4xl font-bold text-event-primary">$29</span>
+                            <span class="text-gray-600">/month</span>
+                        </div>
+                        <p class="mt-4 text-gray-600">
+                            Perfect for small events and meetups
                         </p>
-                        <span class="bg-secondary dark:bg-dark-secondary text-secondary-foreground dark:text-dark-foreground px-2 py-1 rounded text-xs font-medium">120+ Events</span>
+                    </div>
+
+                    <div class="px-8 pb-8">
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Up to 100 attendees</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Basic event management</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Email support</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Standard registration</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Basic analytics</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Mobile app access</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="p-8 pt-8">
+                        <button class="w-full py-6 text-lg font-semibold bg-gray-100 hover:bg-gray-200 text-event-dark rounded-lg transition-colors">
+                            Start Free Trial
+                        </button>
                     </div>
                 </div>
 
-                <div class="bg-card dark:bg-dark-card rounded-lg border border-border dark:border-dark-border overflow-hidden group cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover-glow" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="h-2 bg-gradient-to-r from-purple-500 to-pink-500 gradient-animated"></div>
-                    <div class="p-6 text-center">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all duration-300 group-hover:animate-pulse">
-                            <i data-lucide="briefcase" class="w-8 h-8 text-white group-hover:rotate-12 transition-transform duration-300"></i>
+                <!-- Professional Plan -->
+                <div class="relative bg-white rounded-xl border-2 border-event-primary shadow-lg scale-105 overflow-hidden">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <div class="bg-event-primary text-white px-6 py-2 text-sm font-semibold rounded-full">
+                            Most Popular
                         </div>
-                        <h3 class="font-playfair text-lg font-semibold mb-2 group-hover:text-primary transition-colors dark:text-dark-foreground">
-                            Business & Leadership
+                    </div>
+                    
+                    <div class="text-center p-8 pb-8">
+                        <h3 class="text-2xl font-heading font-bold text-event-dark">
+                            Professional
                         </h3>
-                        <p class="text-muted-foreground dark:text-dark-muted-foreground font-merriweather text-sm mb-3 leading-relaxed">
-                            Executive conferences, leadership workshops, and networking events
+                        <div class="mt-4">
+                            <span class="text-4xl font-bold text-event-primary">$99</span>
+                            <span class="text-gray-600">/month</span>
+                        </div>
+                        <p class="mt-4 text-gray-600">
+                            Ideal for growing businesses and organizations
                         </p>
-                        <span class="bg-secondary dark:bg-dark-secondary text-secondary-foreground dark:text-dark-foreground px-2 py-1 rounded text-xs font-medium">85+ Events</span>
+                    </div>
+
+                    <div class="px-8 pb-8">
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Up to 1,000 attendees</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Advanced event tools</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Priority support</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Custom branding</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Live streaming</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Advanced analytics</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Payment processing</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Marketing tools</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="p-8 pt-8">
+                        <button class="w-full py-6 text-lg font-semibold bg-event-primary hover:bg-event-primary/90 text-white rounded-lg transition-colors">
+                            Start Professional
+                        </button>
                     </div>
                 </div>
 
-                <div class="bg-card dark:bg-dark-card rounded-lg border border-border dark:border-dark-border overflow-hidden group cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover-glow" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="h-2 bg-gradient-to-r from-orange-500 to-red-500 gradient-animated"></div>
-                    <div class="p-6 text-center">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all duration-300 group-hover:animate-pulse">
-                            <i data-lucide="palette" class="w-8 h-8 text-white group-hover:rotate-12 transition-transform duration-300"></i>
-                        </div>
-                        <h3 class="font-playfair text-lg font-semibold mb-2 group-hover:text-primary transition-colors dark:text-dark-foreground">
-                            Creative & Design
+                <!-- Enterprise Plan -->
+                <div class="bg-white rounded-xl border shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300 overflow-hidden">
+                    <div class="text-center p-8 pb-8">
+                        <h3 class="text-2xl font-heading font-bold text-event-dark">
+                            Enterprise
                         </h3>
-                        <p class="text-muted-foreground dark:text-dark-muted-foreground font-merriweather text-sm mb-3 leading-relaxed">
-                            Design conferences, creative workshops, and artistic showcases
+                        <div class="mt-4">
+                            <span class="text-4xl font-bold text-event-primary">Custom</span>
+                        </div>
+                        <p class="mt-4 text-gray-600">
+                            For large-scale events and organizations
                         </p>
-                        <span class="bg-secondary dark:bg-dark-secondary text-secondary-foreground dark:text-dark-foreground px-2 py-1 rounded text-xs font-medium">65+ Events</span>
                     </div>
-                </div>
 
-                <div class="bg-card dark:bg-dark-card rounded-lg border border-border dark:border-dark-border overflow-hidden group cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover-glow" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="h-2 bg-gradient-to-r from-green-500 to-emerald-500 gradient-animated"></div>
-                    <div class="p-6 text-center">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all duration-300 group-hover:animate-pulse">
-                            <i data-lucide="trending-up" class="w-8 h-8 text-white group-hover:rotate-12 transition-transform duration-300"></i>
-                        </div>
-                        <h3 class="font-playfair text-lg font-semibold mb-2 group-hover:text-primary transition-colors dark:text-dark-foreground">
-                            Marketing & Growth
-                        </h3>
-                        <p class="text-muted-foreground dark:text-dark-muted-foreground font-merriweather text-sm mb-3 leading-relaxed">
-                            Marketing summits, growth conferences, and digital strategy events
-                        </p>
-                        <span class="bg-secondary dark:bg-dark-secondary text-secondary-foreground dark:text-dark-foreground px-2 py-1 rounded text-xs font-medium">95+ Events</span>
+                    <div class="px-8 pb-8">
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Unlimited attendees</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">White-label solution</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Dedicated support</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Custom integrations</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Multi-event management</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">API access</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Advanced security</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-500 flex-shrink-0"></i>
+                                <span class="text-gray-700">Training & onboarding</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="p-8 pt-8">
+                        <button class="w-full py-6 text-lg font-semibold bg-gray-100 hover:bg-gray-200 text-event-dark rounded-lg transition-colors">
+                            Contact Sales
+                        </button>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section class="py-20 bg-muted/30 dark:bg-dark-background">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-playfair font-bold text-foreground dark:text-dark-foreground mb-4">
-                    Why Choose EventSphere?
-                </h2>
-                <p class="text-xl font-merriweather text-muted-foreground dark:text-dark-muted-foreground max-w-2xl mx-auto">
-                    We deliver exceptional experiences that exceed expectations and create lasting professional connections.
+            <div class="text-center mt-12">
+                <p class="text-gray-600 mb-4">
+                    All plans include a 14-day free trial. No credit card required.
                 </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                        <i data-lucide="award" class="w-8 h-8 text-primary group-hover:text-white transition-colors duration-300"></i>
-                    </div>
-                    <h3 class="font-playfair text-xl font-semibold mb-3 group-hover:text-primary transition-colors dark:text-dark-foreground">
-                        World-Class Experience
-                    </h3>
-                    <p class="text-muted-foreground dark:text-dark-muted-foreground font-merriweather text-sm leading-relaxed">
-                        Premium venues, top-tier speakers, and unforgettable moments
-                    </p>
-                </div>
-                <div class="text-center group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                        <i data-lucide="zap" class="w-8 h-8 text-primary group-hover:text-white transition-colors duration-300"></i>
-                    </div>
-                    <h3 class="font-playfair text-xl font-semibold mb-3 group-hover:text-primary transition-colors dark:text-dark-foreground">
-                        Seamless Technology
-                    </h3>
-                    <p class="text-muted-foreground dark:text-dark-muted-foreground font-merriweather text-sm leading-relaxed">
-                        Advanced registration, live streaming, and mobile app integration
-                    </p>
-                </div>
-                <div class="text-center group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                        <i data-lucide="globe" class="w-8 h-8 text-primary group-hover:text-white transition-colors duration-300"></i>
-                    </div>
-                    <h3 class="font-playfair text-xl font-semibold mb-3 group-hover:text-primary transition-colors dark:text-dark-foreground">
-                        Global Network
-                    </h3>
-                    <p class="text-muted-foreground dark:text-dark-muted-foreground font-merriweather text-sm leading-relaxed">
-                        Connect with professionals and thought leaders worldwide
-                    </p>
-                </div>
-                <div class="text-center group" data-aos="fade-up" data-aos-delay="400">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                        <i data-lucide="shield" class="w-8 h-8 text-primary group-hover:text-white transition-colors duration-300"></i>
-                    </div>
-                    <h3 class="font-playfair text-xl font-semibold mb-3 group-hover:text-primary transition-colors dark:text-dark-foreground">
-                        24/7 Support
-                    </h3>
-                    <p class="text-muted-foreground dark:text-dark-muted-foreground font-merriweather text-sm leading-relaxed">
-                        Dedicated support team ensuring your success every step
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 bg-gradient-to-r from-primary to-accent text-white" data-aos="zoom-in">
-        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <i data-lucide="mail" class="w-16 h-16 mx-auto mb-6 opacity-90"></i>
-            <h2 class="text-4xl md:text-5xl font-playfair font-bold mb-6">
-                Stay In The Loop
-            </h2>
-            <p class="text-xl font-merriweather mb-8 opacity-90 max-w-2xl mx-auto">
-                Get exclusive access to early bird tickets, speaker announcements, and behind-the-scenes content delivered straight to your inbox.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-lg mx-auto">
-                <input type="email" placeholder="Enter your email address"
-                       class="flex-1 px-6 py-4 rounded-lg text-foreground dark:text-dark-foreground font-merriweather focus:outline-none focus:ring-2 focus:ring-white/50 dark:bg-dark-background">
-                <button class="bg-white text-primary px-8 py-4 rounded-lg font-medium hover:bg-gray-100 transition-colors">
-                    Subscribe
-                    <i data-lucide="arrow-right" class="ml-2 w-5 h-5 inline"></i>
+                <button class="text-event-primary hover:text-event-primary/80 flex items-center mx-auto">
+                    Compare All Features
+                    <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
                 </button>
             </div>
-            <p class="text-sm opacity-75 mt-4 font-merriweather">
-                No spam, unsubscribe anytime. Join 25,000+ event enthusiasts.
-            </p>
         </div>
     </section>
 
-    <section class="py-20 dark:bg-dark-background">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-playfair font-bold text-foreground dark:text-dark-foreground mb-4">
+    <!-- Partners & Sponsors -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-event-dark mb-6">
+                    Trusted by Industry Leaders
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Partnering with the world's most innovative companies and organizations
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
+                <div class="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors cursor-pointer group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-event-primary to-event-secondary rounded-lg flex items-center justify-center mx-auto">
+                        <span class="text-white font-bold text-lg">TC</span>
+                    </div>
+                    <p class="text-center text-gray-600 mt-3 text-sm font-medium group-hover:text-event-primary transition-colors">
+                        TechCorp
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors cursor-pointer group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-event-primary to-event-secondary rounded-lg flex items-center justify-center mx-auto">
+                        <span class="text-white font-bold text-lg">IL</span>
+                    </div>
+                    <p class="text-center text-gray-600 mt-3 text-sm font-medium group-hover:text-event-primary transition-colors">
+                        InnovateLab
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors cursor-pointer group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-event-primary to-event-secondary rounded-lg flex items-center justify-center mx-auto">
+                        <span class="text-white font-bold text-lg">FW</span>
+                    </div>
+                    <p class="text-center text-gray-600 mt-3 text-sm font-medium group-hover:text-event-primary transition-colors">
+                        FutureWorks
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors cursor-pointer group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-event-primary to-event-secondary rounded-lg flex items-center justify-center mx-auto">
+                        <span class="text-white font-bold text-lg">GT</span>
+                    </div>
+                    <p class="text-center text-gray-600 mt-3 text-sm font-medium group-hover:text-event-primary transition-colors">
+                        GlobalTech
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors cursor-pointer group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-event-primary to-event-secondary rounded-lg flex items-center justify-center mx-auto">
+                        <span class="text-white font-bold text-lg">NG</span>
+                    </div>
+                    <p class="text-center text-gray-600 mt-3 text-sm font-medium group-hover:text-event-primary transition-colors">
+                        NextGen
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors cursor-pointer group">
+                    <div class="w-16 h-16 bg-gradient-to-br from-event-primary to-event-secondary rounded-lg flex items-center justify-center mx-auto">
+                        <span class="text-white font-bold text-lg">IN</span>
+                    </div>
+                    <p class="text-center text-gray-600 mt-3 text-sm font-medium group-hover:text-event-primary transition-colors">
+                        Innovate
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-gradient-to-r from-event-primary/5 to-event-secondary/5 rounded-2xl p-8">
+                <div class="text-center">
+                    <i data-lucide="award" class="w-12 h-12 text-event-gold mx-auto mb-4"></i>
+                    <h3 class="text-2xl font-heading font-bold text-event-dark mb-4">
+                        Become a Partner
+                    </h3>
+                    <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+                        Join our partner network and help shape the future of event experiences. 
+                        We offer comprehensive partnership programs for sponsors, venues, and technology providers.
+                    </p>
+                    <button class="bg-event-primary hover:bg-event-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center mx-auto">
+                        Partnership Opportunities
+                        <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog & News -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-event-dark mb-6">
+                    Latest News & Insights
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Stay updated with the latest trends, tips, and stories from the event industry
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <div class="bg-white hover:shadow-lg transition-all duration-300 group cursor-pointer rounded-xl overflow-hidden">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&auto=format&fit=crop&q=60" alt="The Future of Hybrid Events" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-4 left-4 bg-event-primary text-white px-3 py-1 rounded-full text-sm">
+                            Trends
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                            <span>March 10, 2024</span>
+                            <span>•</span>
+                            <span>5 min read</span>
+                        </div>
+                        <h3 class="text-xl font-heading font-semibold text-event-dark mb-3 group-hover:text-event-primary transition-colors">
+                            The Future of Hybrid Events: Trends for 2024
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Discover how hybrid events are revolutionizing the industry and what organizers need to know for success.
+                        </p>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <button class="text-event-primary hover:text-event-primary/80 p-0 flex items-center">
+                            Read More
+                            <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="bg-white hover:shadow-lg transition-all duration-300 group cursor-pointer rounded-xl overflow-hidden">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&auto=format&fit=crop&q=60" alt="10 Tips for Engaging Virtual Attendees" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-4 left-4 bg-event-primary text-white px-3 py-1 rounded-full text-sm">
+                            Tips
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                            <span>March 8, 2024</span>
+                            <span>•</span>
+                            <span>7 min read</span>
+                        </div>
+                        <h3 class="text-xl font-heading font-semibold text-event-dark mb-3 group-hover:text-event-primary transition-colors">
+                            10 Tips for Engaging Virtual Attendees
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Learn proven strategies to keep your virtual audience engaged throughout your entire event experience.
+                        </p>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <button class="text-event-primary hover:text-event-primary/80 p-0 flex items-center">
+                            Read More
+                            <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="bg-white hover:shadow-lg transition-all duration-300 group cursor-pointer rounded-xl overflow-hidden">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=400&auto=format&fit=crop&q=60" alt="Sustainability in Event Planning" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute top-4 left-4 bg-event-primary text-white px-3 py-1 rounded-full text-sm">
+                            Sustainability
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                            <span>March 5, 2024</span>
+                            <span>•</span>
+                            <span>6 min read</span>
+                        </div>
+                        <h3 class="text-xl font-heading font-semibold text-event-dark mb-3 group-hover:text-event-primary transition-colors">
+                            Sustainability in Event Planning
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            How to create eco-friendly events that reduce environmental impact while maximizing attendee satisfaction.
+                        </p>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <button class="text-event-primary hover:text-event-primary/80 p-0 flex items-center">
+                            Read More
+                            <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="border-2 border-event-primary text-event-primary hover:bg-event-primary hover:text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center mx-auto">
+                    <i data-lucide="newspaper" class="mr-2 w-5 h-5"></i>
+                    Visit Our Blog
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-event-dark mb-6">
                     Frequently Asked Questions
                 </h2>
-                <p class="text-xl font-merriweather text-muted-foreground dark:text-dark-muted-foreground">
-                    Quick answers to common questions about our events and platform.
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Get answers to common questions about EventFlow and event management
                 </p>
             </div>
 
-            <div class="space-y-6">
-                <div class="bg-card dark:bg-dark-card rounded-lg border border-border dark:border-dark-border p-6 group hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
-                    <div class="flex items-start space-x-4">
-                        <i data-lucide="help-circle" class="w-6 h-6 text-primary mt-1 flex-shrink-0"></i>
-                        <div class="flex-1">
-                            <h3 class="font-playfair text-lg font-semibold mb-2 group-hover:text-primary transition-colors dark:text-dark-foreground">
-                                How do I register for an event?
-                            </h3>
-                            <p class="font-merriweather text-muted-foreground dark:text-dark-muted-foreground leading-relaxed">
-                                Simply browse our events, select the one you're interested in, and click 'Register Now'. You'll be guided through our secure payment process.
-                            </p>
-                        </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white border rounded-xl p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-heading font-semibold text-event-dark mb-3">
+                            How do I create my first event?
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Creating an event is simple! Sign up, click 'Create Event', fill in your event details, customize your registration page, and publish. Our step-by-step wizard guides you through the entire process.
+                        </p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-heading font-semibold text-event-dark mb-3">
+                            Can I sell tickets through EventFlow?
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Yes! EventFlow includes a complete ticketing system with secure payment processing, multiple payment methods, discount codes, and real-time sales tracking.
+                        </p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-heading font-semibold text-event-dark mb-3">
+                            Is live streaming included in all plans?
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Live streaming is available on our Professional and Enterprise plans. It includes HD streaming, interactive chat, Q&A sessions, and recording capabilities.
+                        </p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-heading font-semibold text-event-dark mb-3">
+                            How does the mobile app work?
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Our mobile app allows attendees to view schedules, network with other participants, receive real-time updates, access event materials, and provide feedback seamlessly.
+                        </p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-heading font-semibold text-event-dark mb-3">
+                            What kind of support do you provide?
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            We offer 24/7 customer support via chat, email, and phone. Enterprise customers also get dedicated account managers and technical support.
+                        </p>
+                    </div>
+
+                    <div class="bg-white border rounded-xl p-6 hover:shadow-md transition-shadow">
+                        <h3 class="text-lg font-heading font-semibold text-event-dark mb-3">
+                            Can I customize the event branding?
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Absolutely! You can fully customize colors, logos, fonts, and layouts to match your brand. White-label options are available for Enterprise plans.
+                        </p>
                     </div>
                 </div>
 
-                <div class="bg-card dark:bg-dark-card rounded-lg border border-border dark:border-dark-border p-6 group hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
-                    <div class="flex items-start space-x-4">
-                        <i data-lucide="help-circle" class="w-6 h-6 text-primary mt-1 flex-shrink-0"></i>
-                        <div class="flex-1">
-                            <h3 class="font-playfair text-lg font-semibold mb-2 group-hover:text-primary transition-colors dark:text-dark-foreground">
-                                Can I get a refund if I can't attend?
-                            </h3>
-                            <p class="font-merriweather text-muted-foreground dark:text-dark-muted-foreground leading-relaxed">
-                                Yes, we offer full refunds up to 48 hours before the event starts. Check individual event policies for specific terms.
-                            </p>
-                        </div>
+                <div class="text-center mt-12">
+                    <p class="text-gray-600 mb-6">
+                        Still have questions? Our support team is here to help!
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button class="bg-event-primary hover:bg-event-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center justify-center">
+                            <i data-lucide="message-circle" class="mr-2 w-5 h-5"></i>
+                            Live Chat Support
+                        </button>
+                        <button class="border-2 border-event-primary text-event-primary hover:bg-event-primary hover:text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center justify-center">
+                            <i data-lucide="phone" class="mr-2 w-5 h-5"></i>
+                            Schedule a Call
+                        </button>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="bg-card dark:bg-dark-card rounded-lg border border-border dark:border-dark-border p-6 group hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
-                    <div class="flex items-start space-x-4">
-                        <i data-lucide="help-circle" class="w-6 h-6 text-primary mt-1 flex-shrink-0"></i>
-                        <div class="flex-1">
-                            <h3 class="font-playfair text-lg font-semibold mb-2 group-hover:text-primary transition-colors dark:text-dark-foreground">
-                                Are events available for remote attendance?
-                            </h3>
-                            <p class="font-merriweather text-muted-foreground dark:text-dark-muted-foreground leading-relaxed">
-                                Many of our events offer live streaming options for remote participants. Look for the 'Live Streaming' badge on event listings.
-                            </p>
+    <!-- Newsletter & Social Media -->
+    <section class="py-20 bg-gradient-to-r from-event-primary to-event-secondary">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center text-white">
+                <h2 class="text-4xl md:text-5xl font-heading font-bold mb-6">
+                    Stay Connected
+                </h2>
+                <p class="text-xl text-white/90 mb-8">
+                    Get the latest updates, exclusive offers, and event industry insights delivered to your inbox
+                </p>
+
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 mb-12">
+                    <div class="flex flex-col md:flex-row gap-4 items-center justify-center max-w-2xl mx-auto">
+                        <div class="flex-1 w-full">
+                            <input type="email" placeholder="Enter your email address" class="w-full px-6 py-4 rounded-lg bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-event-gold">
                         </div>
+                        <button class="bg-event-gold hover:bg-event-gold/90 text-event-dark font-semibold px-8 py-4 whitespace-nowrap rounded-lg transition-colors flex items-center">
+                            <i data-lucide="mail" class="mr-2 w-5 h-5"></i>
+                            Subscribe Now
+                        </button>
                     </div>
+                    <p class="text-white/70 text-sm mt-4">
+                        Join 50,000+ event professionals. Unsubscribe anytime.
+                    </p>
                 </div>
 
-                <div class="bg-card dark:bg-dark-card rounded-lg border border-border dark:border-dark-border p-6 group hover:shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="400">
-                    <div class="flex items-start space-x-4">
-                        <i data-lucide="help-circle" class="w-6 h-6 text-primary mt-1 flex-shrink-0"></i>
-                        <div class="flex-1">
-                            <h3 class="font-playfair text-lg font-semibold mb-2 group-hover:text-primary transition-colors dark:text-dark-foreground">
-                                Do you provide certificates of attendance?
-                            </h3>
-                            <p class="font-merriweather text-muted-foreground dark:text-dark-muted-foreground leading-relaxed">
-                                Yes, all registered attendees receive digital certificates of attendance that can be shared on professional networks.
-                            </p>
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-heading font-semibold">Follow Us</h3>
+                    <div class="flex justify-center gap-6">
+                        <div class="bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300 rounded-lg p-4 cursor-pointer group">
+                            <i data-lucide="facebook" class="w-8 h-8 mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
+                            <p class="text-sm font-medium">Facebook</p>
+                            <p class="text-xs text-white/70">25K</p>
+                        </div>
+
+                        <div class="bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300 rounded-lg p-4 cursor-pointer group">
+                            <i data-lucide="twitter" class="w-8 h-8 mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
+                            <p class="text-sm font-medium">Twitter</p>
+                            <p class="text-xs text-white/70">18K</p>
+                        </div>
+
+                        <div class="bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300 rounded-lg p-4 cursor-pointer group">
+                            <i data-lucide="instagram" class="w-8 h-8 mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
+                            <p class="text-sm font-medium">Instagram</p>
+                            <p class="text-xs text-white/70">32K</p>
+                        </div>
+
+                        <div class="bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300 rounded-lg p-4 cursor-pointer group">
+                            <i data-lucide="linkedin" class="w-8 h-8 mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
+                            <p class="text-sm font-medium">LinkedIn</p>
+                            <p class="text-xs text-white/70">15K</p>
+                        </div>
+
+                        <div class="bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300 rounded-lg p-4 cursor-pointer group">
+                            <i data-lucide="youtube" class="w-8 h-8 mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
+                            <p class="text-sm font-medium">YouTube</p>
+                            <p class="text-xs text-white/70">8K</p>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="text-center mt-12" data-aos="fade-up">
-                <button class="border border-border dark:border-dark-border bg-background dark:bg-dark-card text-foreground dark:text-dark-foreground px-8 py-3 rounded-md font-medium hover:bg-muted dark:hover:bg-dark-muted transition-colors">
-                    View All FAQs
-                    <i data-lucide="arrow-right" class="ml-2 w-5 h-5 inline"></i>
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-event-primary to-event-secondary">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-heading font-bold text-white mb-6">
+                Ready to Create Amazing Events?
+            </h2>
+            <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+                Join thousands of event organizers who trust EventFlow for their most important moments
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-white text-event-primary hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-lg transition-colors flex items-center justify-center">
+                    Start Free Trial
+                    <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                </button>
+                <button class="border-2 border-white text-white hover:bg-white/10 px-8 py-4 text-lg rounded-lg transition-colors flex items-center justify-center">
+                    Schedule Demo
                 </button>
             </div>
         </div>
     </section>
 
-    <footer class="bg-foreground text-white py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
+    <!-- Footer -->
+    <footer class="bg-event-dark text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <div class="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="w-8 h-8 bg-gradient-to-br from-event-primary to-event-secondary rounded-lg flex items-center justify-center">
                             <i data-lucide="calendar" class="w-5 h-5 text-white"></i>
                         </div>
-                        <span class="text-xl font-playfair font-bold">EventSphere</span>
+                        <span class="text-xl font-heading font-bold">EventFlow</span>
                     </div>
-                    <p class="font-merriweather text-sm text-gray-300">
-                        Creating extraordinary event experiences that connect, inspire, and transform.
+                    <p class="text-gray-400 leading-relaxed">
+                        Creating extraordinary event experiences through innovative technology and exceptional service.
                     </p>
                 </div>
 
                 <div>
-                    <h3 class="font-playfair text-lg font-semibold mb-4">Quick Links</h3>
-                    <ul class="space-y-2 font-merriweather text-sm">
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">All Events</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Event Calendar</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Speakers</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Blog</a></li>
+                    <h4 class="font-heading font-semibold mb-6">Platform</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#events" class="hover:text-white transition-colors">Browse Events</a></li>
+                        <li><a href="#calendar" class="hover:text-white transition-colors">Event Calendar</a></li>
+                        <li><a href="#speakers" class="hover:text-white transition-colors">Featured Speakers</a></li>
+                        <li><a href="#gallery" class="hover:text-white transition-colors">Photo Gallery</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h3 class="font-playfair text-lg font-semibold mb-4">Support</h3>
-                    <ul class="space-y-2 font-merriweather text-sm">
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Help Center</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Contact Us</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">FAQ</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Privacy Policy</a></li>
+                    <h4 class="font-heading font-semibold mb-6">Support</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#help" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="#blog" class="hover:text-white transition-colors">Blog</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h3 class="font-playfair text-lg font-semibold mb-4">Connect</h3>
-                    <p class="font-merriweather text-sm text-gray-300 mb-4">
-                        Follow us for the latest updates and event announcements.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
-                            <i data-lucide="facebook" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
-                            <i data-lucide="twitter" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
-                            <i data-lucide="instagram" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
-                            <i data-lucide="linkedin" class="w-5 h-5"></i>
-                        </a>
-                    </div>
+                    <h4 class="font-heading font-semibold mb-6">Legal</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#privacy" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#terms" class="hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#cookies" class="hover:text-white transition-colors">Cookie Policy</a></li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
-                <p class="font-merriweather text-sm text-gray-300">
-                    © 2024 EventSphere. All rights reserved.
-                </p>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 EventFlow. All rights reserved. Built with passion for extraordinary events.</p>
             </div>
         </div>
     </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
+    <!-- JavaScript -->
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
-
-        // Initialize AOS
-        AOS.init({
-            duration: 800, // values from 0 to 3000, with step 50ms
-            once: false, // whether animation should happen only once - while scrolling down
-        });
 
         // Mobile menu toggle
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
@@ -1157,123 +1353,78 @@
         const menuIcon = document.getElementById('menu-icon');
         const closeIcon = document.getElementById('close-icon');
 
-        mobileMenuToggle.addEventListener('click', () => {
+        mobileMenuToggle.addEventListener('click', function() {
             mobileMenu.classList.toggle('hidden');
             menuIcon.classList.toggle('hidden');
             closeIcon.classList.toggle('hidden');
         });
 
-        // Dark/Light Theme Toggle
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-
-        // Check for saved theme in localStorage and apply it
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-            themeToggleLightIcon.classList.remove('hidden');
-        } else {
-            document.documentElement.classList.remove('dark');
-            themeToggleDarkIcon.classList.remove('hidden');
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
         }
 
-        themeToggleBtn.addEventListener('click', function() {
-            // toggle icons inside button
-            themeToggleDarkIcon.classList.toggle('hidden');
-            themeToggleLightIcon.classList.toggle('hidden');
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        const logoText = document.getElementById('logo-text');
+        const navLinks = document.querySelectorAll('.nav-link');
 
-            // if set via local storage previously
-            if (localStorage.getItem('color-theme')) {
-                if (localStorage.getItem('color-theme') === 'light') {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('color-theme', 'dark');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('color-theme', 'light');
-                }
-
-            // if NOT set via local storage previously
+        function updateNavbar() {
+            const scrolled = window.scrollY > 50;
+            
+            if (scrolled) {
+                navbar.classList.remove('bg-transparent');
+                navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-lg');
+                logoText.classList.remove('text-white');
+                logoText.classList.add('text-event-dark');
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white');
+                    link.classList.add('text-gray-700');
+                });
             } else {
-                if (document.documentElement.classList.contains('dark')) {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('color-theme', 'light');
-                } else {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('color-theme', 'dark');
-                }
+                navbar.classList.add('bg-transparent');
+                navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-lg');
+                logoText.classList.add('text-white');
+                logoText.classList.remove('text-event-dark');
+                navLinks.forEach(link => {
+                    link.classList.add('text-white');
+                    link.classList.remove('text-gray-700');
+                });
             }
-        });
+        }
 
+        // Scroll progress bar
+        const scrollProgress = document.getElementById('scroll-progress');
 
-        // Hero carousel
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.hero-slide');
-        const indicators = document.querySelectorAll('.hero-indicator');
+        function updateScrollProgress() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = Math.min(scrollPercent, 100) + '%';
+        }
 
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.style.opacity = i === index ? '1' : '0';
-            });
-            indicators.forEach((indicator, i) => {
-                indicator.style.backgroundColor = i === index ? 'rgb(255, 255, 255)' : 'rgba(255, 255, 255, 0.5)';
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
             });
         }
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
-
-        // Auto-advance slides
-        setInterval(nextSlide, 5000);
-
-        // Manual slide control
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                currentSlide = index;
-                showSlide(currentSlide);
-            });
+        // Event listeners
+        window.addEventListener('scroll', function() {
+            updateNavbar();
+            updateScrollProgress();
         });
 
+        // Initialize
+        updateNavbar();
+        updateScrollProgress();
 
-// Swiper.js Initialization for Event Gallery
-// Swiper.js Initialization for Event Gallery (Final Version)
-var swiper = new Swiper(".event-gallery-swiper", {
-    effect: "coverflow",
-    grabCursor: true,
-    centeredSlides: true,
-    loop: true,
-    slidesPerView: 1, // মোবাইল এবং ছোট স্ক্রিনের জন্য ডিফল্ট
-    spaceBetween: 30,
-    autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-    },
-    coverflowEffect: {
-        rotate: 40,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: true,
-    },
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-    },
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-    },
-    // Breakpoints for larger screens
-    breakpoints: {
-        // 768px এর চেয়ে বড় স্ক্রিনের জন্য
-        768: {
-          slidesPerView: 3, // মাঝখানে ১টি এবং দুইপাশে ২টি স্লাইড দেখাবে
-          spaceBetween: 50,
-        },
-    }
-});
-        
+        // Initialize icons again after DOM changes
+        setTimeout(() => {
+            lucide.createIcons();
+        }, 100);
     </script>
 </body>
 </html>
