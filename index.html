@@ -200,135 +200,208 @@
         </div>
     </nav>
 
-    <section class="relative h-[90vh] overflow-hidden">
-        <div class="absolute inset-0" id="hero-carousel">
-            <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-100">
-                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Hero 1" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/40"></div>
+  <section class="relative h-[90vh] overflow-hidden">
+    <div class="absolute inset-0" id="hero-carousel">
+        <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-100">
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                 alt="Hero 1" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+        <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                 alt="Hero 2" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+        <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
+            <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                 alt="Hero 3" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
+    </div>
+    
+    <div class="relative z-10 flex items-center justify-center h-full">
+        <div class="text-center text-white max-w-4xl mx-auto px-4">
+            <h1 class="text-5xl md:text-7xl font-playfair font-bold mb-6 leading-tight animate-slide-up">
+                Extraordinary Events,
+                <br>
+                <span class="text-gradient bg-gradient-to-r from-accent via-yellow-400 to-accent gradient-animated">
+                    Unforgettable Experiences
+                </span>
+            </h1>
+            <p class="text-xl md:text-2xl font-merriweather mb-8 max-w-2xl mx-auto leading-relaxed animate-fade-in" style="animation-delay: 0.3s;">
+                Join thousands of professionals, innovators, and thought leaders at the world's most inspiring events.
+            </p>
+
+            <div class="my-8 py-4 bg-white/10 backdrop-blur-sm border-y border-white/20 text-white/90 text-sm sm:text-base text-center font-merriweather" data-aos="fade-up" data-aos-delay="0.4s">
+               <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+                  <span class="flex items-center">
+                      <i data-lucide="calendar" class="w-4 h-4 mr-2"></i>December 15, 2025
+                  </span>
+                  <span class="hidden sm:inline">&bull;</span>
+                  <span class="flex items-center">
+                      <i data-lucide="clock" class="w-4 h-4 mr-2"></i>9:00 AM Start
+                  </span>
+                   <span class="hidden sm:inline">&bull;</span>
+                  <span class="flex items-center">
+                      <i data-lucide="map-pin" class="w-4 h-4 mr-2"></i>Grand Convention Center
+                  </span>
+               </div>
             </div>
-            <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
-                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Hero 2" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/40"></div>
-            </div>
-            <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0">
-                <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Hero 3" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/40"></div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="0.5s">
+                <button class="text-lg px-8 py-4 bg-primary text-primary-foreground rounded-md font-medium group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                    Explore Events
+                    <i data-lucide="arrow-right" class="ml-2 w-5 h-5 inline group-hover:translate-x-1 transition-transform duration-300"></i>
+                </button>
+                <button class="text-lg px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/30 text-white hover:bg-white hover:text-foreground rounded-md font-medium group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                    <i data-lucide="play" class="mr-2 w-5 h-5 inline group-hover:scale-110 transition-transform duration-300"></i>
+                    Watch Demo
+                </button>
             </div>
         </div>
-        
-        <div class="relative z-10 flex items-center justify-center h-full">
-            <div class="text-center text-white max-w-4xl mx-auto px-4">
-                <h1 class="text-5xl md:text-7xl font-playfair font-bold mb-6 leading-tight animate-slide-up">
-                    Extraordinary Events,
-                    <br>
-                    <span class="text-gradient bg-gradient-to-r from-accent via-yellow-400 to-accent gradient-animated">
-                        Unforgettable Experiences
-                    </span>
-                </h1>
-                <p class="text-xl md:text-2xl font-merriweather mb-8 max-w-2xl mx-auto leading-relaxed animate-fade-in" style="animation-delay: 0.3s;">
-                    Join thousands of professionals, innovators, and thought leaders at the world's most inspiring events.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button class="text-lg px-8 py-4 bg-primary text-primary-foreground rounded-md font-medium group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-                        Explore Events
-                        <i data-lucide="arrow-right" class="ml-2 w-5 h-5 inline group-hover:translate-x-1 transition-transform duration-300"></i>
-                    </button>
-                    <button class="text-lg px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/30 text-white hover:bg-white hover:text-foreground rounded-md font-medium group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-                        <i data-lucide="play" class="mr-2 w-5 h-5 inline group-hover:scale-110 transition-transform duration-300"></i>
-                        Watch Demo
-                    </button>
-                </div>
-            </div>
-        </div>
+    </div>
 
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
-            <button class="hero-indicator w-3 h-3 rounded-full transition-all duration-300 bg-white" data-slide="0"></button>
-            <button class="hero-indicator w-3 h-3 rounded-full transition-all duration-300 bg-white/50" data-slide="1"></button>
-            <button class="hero-indicator w-3 h-3 rounded-full transition-all duration-300 bg-white/50" data-slide="2"></button>
-        </div>
-    </section>
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        <button class="hero-indicator w-3 h-3 rounded-full transition-all duration-300 bg-white" data-slide="0"></button>
+        <button class="hero-indicator w-3 h-3 rounded-full transition-all duration-300 bg-white/50" data-slide="1"></button>
+        <button class="hero-indicator w-3 h-3 rounded-full transition-all duration-300 bg-white/50" data-slide="2"></button>
+    </div>
+</section>
 
-    <!-- event category start  -->
-
-       <section class="py-20 dark:bg-dark-background">
+    <section id="about-event" class="py-20 bg-muted/30 dark:bg-dark-background/50 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-playfair font-bold text-foreground dark:text-dark-foreground mb-4">
-                    Event Categories
-                </h2>
-                <p class="text-xl font-merriweather text-muted-foreground dark:text-dark-muted-foreground max-w-2xl mx-auto">
-                    Discover events across diverse industries and interests, tailored for every professional journey.
-                </p>
-            </div>
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-card dark:bg-dark-card rounded-lg border border-border dark:border-dark-border overflow-hidden group cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover-glow" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="h-2 bg-gradient-to-r from-blue-500 to-cyan-500 gradient-animated"></div>
-                    <div class="p-6 text-center">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all duration-300 group-hover:animate-pulse">
-                            <i data-lucide="code" class="w-8 h-8 text-white group-hover:rotate-12 transition-transform duration-300"></i>
+                <div data-aos="fade-right">
+                    <span class="font-medium text-primary dark:text-accent font-merriweather">About The Summit</span>
+                    <h2 class="mt-2 text-4xl md:text-5xl font-playfair font-bold text-foreground dark:text-dark-foreground">
+                        Global Innovation Summit 2025
+                    </h2>
+                    <p class="mt-4 text-lg font-merriweather text-muted-foreground dark:text-dark-muted-foreground leading-relaxed">
+                        This summit is a premier event dedicated to showcasing the latest advancements across various industries. We provide a platform where leaders, innovators, and professionals can connect, share knowledge, and shape the future.
+                    </p>
+
+                    <div class="mt-8 space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-primary/10 text-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i data-lucide="users" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold font-playfair text-lg">Visionary Speakers</h3>
+                                <p class="text-muted-foreground dark:text-dark-muted-foreground">Engage with influential figures and gain insights from their experiences.</p>
+                            </div>
                         </div>
-                        <h3 class="font-playfair text-lg font-semibold mb-2 group-hover:text-primary transition-colors dark:text-dark-foreground">
-                            Technology & Innovation
-                        </h3>
-                        <p class="text-muted-foreground dark:text-dark-muted-foreground font-merriweather text-sm mb-3 leading-relaxed">
-                            Cutting-edge tech conferences, product launches, and innovation summits
-                        </p>
-                        <span class="bg-secondary dark:bg-dark-secondary text-secondary-foreground dark:text-dark-foreground px-2 py-1 rounded text-xs font-medium">120+ Events</span>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-primary/10 text-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i data-lucide="puzzle" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold font-playfair text-lg">Interactive Workshops</h3>
+                                <p class="text-muted-foreground dark:text-dark-muted-foreground">Enhance your skills through hands-on sessions and collaborative activities.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-primary/10 text-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i data-lucide="briefcase" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold font-playfair text-lg">Partnership Opportunities</h3>
+                                <p class="text-muted-foreground dark:text-dark-muted-foreground">Connect with potential partners to drive your projects forward.</p>
+                            </div>
+                        </div>
                     </div>
+
+                    <a href="event-details.html" class="mt-10 inline-block bg-primary text-primary-foreground px-8 py-3 rounded-md font-medium group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                        Discover More & Register
+                        <i data-lucide="arrow-right" class="ml-2 w-5 h-5 inline group-hover:translate-x-1 transition-transform"></i>
+                    </a>
                 </div>
 
-                <div class="bg-card dark:bg-dark-card rounded-lg border border-border dark:border-dark-border overflow-hidden group cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover-glow" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="h-2 bg-gradient-to-r from-purple-500 to-pink-500 gradient-animated"></div>
-                    <div class="p-6 text-center">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all duration-300 group-hover:animate-pulse">
-                            <i data-lucide="briefcase" class="w-8 h-8 text-white group-hover:rotate-12 transition-transform duration-300"></i>
-                        </div>
-                        <h3 class="font-playfair text-lg font-semibold mb-2 group-hover:text-primary transition-colors dark:text-dark-foreground">
-                            Business & Leadership
-                        </h3>
-                        <p class="text-muted-foreground dark:text-dark-muted-foreground font-merriweather text-sm mb-3 leading-relaxed">
-                            Executive conferences, leadership workshops, and networking events
-                        </p>
-                        <span class="bg-secondary dark:bg-dark-secondary text-secondary-foreground dark:text-dark-foreground px-2 py-1 rounded text-xs font-medium">85+ Events</span>
+                <div class="relative min-h-[500px]" data-aos="fade-left">
+                    <div class="absolute top-0 left-0 w-72 h-72 rounded-xl overflow-hidden shadow-2xl transform rotate-6 transition-transform duration-300 hover:rotate-0 hover:scale-105 z-10">
+                        <img src="https://images.unsplash.com/photo-1692208536043-c58d201707ae?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Stylish Tech Conference Scene"
+                            class="w-full h-full object-cover">
                     </div>
-                </div>
-
-                <div class="bg-card dark:bg-dark-card rounded-lg border border-border dark:border-dark-border overflow-hidden group cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover-glow" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="h-2 bg-gradient-to-r from-orange-500 to-red-500 gradient-animated"></div>
-                    <div class="p-6 text-center">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all duration-300 group-hover:animate-pulse">
-                            <i data-lucide="palette" class="w-8 h-8 text-white group-hover:rotate-12 transition-transform duration-300"></i>
-                        </div>
-                        <h3 class="font-playfair text-lg font-semibold mb-2 group-hover:text-primary transition-colors dark:text-dark-foreground">
-                            Creative & Design
-                        </h3>
-                        <p class="text-muted-foreground dark:text-dark-muted-foreground font-merriweather text-sm mb-3 leading-relaxed">
-                            Design conferences, creative workshops, and artistic showcases
-                        </p>
-                        <span class="bg-secondary dark:bg-dark-secondary text-secondary-foreground dark:text-dark-foreground px-2 py-1 rounded text-xs font-medium">65+ Events</span>
+                    <div class="absolute top-1/4 -translate-y-1/4 right-0 w-64 h-64 rounded-xl overflow-hidden shadow-2xl transform -rotate-4 transition-transform duration-300 hover:rotate-0 hover:scale-105 z-20 border-4 border-card dark:border-dark-card">
+                        <img src="https://images.unsplash.com/photo-1651065699177-63822e0c11fc?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Professional Networking Event"
+                            class="w-full h-full object-cover">
                     </div>
-                </div>
-
-                <div class="bg-card dark:bg-dark-card rounded-lg border border-border dark:border-dark-border overflow-hidden group cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover-glow" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="h-2 bg-gradient-to-r from-green-500 to-emerald-500 gradient-animated"></div>
-                    <div class="p-6 text-center">
-                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all duration-300 group-hover:animate-pulse">
-                            <i data-lucide="trending-up" class="w-8 h-8 text-white group-hover:rotate-12 transition-transform duration-300"></i>
-                        </div>
-                        <h3 class="font-playfair text-lg font-semibold mb-2 group-hover:text-primary transition-colors dark:text-dark-foreground">
-                            Marketing & Growth
-                        </h3>
-                        <p class="text-muted-foreground dark:text-dark-muted-foreground font-merriweather text-sm mb-3 leading-relaxed">
-                            Marketing summits, growth conferences, and digital strategy events
-                        </p>
-                        <span class="bg-secondary dark:bg-dark-secondary text-secondary-foreground dark:text-dark-foreground px-2 py-1 rounded text-xs font-medium">95+ Events</span>
+                    <div class="absolute bottom-0 left-1/4 -translate-x-1/4 w-80 h-64 rounded-xl overflow-hidden shadow-2xl transform rotate-2 transition-transform duration-300 hover:rotate-0 hover:scale-105 z-0">
+                        <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Engaged Audience"
+                            class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- event category end  -->
+
+    <!-- event highlights start  -->
+
+    <section id="event-highlights" class="py-20 bg-background dark:bg-dark-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-playfair font-bold text-foreground dark:text-dark-foreground mb-4">
+                Experience More Than Just an Event
+            </h2>
+            <p class="text-xl font-merriweather text-muted-foreground dark:text-dark-muted-foreground max-w-2xl mx-auto">
+                From hands-on workshops to vibrant networking sessions, our events are packed with memorable experiences.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <div data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-card dark:bg-dark-card rounded-xl p-8 text-center shadow-lg hover:shadow-primary/20 dark:hover:shadow-indigo-950/20 transition-all duration-300 transform hover:-translate-y-2 group relative overflow-hidden">
+                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-primary/5 dark:bg-primary/10 rounded-full transition-transform duration-500 group-hover:scale-125"></div>
+                    <div class="relative w-20 h-20 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="puzzle" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-playfair font-semibold text-foreground dark:text-dark-foreground">Interactive Workshops</h3>
+                    <p class="mt-2 text-muted-foreground dark:text-dark-muted-foreground">Dive deep into specific topics with hands-on sessions led by industry experts.</p>
+                </div>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="200">
+                 <div class="bg-card dark:bg-dark-card rounded-xl p-8 text-center shadow-lg hover:shadow-primary/20 dark:hover:shadow-indigo-950/20 transition-all duration-300 transform hover:-translate-y-2 group relative overflow-hidden">
+                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-primary/5 dark:bg-primary/10 rounded-full transition-transform duration-500 group-hover:scale-125"></div>
+                    <div class="relative w-20 h-20 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="users" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-playfair font-semibold text-foreground dark:text-dark-foreground">Valuable Networking</h3>
+                    <p class="mt-2 text-muted-foreground dark:text-dark-muted-foreground">Connect with peers, industry leaders, and potential partners in a dynamic environment.</p>
+                </div>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="300">
+                 <div class="bg-card dark:bg-dark-card rounded-xl p-8 text-center shadow-lg hover:shadow-primary/20 dark:hover:shadow-indigo-950/20 transition-all duration-300 transform hover:-translate-y-2 group relative overflow-hidden">
+                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-primary/5 dark:bg-primary/10 rounded-full transition-transform duration-500 group-hover:scale-125"></div>
+                    <div class="relative w-20 h-20 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="music-4" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-playfair font-semibold text-foreground dark:text-dark-foreground">Live Entertainment</h3>
+                    <p class="mt-2 text-muted-foreground dark:text-dark-muted-foreground">Enjoy live music, performances, and other engaging entertainment to unwind.</p>
+                </div>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="400">
+                 <div class="bg-card dark:bg-dark-card rounded-xl p-8 text-center shadow-lg hover:shadow-primary/20 dark:hover:shadow-indigo-950/20 transition-all duration-300 transform hover:-translate-y-2 group relative overflow-hidden">
+                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-primary/5 dark:bg-primary/10 rounded-full transition-transform duration-500 group-hover:scale-125"></div>
+                    <div class="relative w-20 h-20 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="utensils-crossed" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-playfair font-semibold text-foreground dark:text-dark-foreground">Gourmet Food & Drinks</h3>
+                    <p class="mt-2 text-muted-foreground dark:text-dark-muted-foreground">Savor delicious food and refreshing beverages crafted by top chefs and baristas.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+    <!-- event highlights end  -->
+
 
     <!-- event calendar start -->
 
@@ -541,48 +614,154 @@
 </section>
  <!-- team section end  -->
 
-    <section class="py-16 bg-primary text-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-accent/20"></div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center group" data-aos="fade-up">
-                    <div class="relative">
-                        <i data-lucide="calendar" class="w-8 h-8 mx-auto mb-4 text-accent animate-float group-hover:scale-110 transition-transform duration-300"></i>
-                        <div class="absolute inset-0 w-8 h-8 mx-auto bg-accent/20 rounded-full blur-xl animate-pulse-slow"></div>
+
+
+ <!-- venue start  -->
+
+ <section id="venue" class="py-20 bg-muted/30 dark:bg-dark-background/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-playfair font-bold text-foreground dark:text-dark-foreground mb-4">
+                Our Premier Event Venue
+            </h2>
+            <p class="text-xl font-merriweather text-muted-foreground dark:text-dark-muted-foreground max-w-2xl mx-auto">
+                We host our key events at world-class venues to ensure an unforgettable and seamless experience for everyone.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            
+            <div data-aos="fade-right">
+                <h3 class="text-3xl font-playfair font-bold text-foreground dark:text-dark-foreground">The Grand Convention Center</h3>
+                <p class="mt-4 font-merriweather text-muted-foreground dark:text-dark-muted-foreground leading-relaxed">
+                    Located in the heart of the city, The Grand Convention Center offers a perfect blend of modern elegance and cutting-edge technology, making it the ideal location for our flagship events.
+                </p>
+                
+                <ul class="mt-6 space-y-4">
+                    <li class="flex items-center gap-3">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-primary"></i>
+                        <span class="font-medium">Central Business District</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i data-lucide="users" class="w-5 h-5 text-primary"></i>
+                        <span class="font-medium">500+ Seating Capacity</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i data-lucide="wifi" class="w-5 h-5 text-primary"></i>
+                        <span class="font-medium">State-of-the-Art A/V & High-Speed Wi-Fi</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i data-lucide="utensils-crossed" class="w-5 h-5 text-primary"></i>
+                        <span class="font-medium">Gourmet Catering Services</span>
+                    </li>
+                </ul>
+
+                <div class="mt-8">
+                    <h4 class="font-playfair font-semibold mb-4">Glimpses of the Venue</h4>
+                    <div class="grid grid-cols-3 gap-4">
+                        <a href="https://images.unsplash.com/photo-1594122230689-45899d9e6f69?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" data-fancybox="venue-gallery" data-caption="Main Auditorium">
+                            <img src="https://images.unsplash.com/photo-1594122230689-45899d9e6f69?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Main Auditorium" class="rounded-lg shadow-md hover:opacity-80 transition-opacity">
+                        </a>
+                        <a href="https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" data-fancybox="venue-gallery" data-caption="Networking Lounge">
+                            <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Networking Lounge" class="rounded-lg shadow-md hover:opacity-80 transition-opacity">
+                        </a>
+                        <a href="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" data-fancybox="venue-gallery" data-caption="Dining Area">
+                            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Dining Area" class="rounded-lg shadow-md hover:opacity-80 transition-opacity">
+                        </a>
                     </div>
-                    <div class="text-3xl font-playfair font-bold mb-2 group-hover:scale-105 transition-transform duration-300">500+</div>
-                    <div class="text-sm font-merriweather opacity-90 group-hover:opacity-100 transition-opacity">Events Hosted</div>
-                </div>
-                <div class="text-center group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative">
-                        <i data-lucide="users" class="w-8 h-8 mx-auto mb-4 text-accent animate-float group-hover:scale-110 transition-transform duration-300" style="animation-delay: 0.5s;"></i>
-                        <div class="absolute inset-0 w-8 h-8 mx-auto bg-accent/20 rounded-full blur-xl animate-pulse-slow" style="animation-delay: 0.5s;"></div>
-                    </div>
-                    <div class="text-3xl font-playfair font-bold mb-2 group-hover:scale-105 transition-transform duration-300">50K+</div>
-                    <div class="text-sm font-merriweather opacity-90 group-hover:opacity-100 transition-opacity">Happy Attendees</div>
-                </div>
-                <div class="text-center group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative">
-                        <i data-lucide="mic" class="w-8 h-8 mx-auto mb-4 text-accent animate-float group-hover:scale-110 transition-transform duration-300" style="animation-delay: 1s;"></i>
-                        <div class="absolute inset-0 w-8 h-8 mx-auto bg-accent/20 rounded-full blur-xl animate-pulse-slow" style="animation-delay: 1s;"></div>
-                    </div>
-                    <div class="text-3xl font-playfair font-bold mb-2 group-hover:scale-105 transition-transform duration-300">200+</div>
-                    <div class="text-sm font-merriweather opacity-90 group-hover:opacity-100 transition-opacity">Expert Speakers</div>
-                </div>
-                <div class="text-center group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="relative">
-                        <i data-lucide="award" class="w-8 h-8 mx-auto mb-4 text-accent animate-float group-hover:scale-110 transition-transform duration-300" style="animation-delay: 1.5s;"></i>
-                        <div class="absolute inset-0 w-8 h-8 mx-auto bg-accent/20 rounded-full blur-xl animate-pulse-slow" style="animation-delay: 1.5s;"></div>
-                    </div>
-                    <div class="text-3xl font-playfair font-bold mb-2 group-hover:scale-105 transition-transform duration-300">98%</div>
-                    <div class="text-sm font-merriweather opacity-90 group-hover:opacity-100 transition-opacity">Success Rate</div>
                 </div>
             </div>
+
+            <div data-aos="fade-left" class="h-[500px]">
+                <div class="rounded-xl overflow-hidden border border-border dark:border-dark-border shadow-2xl w-full h-full">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.257424688975!2d-122.4042336846816!3d37.78443597975764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808580852c0f7b9b%3A0x4cb118a7a2817e85!2sMoscone%20Center!5e0!3m2!1sen!2sbd!4v1661262114777!5m2!1sen!2sbd" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+            
         </div>
-    </section>
+    </div>
+</section>
+ <!-- venue end  -->
+
+ <!-- pricing section start  -->
+
+ <section id="pricing" class="py-20 bg-background dark:bg-dark-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-playfair font-bold text-foreground dark:text-dark-foreground mb-4">
+                Choose Your Ticket
+            </h2>
+            <p class="text-xl font-merriweather text-muted-foreground dark:text-dark-muted-foreground max-w-2xl mx-auto">
+                Flexible plans for every attendee. Get your access to the most awaited event of the year.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+            
+            <div class="bg-card dark:bg-dark-card p-8 rounded-xl border border-border dark:border-dark-border text-center h-full flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-2xl font-playfair font-semibold">General Admission</h3>
+                <p class="mt-2 text-muted-foreground dark:text-dark-muted-foreground font-merriweather">For individuals & students</p>
+                <div class="my-6">
+                    <span class="text-5xl font-bold font-sans text-foreground dark:text-dark-foreground">$99</span>
+                    <span class="text-muted-foreground dark:text-dark-muted-foreground">/ person</span>
+                </div>
+                <ul class="space-y-4 text-left text-muted-foreground dark:text-dark-muted-foreground mb-8 flex-grow">
+                    <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-primary mr-2"></i> Access to all main sessions</li>
+                    <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-primary mr-2"></i> Networking area access</li>
+                    <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-primary mr-2"></i> Coffee & snacks included</li>
+                    <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-primary mr-2"></i> Welcome kit</li>
+                </ul>
+                <a href="#" class="block w-full mt-auto bg-primary/20 text-primary dark:bg-primary/30 dark:text-white px-6 py-3 rounded-md font-medium hover:bg-primary hover:text-white transition-colors">Get Ticket</a>
+            </div>
+            
+            <div class="bg-card dark:bg-dark-card p-8 rounded-xl border-2 border-primary shadow-2xl shadow-primary/20 relative text-center h-full flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">BEST VALUE</span>
+                <h3 class="text-2xl font-playfair font-semibold">VIP Access</h3>
+                <p class="mt-2 text-muted-foreground dark:text-dark-muted-foreground font-merriweather">For the ultimate experience</p>
+                <div class="my-6">
+                    <span class="text-5xl font-bold font-sans text-primary">$199</span>
+                    <span class="text-muted-foreground dark:text-dark-muted-foreground">/ person</span>
+                </div>
+                <ul class="space-y-4 text-left text-muted-foreground dark:text-dark-muted-foreground mb-8 flex-grow">
+                    <li class="flex items-center font-semibold"><i data-lucide="check" class="w-5 h-5 text-primary mr-2"></i> All General Admission benefits</li>
+                    <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-primary mr-2"></i> Front row seating</li>
+                    <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-primary mr-2"></i> Exclusive speaker Q&A session</li>
+                    <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-primary mr-2"></i> VIP lounge access</li>
+                    <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-primary mr-2"></i> Full lunch included</li>
+                </ul>
+                <a href="#" class="block w-full mt-auto bg-primary text-primary-foreground px-6 py-3 rounded-md font-medium hover:bg-primary/90 transition-colors shadow-lg">Get Ticket</a>
+            </div>
+
+            <div class="bg-card dark:bg-dark-card p-8 rounded-xl border border-border dark:border-dark-border text-center h-full flex flex-col" data-aos="fade-up" data-aos-delay="300">
+                <h3 class="text-2xl font-playfair font-semibold">Group Pass</h3>
+                <p class="mt-2 text-muted-foreground dark:text-dark-muted-foreground font-merriweather">For teams & companies</p>
+                <div class="my-6">
+                    <span class="text-5xl font-bold font-sans text-foreground dark:text-dark-foreground">$79</span>
+                    <span class="text-muted-foreground dark:text-dark-muted-foreground">/ person</span>
+                </div>
+                <ul class="space-y-4 text-left text-muted-foreground dark:text-dark-muted-foreground mb-8 flex-grow">
+                    <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-primary mr-2"></i> All General Admission benefits</li>
+                    <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-primary mr-2"></i> Minimum 5 people</li>
+                    <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-primary mr-2"></i> Reserved seating for the group</li>
+                    <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-primary mr-2"></i> Dedicated entry point</li>
+                </ul>
+                <a href="#" class="block w-full mt-auto bg-primary/20 text-primary dark:bg-primary/30 dark:text-white px-6 py-3 rounded-md font-medium hover:bg-primary hover:text-white transition-colors">Get Tickets</a>
+            </div>
+        </div>
+    </div>
+</section>
+ <!-- pricing section end  -->
 
  
-
+ 
     <!-- gallery section start -->
 
 <section id="gallery" class="py-20 bg-background dark:bg-dark-background">
@@ -657,12 +836,51 @@
 
 
 
-
-
-
-
-
     <!-- gallery section end -->
+
+    <!-- sponsor or parter start  -->
+
+    <section id="sponsors" class="py-20 bg-muted/30 dark:bg-dark-background/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-playfair font-bold text-foreground dark:text-dark-foreground mb-4">
+                Our Valued Partners & Sponsors
+            </h2>
+            <p class="text-xl font-merriweather text-muted-foreground dark:text-dark-muted-foreground max-w-2xl mx-auto">
+                We are proud to partner with these leading companies to make our events possible and successful.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-8 gap-y-12 items-center">
+            
+            <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://tailwindui.com/img/logos/158x48/transistor-logo-gray-900.svg" alt="Transistor Logo" class="h-10 mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 dark:invert dark:hover:invert-0">
+            </div>
+
+            <div class="text-center" data-aos="fade-up" data-aos-delay="150">
+                <img src="https://tailwindui.com/img/logos/158x48/reform-logo-gray-900.svg" alt="Reform Logo" class="h-10 mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 dark:invert dark:hover:invert-0">
+            </div>
+
+            <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://tailwindui.com/img/logos/158x48/tuple-logo-gray-900.svg" alt="Tuple Logo" class="h-10 mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 dark:invert dark:hover:invert-0">
+            </div>
+
+            <div class="text-center" data-aos="fade-up" data-aos-delay="250">
+                <img src="https://tailwindui.com/img/logos/158x48/savvycal-logo-gray-900.svg" alt="SavvyCal Logo" class="h-10 mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 dark:invert dark:hover:invert-0">
+            </div>
+
+            <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                <img src="https://tailwindui.com/img/logos/158x48/statamic-logo-gray-900.svg" alt="Statamic Logo" class="h-10 mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 dark:invert dark:hover:invert-0">
+            </div>
+            
+            <div class="text-center" data-aos="fade-up" data-aos-delay="350">
+                <img src="https://tailwindui.com/img/logos/158x48/laravel-logo-gray-900.svg" alt="Laravel Logo" class="h-10 mx-auto grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300 dark:invert dark:hover:invert-0">
+            </div>
+
+        </div>
+    </div>
+</section>
+    <!-- sponsor or parter end  -->
 
  
 
@@ -762,256 +980,7 @@
 
  
 
-    <section class="py-20 bg-muted/30 dark:bg-dark-background">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-playfair font-bold text-foreground dark:text-dark-foreground mb-4">
-                    Why Choose EventSphere?
-                </h2>
-                <p class="text-xl font-merriweather text-muted-foreground dark:text-dark-muted-foreground max-w-2xl mx-auto">
-                    We deliver exceptional experiences that exceed expectations and create lasting professional connections.
-                </p>
-            </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                        <i data-lucide="award" class="w-8 h-8 text-primary group-hover:text-white transition-colors duration-300"></i>
-                    </div>
-                    <h3 class="font-playfair text-xl font-semibold mb-3 group-hover:text-primary transition-colors dark:text-dark-foreground">
-                        World-Class Experience
-                    </h3>
-                    <p class="text-muted-foreground dark:text-dark-muted-foreground font-merriweather text-sm leading-relaxed">
-                        Premium venues, top-tier speakers, and unforgettable moments
-                    </p>
-                </div>
-                <div class="text-center group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                        <i data-lucide="zap" class="w-8 h-8 text-primary group-hover:text-white transition-colors duration-300"></i>
-                    </div>
-                    <h3 class="font-playfair text-xl font-semibold mb-3 group-hover:text-primary transition-colors dark:text-dark-foreground">
-                        Seamless Technology
-                    </h3>
-                    <p class="text-muted-foreground dark:text-dark-muted-foreground font-merriweather text-sm leading-relaxed">
-                        Advanced registration, live streaming, and mobile app integration
-                    </p>
-                </div>
-                <div class="text-center group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                        <i data-lucide="globe" class="w-8 h-8 text-primary group-hover:text-white transition-colors duration-300"></i>
-                    </div>
-                    <h3 class="font-playfair text-xl font-semibold mb-3 group-hover:text-primary transition-colors dark:text-dark-foreground">
-                        Global Network
-                    </h3>
-                    <p class="text-muted-foreground dark:text-dark-muted-foreground font-merriweather text-sm leading-relaxed">
-                        Connect with professionals and thought leaders worldwide
-                    </p>
-                </div>
-                <div class="text-center group" data-aos="fade-up" data-aos-delay="400">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                        <i data-lucide="shield" class="w-8 h-8 text-primary group-hover:text-white transition-colors duration-300"></i>
-                    </div>
-                    <h3 class="font-playfair text-xl font-semibold mb-3 group-hover:text-primary transition-colors dark:text-dark-foreground">
-                        24/7 Support
-                    </h3>
-                    <p class="text-muted-foreground dark:text-dark-muted-foreground font-merriweather text-sm leading-relaxed">
-                        Dedicated support team ensuring your success every step
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <section id="affiliate-program" class="py-20 bg-background dark:bg-dark-background">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div data-aos="fade-right">
-                <span class="font-medium text-primary dark:text-accent font-merriweather">Partner with Us</span>
-                <h2 class="text-4xl md:text-5xl font-playfair font-bold text-foreground dark:text-dark-foreground mt-2 mb-4">
-                    Join Our Affiliate Program & Earn
-                </h2>
-                <p class="text-lg font-merriweather text-muted-foreground dark:text-dark-muted-foreground max-w-lg leading-relaxed">
-                    Promote our world-class events and earn generous commissions for every ticket sold through your unique referral link. Grow with us and be a part of our success story.
-                </p>
-                <a href="#" class="mt-8 inline-block bg-primary text-primary-foreground px-8 py-3 rounded-md font-medium group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-                    Become an Affiliate Today
-                    <i data-lucide="arrow-right" class="ml-2 w-5 h-5 inline group-hover:translate-x-1 transition-transform"></i>
-                </a>
-            </div>
-            <div data-aos="fade-left" data-aos-delay="100">
-                <div class="relative rounded-xl p-4 bg-gradient-to-br from-primary/10 to-accent/10">
-                    <img src="https://images.unsplash.com/photo-1700514077430-3659e38eb5e7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Affiliate Partnership" class="rounded-lg shadow-xl">
-                </div>
-            </div>
-        </div>
-
-        <div class="py-20">
-            <div class="text-center mb-12" data-aos="fade-up">
-                <h3 class="text-3xl font-playfair font-bold">How It Works in 3 Easy Steps</h3>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8 text-center">
-                <div data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-20 h-20 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i data-lucide="user-plus" class="w-10 h-10"></i>
-                    </div>
-                    <h4 class="text-xl font-playfair font-semibold">1. Register</h4>
-                    <p class="mt-2 text-muted-foreground dark:text-dark-muted-foreground">Sign up for our affiliate program through a simple form. It's free and takes only a minute.</p>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="200">
-                     <div class="w-20 h-20 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i data-lucide="share-2" class="w-10 h-10"></i>
-                    </div>
-                    <h4 class="text-xl font-playfair font-semibold">2. Promote</h4>
-                    <p class="mt-2 text-muted-foreground dark:text-dark-muted-foreground">Share your unique affiliate link on your blog, social media, or with your audience.</p>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="300">
-                     <div class="w-20 h-20 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i data-lucide="dollar-sign" class="w-10 h-10"></i>
-                    </div>
-                    <h4 class="text-xl font-playfair font-semibold">3. Earn</h4>
-                    <p class="mt-2 text-muted-foreground dark:text-dark-muted-foreground">Earn a commission for every successful ticket purchase made through your link.</p>
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <!-- <div class="text-center mb-12" data-aos="fade-up">
-                <h3 class="text-3xl font-playfair font-bold">Our Commission Plans</h3>
-                <p class="mt-2 text-muted-foreground dark:text-dark-muted-foreground">Choose the plan that's right for you.</p>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
-                <div class="bg-card dark:bg-dark-card p-8 rounded-xl border border-border dark:border-dark-border text-center" data-aos="fade-up" data-aos-delay="100">
-                    <h4 class="text-2xl font-playfair font-semibold">Standard Affiliate</h4>
-                    <p class="text-4xl font-bold font-sans text-primary my-4">10%</p>
-                    <p class="font-merriweather font-bold text-lg">Per Ticket Sale</p>
-                    <ul class="space-y-3 text-left mt-6 text-muted-foreground dark:text-dark-muted-foreground">
-                        <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-2"></i> Standard dashboard access</li>
-                        <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-2"></i> Monthly payouts</li>
-                        <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-2"></i> Basic support</li>
-                    </ul>
-                    <a href="#" class="mt-8 block w-full bg-primary/20 text-primary dark:bg-primary/30 dark:text-white px-6 py-3 rounded-md font-medium hover:bg-primary hover:text-white transition-colors">Join Now</a>
-                </div>
-                
-                <div class="bg-card dark:bg-dark-card p-8 rounded-xl border-2 border-primary shadow-2xl shadow-primary/20 relative" data-aos="fade-up" data-aos-delay="200">
-                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">MOST POPULAR</span>
-                    <h4 class="text-2xl font-playfair font-semibold">Pro Affiliate</h4>
-                    <p class="text-5xl font-bold font-sans text-primary my-4">15%</p>
-                    <p class="font-merriweather font-bold text-lg">Per Ticket Sale</p>
-                    <ul class="space-y-3 text-left mt-6 text-muted-foreground dark:text-dark-muted-foreground">
-                        <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-2"></i> Advanced dashboard access</li>
-                        <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-2"></i> Bi-weekly payouts</li>
-                        <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-2"></i> Priority support</li>
-                        <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-2"></i> Early access to new events</li>
-                    </ul>
-                    <a href="#" class="mt-8 block w-full bg-primary text-primary-foreground px-6 py-3 rounded-md font-medium hover:bg-primary/90 transition-colors">Join Now</a>
-                </div>
-
-                <div class="bg-card dark:bg-dark-card p-8 rounded-xl border border-border dark:border-dark-border text-center" data-aos="fade-up" data-aos-delay="300">
-                    <h4 class="text-2xl font-playfair font-semibold">Ambassador</h4>
-                    <p class="text-4xl font-bold font-sans text-primary my-4">20%</p>
-                    <p class="font-merriweather font-bold text-lg">Per Ticket Sale</p>
-                    <ul class="space-y-3 text-left mt-6 text-muted-foreground dark:text-dark-muted-foreground">
-                        <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-2"></i> All Pro features</li>
-                        <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-2"></i> Dedicated account manager</li>
-                        <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-2"></i> Custom promotional materials</li>
-                    </ul>
-                    <a href="#" class="mt-8 block w-full bg-primary/20 text-primary dark:bg-primary/30 dark:text-white px-6 py-3 rounded-md font-medium hover:bg-primary hover:text-white transition-colors">Apply Now</a>
-                </div>
-            </div> -->
-        </div>
-    </div>
-</section>
-
-   
-
-    <!-- blog section start  -->
-
-    <section id="blog-preview" class="py-20 bg-background dark:bg-dark-background">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-4xl md:text-5xl font-playfair font-bold text-foreground dark:text-dark-foreground mb-4">
-                From Our Blog
-            </h2>
-            <p class="text-xl font-merriweather text-muted-foreground dark:text-dark-muted-foreground max-w-2xl mx-auto">
-                Discover the latest news, tips, and insights on event planning and marketing from our experts.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <div data-aos="fade-up" data-aos-delay="100">
-                <a href="#" class="block group bg-card dark:bg-dark-card rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 dark:hover:shadow-indigo-950/20 transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="overflow-hidden">
-                         <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Team collaborating on an event" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="p-6">
-                        <span class="text-sm font-medium bg-primary/10 text-primary px-3 py-1 rounded-full">Event Planning</span>
-                        <h3 class="mt-4 text-xl font-playfair font-bold text-foreground dark:text-dark-foreground group-hover:text-primary transition-colors h-24">
-                            5 Essential Tips for Hosting a Successful Corporate Event in 2025
-                        </h3>
-                        <div class="mt-4 flex items-center text-sm text-muted-foreground dark:text-dark-muted-foreground border-t border-border dark:border-dark-border pt-4">
-                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Jane Doe" class="w-8 h-8 rounded-full object-cover mr-3">
-                            <span>By Jane Doe</span>
-                            <span class="mx-2">&bull;</span>
-                            <span>Aug 24, 2025</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="200">
-                <a href="#" class="block group bg-card dark:bg-dark-card rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 dark:hover:shadow-indigo-950/20 transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Marketing" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="p-6">
-                        <span class="text-sm font-medium bg-accent/10 text-accent-foreground dark:text-accent px-3 py-1 rounded-full">Marketing</span>
-                        <h3 class="mt-4 text-xl font-playfair font-bold text-foreground dark:text-dark-foreground group-hover:text-primary transition-colors h-24">
-                            How to Use Social Media to Promote Your Next Big Event
-                        </h3>
-                        <div class="mt-4 flex items-center text-sm text-muted-foreground dark:text-dark-muted-foreground border-t border-border dark:border-dark-border pt-4">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="John Smith" class="w-8 h-8 rounded-full object-cover mr-3">
-                            <span>By John Smith</span>
-                             <span class="mx-2">&bull;</span>
-                            <span>Aug 22, 2025</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="300">
-                 <a href="#" class="block group bg-card dark:bg-dark-card rounded-xl overflow-hidden shadow-lg hover:shadow-primary/20 dark:hover:shadow-indigo-950/20 transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Technology" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="p-6">
-                        <span class="text-sm font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full">Technology</span>
-                        <h3 class="mt-4 text-xl font-playfair font-bold text-foreground dark:text-dark-foreground group-hover:text-primary transition-colors h-24">
-                            The Future of Hybrid Events: What's Next for Attendee Engagement?
-                        </h3>
-                         <div class="mt-4 flex items-center text-sm text-muted-foreground dark:text-dark-muted-foreground border-t border-border dark:border-dark-border pt-4">
-                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Emily White" class="w-8 h-8 rounded-full object-cover mr-3">
-                            <span>By Emily White</span>
-                             <span class="mx-2">&bull;</span>
-                            <span>Aug 20, 2025</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-        </div>
-
-        <div class="text-center mt-16" data-aos="fade-up">
-            <a href="#" class="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-md font-medium group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-                Visit Our Blog
-                <i data-lucide="arrow-right" class="ml-2 w-5 h-5 inline group-hover:translate-x-1 transition-transform"></i>
-            </a>
-        </div>
-    </div>
-</section>
-    <!-- blog section end  -->
 
  
 
@@ -1123,55 +1092,144 @@
     </div>
 </section>
 
-<section id="newsletter" class="py-20 bg-muted/30 dark:bg-dark-background/50">
+<!-- call to action start  -->
+
+<section id="final-cta" class="relative py-20 bg-primary text-white overflow-hidden">
+    <div class="absolute inset-0 bg-primary/80 z-10"></div>
+    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" 
+         alt="Excited crowd at an event" 
+         class="absolute inset-0 w-full h-full object-cover opacity-30">
+    
+    <div class="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+        <h2 class="text-4xl md:text-5xl font-playfair font-bold">
+            Don't Miss Out!
+        </h2>
+        <p class="mt-4 text-lg md:text-xl font-merriweather max-w-2xl mx-auto opacity-90">
+            This is your final chance to be a part of an unforgettable experience. Seats are filling up fast!
+        </p>
+
+        <div id="countdown-timer" class="flex justify-center gap-4 md:gap-8 my-10 font-sans">
+            <div>
+                <span id="days" class="text-4xl md:text-6xl font-bold">00</span>
+                <span class="block text-sm opacity-80 mt-1">Days</span>
+            </div>
+            <div class="text-4xl md:text-6xl font-bold">:</div>
+            <div>
+                <span id="hours" class="text-4xl md:text-6xl font-bold">00</span>
+                <span class="block text-sm opacity-80 mt-1">Hours</span>
+            </div>
+            <div class="text-4xl md:text-6xl font-bold">:</div>
+            <div>
+                <span id="minutes" class="text-4xl md:text-6xl font-bold">00</span>
+                <span class="block text-sm opacity-80 mt-1">Minutes</span>
+            </div>
+            <div class="text-4xl md:text-6xl font-bold">:</div>
+            <div>
+                <span id="seconds" class="text-4xl md:text-6xl font-bold">00</span>
+                <span class="block text-sm opacity-80 mt-1">Seconds</span>
+            </div>
+        </div>
+
+        <a href="events.html" class="inline-block bg-accent text-gray-900 px-10 py-4 rounded-md font-bold text-lg group hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl">
+            Limited Seats – Register Now!
+            <i data-lucide="arrow-right" class="ml-2 w-5 h-5 inline transition-transform group-hover:translate-x-1"></i>
+        </a>
+    </div>
+</section>
+<!-- call to action end  -->
+
+
+
+
+<section id="contact-home" class="py-20 bg-background dark:bg-dark-background">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="relative bg-card dark:bg-dark-card rounded-2xl shadow-xl overflow-hidden" data-aos="fade-up">
-            <div class="grid lg:grid-cols-2">
-                <div class="p-8 md:p-12 lg:p-16">
-                    <div class="w-16 h-16 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6">
-                        <i data-lucide="mail-check" class="w-8 h-8"></i>
-                    </div>
-                    <h2 class="text-3xl md:text-4xl font-playfair font-bold text-foreground dark:text-dark-foreground">
-                        Stay in the Loop
-                    </h2>
-                    <p class="mt-4 text-lg font-merriweather text-muted-foreground dark:text-dark-muted-foreground leading-relaxed">
-                        Subscribe to our newsletter to get the latest event updates, exclusive offers, and early-bird ticket announcements delivered straight to your inbox.
-                    </p>
-                    <form action="#" method="POST" class="mt-8">
-                        <div class="flex flex-col sm:flex-row gap-2">
-                            <input 
-                                type="email" 
-                                name="email" 
-                                id="email" 
-                                required 
-                                class="flex-1 w-full px-4 py-3 rounded-md bg-background dark:bg-dark-background border border-border dark:border-dark-border focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary font-sans" 
-                                placeholder="Enter your email address"
-                            >
-                            <button 
-                                type="submit" 
-                                class="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-md font-medium group hover:bg-primary/90 transition-colors shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-offset-dark-card"
-                            >
-                                Subscribe
-                                <i data-lucide="arrow-right" class="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1"></i>
-                            </button>
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-4xl md:text-5xl font-playfair font-bold text-foreground dark:text-dark-foreground mb-4">
+                Get In Touch
+            </h2>
+            <p class="text-xl font-merriweather text-muted-foreground dark:text-dark-muted-foreground max-w-2xl mx-auto">
+                Have a question, a proposal, or just want to say hello? We'd love to hear from you.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+            
+            <div data-aos="fade-right">
+                <h3 class="text-3xl font-playfair font-bold mb-6">Contact Information</h3>
+                <p class="font-merriweather text-muted-foreground dark:text-dark-muted-foreground leading-relaxed mb-8">
+                    Feel free to reach out to us through any of the following channels. Our team is available to assist you from Sunday to Thursday, 10 AM to 6 PM.
+                </p>
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center flex-shrink-0"><i data-lucide="mail" class="w-6 h-6"></i></div>
+                        <div>
+                            <h4 class="text-lg font-semibold font-playfair">Email Us</h4>
+                            <p class="text-muted-foreground dark:text-dark-muted-foreground">contact@eventsphere.com</p>
                         </div>
-                    </form>
-                    <p class="mt-4 text-xs text-muted-foreground dark:text-dark-muted-foreground font-merriweather">
-                        No spam, ever. Unsubscribe at any time.
-                    </p>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center flex-shrink-0"><i data-lucide="phone" class="w-6 h-6"></i></div>
+                        <div>
+                            <h4 class="text-lg font-semibold font-playfair">Call Us</h4>
+                            <p class="text-muted-foreground dark:text-dark-muted-foreground">+880 1234 567890</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center flex-shrink-0"><i data-lucide="map-pin" class="w-6 h-6"></i></div>
+                        <div>
+                            <h4 class="text-lg font-semibold font-playfair">Our Office</h4>
+                            <p class="text-muted-foreground dark:text-dark-muted-foreground">123 EventSphere Avenue, Dhaka</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="hidden lg:block">
-                    <img 
-                        src="https://images.unsplash.com/photo-1635321101901-7ac6eec3d371?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                        alt="Newsletter illustration"
-                        class="w-full h-full object-cover"
-                    >
+                <div class="mt-10 pt-8 border-t border-border dark:border-dark-border">
+                    <h4 class="text-xl font-playfair font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="p-3 bg-muted dark:bg-dark-muted rounded-full text-muted-foreground dark:text-dark-muted-foreground hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-110">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="p-3 bg-muted dark:bg-dark-muted rounded-full text-muted-foreground dark:text-dark-muted-foreground hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-110">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="p-3 bg-muted dark:bg-dark-muted rounded-full text-muted-foreground dark:text-dark-muted-foreground hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-110">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="p-3 bg-muted dark:bg-dark-muted rounded-full text-muted-foreground dark:text-dark-muted-foreground hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-110">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                    </div>
                 </div>
+            </div>
+            
+            <div class="bg-card dark:bg-dark-card p-8 md:p-12 rounded-xl shadow-xl border border-border dark:border-dark-border" data-aos="fade-left">
+                <h3 class="text-3xl font-playfair font-bold mb-6">Send Us a Quick Message</h3>
+                <form action="#" method="POST" class="space-y-6">
+                    <div>
+                        <label for="home-full-name" class="block text-sm font-medium">Full Name</label>
+                        <input type="text" id="home-full-name" name="full-name" required class="mt-1 block w-full px-3 py-2 bg-background dark:bg-dark-background border border-border dark:border-dark-border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
+                    </div>
+                    <div>
+                        <label for="home-email" class="block text-sm font-medium">Email Address</label>
+                        <input type="email" id="home-email" name="email" required class="mt-1 block w-full px-3 py-2 bg-background dark:bg-dark-background border border-border dark:border-dark-border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
+                    </div>
+                    <div>
+                        <label for="home-message" class="block text-sm font-medium">Message</label>
+                        <textarea id="home-message" name="message" rows="5" required class="mt-1 block w-full px-3 py-2 bg-background dark:bg-dark-background border border-border dark:border-dark-border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </section>
+
+
+
 
     <footer class="bg-foreground text-white py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

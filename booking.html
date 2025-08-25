@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Ticket - EventSphere</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { 'playfair': ['Playfair Display', 'serif'], 'merriweather': ['Merriweather', 'serif'], 'sans': ['Inter', 'sans-serif'] },
+                    colors: {
+                        border: 'hsl(262 20% 88%)', input: 'hsl(262 20% 88%)', ring: 'hsl(262 83% 58%)', background: 'hsl(0 0% 100%)', foreground: 'hsl(222.2 84% 4.9%)',
+                        primary: { DEFAULT: 'hsl(262 83% 58%)', foreground: 'hsl(210 40% 98%)' },
+                        secondary: { DEFAULT: 'hsl(262 30% 96%)', foreground: 'hsl(262 83% 18%)' },
+                        muted: { DEFAULT: 'hsl(262 30% 96%)', foreground: 'hsl(215.4 16.3% 46.9%)' },
+                        accent: { DEFAULT: 'hsl(45 93% 47%)', foreground: 'hsl(0 0% 100%)' },
+                        card: { DEFAULT: 'hsl(0 0% 100%)', foreground: 'hsl(222.2 84% 4.9%)' },
+                        dark: { border: 'hsl(217 33% 27%)', input: 'hsl(217 33% 27%)', background: 'hsl(222 47% 11%)', foreground: 'hsl(210 40% 98%)', card: { DEFAULT: 'hsl(222 47% 14%)', foreground: 'hsl(210 40% 98%)' }, muted: { foreground: 'hsl(217 19% 60%)' } }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="min-h-screen bg-muted/30 dark:bg-dark-background/50 text-foreground dark:text-dark-foreground transition-colors duration-300">
+
+    <nav class="bg-white/80 dark:bg-dark-background/80 backdrop-blur-md border-b border-border dark:border-dark-border sticky top-0 z-50">
+       </nav>
+
+    <main>
+        <section class="py-16 text-center" data-aos="fade-in">
+            <div class="max-w-4xl mx-auto px-4">
+                <h1 class="text-4xl md:text-5xl font-playfair font-bold text-foreground dark:text-dark-foreground">Secure Your Spot</h1>
+                <p class="mt-4 text-lg font-merriweather text-muted-foreground dark:text-dark-muted-foreground max-w-2xl mx-auto">
+                    You're just a few steps away from an unforgettable experience.
+                </p>
+            </div>
+        </section>
+
+        <section class="pb-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-3 gap-12">
+                    
+                    <div class="lg:col-span-2 bg-card dark:bg-dark-card p-8 rounded-xl shadow-lg border border-border dark:border-dark-border" data-aos="fade-right">
+                        <form action="#" method="POST" class="space-y-10">
+                            <div>
+                                <h2 class="text-2xl font-playfair font-bold mb-6">1. Choose Your Ticket</h2>
+                                <div class="space-y-4">
+                                    <label for="ticket-general" class="block p-4 border border-border dark:border-dark-border rounded-lg has-[:checked]:border-primary has-[:checked]:ring-2 has-[:checked]:ring-primary cursor-pointer">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <p class="font-semibold">General Admission</p>
+                                                <p class="text-sm text-muted-foreground dark:text-dark-muted-foreground">Access to all main sessions & networking area.</p>
+                                            </div>
+                                            <div class="text-lg font-bold">$99</div>
+                                        </div>
+                                        <input type="radio" id="ticket-general" name="ticket_type" value="99" class="sr-only" checked>
+                                    </label>
+                                    <label for="ticket-vip" class="block p-4 border border-border dark:border-dark-border rounded-lg has-[:checked]:border-primary has-[:checked]:ring-2 has-[:checked]:ring-primary cursor-pointer">
+                                        <div class="flex justify-between items-center">
+                                            <div>
+                                                <p class="font-semibold">VIP Access</p>
+                                                <p class="text-sm text-muted-foreground dark:text-dark-muted-foreground">Includes VIP lounge & exclusive Q&A.</p>
+                                            </div>
+                                            <div class="text-lg font-bold">$199</div>
+                                        </div>
+                                        <input type="radio" id="ticket-vip" name="ticket_type" value="199" class="sr-only">
+                                    </label>
+                                </div>
+                                <div class="mt-4">
+                                    <label for="quantity" class="block text-sm font-medium">Quantity</label>
+                                    <input type="number" id="quantity" name="quantity" min="1" value="1" class="mt-1 w-24 px-3 py-2 bg-background dark:bg-dark-background border border-border dark:border-dark-border rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                </div>
+                            </div>
+
+                            <div>
+                                <h2 class="text-2xl font-playfair font-bold mb-6">2. Your Information</h2>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="full-name" class="block text-sm font-medium">Full Name</label>
+                                        <input type="text" id="full-name" name="full-name" required class="mt-1 block w-full px-3 py-2 bg-background dark:bg-dark-background border border-border dark:border-dark-border rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block text-sm font-medium">Email Address</label>
+                                        <input type="email" id="email" name="email" required class="mt-1 block w-full px-3 py-2 bg-background dark:bg-dark-background border border-border dark:border-dark-border rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h2 class="text-2xl font-playfair font-bold mb-6">3. Payment Details</h2>
+                                <div class="p-6 bg-muted/50 dark:bg-dark-muted/50 rounded-lg border border-border dark:border-dark-border">
+                                    <div>
+                                        <label for="card-number" class="block text-sm font-medium">Card Number</label>
+                                        <input type="text" id="card-number" placeholder="0000 0000 0000 0000" class="mt-1 block w-full px-3 py-2 bg-background dark:bg-dark-background border border-border dark:border-dark-border rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-6 mt-6">
+                                        <div>
+                                            <label for="expiry-date" class="block text-sm font-medium">Expiry Date</label>
+                                            <input type="text" id="expiry-date" placeholder="MM / YY" class="mt-1 block w-full px-3 py-2 bg-background dark:bg-dark-background border border-border dark:border-dark-border rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                        </div>
+                                        <div>
+                                            <label for="cvc" class="block text-sm font-medium">CVC</label>
+                                            <input type="text" id="cvc" placeholder="123" class="mt-1 block w-full px-3 py-2 bg-background dark:bg-dark-background border border-border dark:border-dark-border rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="lg:col-span-1" data-aos="fade-left">
+                        <div class="lg:sticky lg:top-24 bg-card dark:bg-dark-card p-8 rounded-xl shadow-lg border border-border dark:border-dark-border">
+                            <h2 class="text-2xl font-playfair font-bold border-b border-border dark:border-dark-border pb-4 mb-4">Order Summary</h2>
+                            <div class="space-y-4">
+                                <p class="font-semibold text-lg">Tech Innovation Summit 2025</p>
+                                <div class="flex items-center text-muted-foreground dark:text-dark-muted-foreground"><i data-lucide="calendar" class="w-4 h-4 mr-2"></i><span>August 15, 2025</span></div>
+                                <div class="flex items-center text-muted-foreground dark:text-dark-muted-foreground"><i data-lucide="map-pin" class="w-4 h-4 mr-2"></i><span>San Francisco</span></div>
+                                
+                                <div class="border-t border-border dark:border-dark-border pt-4 mt-4 space-y-2">
+                                    <div class="flex justify-between">
+                                        <p id="summary-ticket-name">General Admission (x1)</p>
+                                        <p id="summary-subtotal">$99.00</p>
+                                    </div>
+                                    <div class="flex justify-between text-muted-foreground dark:text-dark-muted-foreground">
+                                        <p>Taxes & Fees</p>
+                                        <p>$5.00</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="border-t border-border dark:border-dark-border pt-4 mt-4">
+                                    <div class="flex justify-between font-bold text-lg">
+                                        <p>Total</p>
+                                        <p id="summary-total">$104.00</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="w-full mt-8 flex justify-center items-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                                <i data-lucide="lock" class="w-5 h-5 mr-2"></i>
+                                Complete Booking
+                            </button>
+                            <p class="text-xs text-center mt-4 text-muted-foreground dark:text-dark-muted-foreground">Secure payment powered by Stripe</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-foreground text-white py-16">
+        </footer>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        lucide.createIcons();
+        AOS.init({ duration: 800, once: true });
+
+        // Interactive Order Summary Logic
+        const ticketRadios = document.querySelectorAll('input[name="ticket_type"]');
+        const quantityInput = document.getElementById('quantity');
+        
+        const summaryTicketName = document.getElementById('summary-ticket-name');
+        const summarySubtotal = document.getElementById('summary-subtotal');
+        const summaryTotal = document.getElementById('summary-total');
+        const tax = 5.00;
+
+        function updateSummary() {
+            const selectedTicket = document.querySelector('input[name="ticket_type"]:checked');
+            const quantity = parseInt(quantityInput.value) || 1;
+            const price = parseFloat(selectedTicket.value);
+            const ticketName = selectedTicket.parentElement.querySelector('.font-semibold').innerText;
+
+            const subtotal = price * quantity;
+            const total = subtotal + tax;
+            
+            summaryTicketName.innerText = `${ticketName} (x${quantity})`;
+            summarySubtotal.innerText = `$${subtotal.toFixed(2)}`;
+            summaryTotal.innerText = `$${total.toFixed(2)}`;
+        }
+
+        ticketRadios.forEach(radio => radio.addEventListener('change', updateSummary));
+        quantityInput.addEventListener('input', updateSummary);
+        
+        // Theme Toggle Logic
+        // ... আপনার থিম টগল স্ক্রিপ্ট এখানে বসবে ...
+    </script>
+</body>
+</html>
