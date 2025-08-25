@@ -187,3 +187,40 @@ if (faqAccordion) {
     });
 }
         
+   
+
+// Countdown Timer Logic
+const countdownTimer = document.getElementById('countdown-timer');
+if (countdownTimer) {
+    // -----------------------------------------------------------------
+    // আপনার ইভেন্টের তারিখ ও সময় এখানে পরিবর্তন করুন
+    // -----------------------------------------------------------------
+    const countdownDate = new Date("Aug 30, 2025 09:00:00").getTime();
+
+    // প্রতি ১ সেকেন্ড পর পর টাইমার আপডেট করার জন্য
+    const updateCountdown = setInterval(function() {
+        // আজকের তারিখ ও সময়
+        const now = new Date().getTime();
+        
+        // নির্দিষ্ট তারিখ এবং আজকের সময়ের মধ্যে পার্থক্য
+        const distance = countdownDate - now;
+
+        // দিন, ঘন্টা, মিনিট এবং সেকেন্ড গণনা
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // HTML এলিমেন্টগুলোতে সময় দেখানো
+        document.getElementById("days").innerText = String(days).padStart(2, '0');
+        document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+        document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+        document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+
+        // কাউন্টডাউন শেষ হয়ে গেলে যা হবে
+        if (distance < 0) {
+            clearInterval(updateCountdown);
+            countdownTimer.innerHTML = "<h3 class='text-2xl font-playfair font-bold'>The Event Has Started!</h3>";
+        }
+    }, 1000);
+}
